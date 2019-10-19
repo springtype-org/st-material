@@ -1,0 +1,37 @@
+import {customElement} from "springtype/web/customelement";
+{{#attr}}import {attr} from "springtype/web/customelement";{{/attr}}
+{{#tss}}import {ITypedStyleSheet} from "springtype/web/tss/interface/typed-style-sheet";{{/tss}}
+import {IVirtualNode} from "springtype/web/vdom/interface";
+import {st} from "springtype/core";
+import {tsx} from "springtype/web/vdom";
+
+/* This class is generated */
+@customElement('{{tagName}}')
+class {{className}} extends st.element {
+{{#attr}}
+    {{#attributes}}
+    @attr
+    {{{.}}}
+    {{/attributes}}
+{{/attr}}
+{{#tss}}
+    renderStyle(theme?: any): ITypedStyleSheet {
+    {{#tssLines}}
+        {{{.}}}
+    {{/tssLines}}
+    }
+{{/tss}}
+    render(): IVirtualNode  {
+    {{#tsxLines}}
+        {{{.}}}
+    {{/tsxLines}}
+    }
+}
+
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            '{{tagName}}': Partial<{{className}}>;
+        }
+    }
+}
