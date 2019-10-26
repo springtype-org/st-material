@@ -24,7 +24,7 @@ const OUTPUT_DIRECTORY = 'src/component/mwc-icon/';
             const links: Array<ILink> = types.map(type => {
                 return {type: type, url: url.replace(URL_REPLACE_TOKEN, type)}
             });
-            const linksChunked: Array<Array<ILink>> = arrayToChunks(links, 100);
+            const linksChunked: Array<Array<ILink>> = arrayToChunks(links, 20);
             for (let linkChunk of linksChunked) {
                 await transformSvgToTsx(linkChunk, category, theme, directory);
             }

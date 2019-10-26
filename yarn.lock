@@ -331,10 +331,10 @@ source-map@^0.6.0:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-springtype@^2.0.0-alpha.1.5:
-  version "2.0.0-alpha.1.5"
-  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-alpha.1.5.tgz#0ff7c82321bec55471b88c42ce6a9b722623e4e0"
-  integrity sha512-R1yGFuyubF+PlbIvCfjTQs0CB7mlfvzsYLlB5w2hLZ2aYaBQuFcTsKh9HGHnflqVq66fI5oim8htOj5hENRP+A==
+springtype@^2.0.0-alpha.1.15:
+  version "2.0.0-alpha.1.15"
+  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-alpha.1.15.tgz#d20a3a73af2792af9b609d42242b65e3913e1189"
+  integrity sha512-svXxYhqtF5oyMogHfIRlL/6M3U32AhKrjt7ReP5eJjM8gKyVwfV8S95RDHNC7DREZSvJGz0sFtJ6PMSAujAXQw==
 
 st-rm-rf@^1.0.0-alpha.1.40:
   version "1.0.0-alpha.1.40"

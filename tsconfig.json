@@ -1,25 +1,17 @@
 {
 	"compilerOptions": {
 		"module": "commonjs",
-		"target": "es2015",
-		"outDir": "dist",
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"strict": true,
-		"noUnusedLocals": true,
 		"declaration": true,
-		"sourceMap": true,
-		"downlevelIteration": true,
-		"noUnusedParameters": true,
-		"noEmitHelpers": false,
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"allowSyntheticDefaultImports": false,
-		"jsx": "react",
 		"skipLibCheck": true,
+		"target": "es5",
+		"jsx": "react",
+		"outDir": "dist",
 		"jsxFactory": "tsx",
-		"rootDir": "src"
+		"experimentalDecorators": true,
+		"sourceMap": true,
+		"resolveJsonModule": true
 	},
-	"exclude": ["dist", "node_modules", "**/node_modules/*"],
-	"include": ["src"]
-}
+	"exclude": ["node_modules"],
+	"include": ["."]
+  }
+  

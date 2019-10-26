@@ -5,7 +5,5 @@ const request = require('superagent');
  */
 export const download = async  (url: string): Promise<string> => {
     const response = await request.get(url);
-   return response.body.toString()
+    return response.body.toString()
 };
-
-
