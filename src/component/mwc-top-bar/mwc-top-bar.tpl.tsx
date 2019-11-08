@@ -1,5 +1,4 @@
 import { tsx } from "springtype/web/vdom";
-import { classes } from "../../functions/classes";
 import { MwcTopBar } from "./mwc-top-bar";
 
 export default (component: MwcTopBar) => {
@@ -7,10 +6,22 @@ export default (component: MwcTopBar) => {
   const fixed = component["mwc-variant"] == "fixed-prominent" || component["mwc-variant"] == "fixed-short" || component["mwc-variant"] == "fixed";
   const short = (component["mwc-variant"] == "short" && !component["menu-open"]) || (component["mwc-variant"] == "fixed-short" && !component["menu-open"]);
 
+  const style = {};
+
   let width = "100%";
   if (short) {
     width = "";
+    style["height"] = HEIGHT.toString() + "px";
   }
+
+  if (component["mwc-dense"]) {
+    style["padding-top"] = HEIGHT_DENSE.toString() + "px";
+  }
+
+  const classes = [];
+
+  
+
 
   return (
     <div unwrap>
@@ -80,6 +91,7 @@ export default (component: MwcTopBar) => {
       </div>
       <div
         id="fixed"
+        style={style}
         class={classes({
           "mdc-top-app-bar--fixed-adjust": fixed && component["mwc-variant"] != "fixed-prominent",
           "mdc-top-app-bar--prominent-fixed-adjust": component["mwc-variant"] == "fixed-prominent",

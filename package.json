@@ -2,23 +2,42 @@
   "name": "st-material",
   "scripts": {
     "generate": "ts-node script/generate/index.ts",
-    "prebuild": "st-run st-rm-rf dist",
-    "build": "tsc"
+    "prebuild": "st-rm-rf dist",
+    "build": "tsc",
+    "start:prod": "st-start -e production",
+    "start": "st-start"
   },
   "author": "Aron Homberg <info@aron-homberg.de>, Michael Mannseicher <m.mansi1@gmx.net>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^12.11.7",
+    "@material/top-app-bar": "^4.0.0",
+    "@types/node": "^12.12.6",
+    "autoprefixer": "^9.7.1",
     "chalk": "^2.4.2",
+    "dts-css-modules-loader": "^1.0.1",
+    "lost": "^8.3.1",
     "mustache": "^3.1.0",
-    "st-rm-rf": "^1.0.0-alpha.1.42",
+    "node-notifier": "^6.0.0",
+    "node-sass": "^4.13.0",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-nested": "^4.2.1",
+    "postcss-normalize": "^8.0.1",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-safe-parser": "^4.0.1",
+    "raw-loader": "^3.1.0",
+    "resolve-url-loader": "^3.1.0",
+    "sass-loader": "^8.0.0",
+    "springtype": "2.0.0-alpha.1.19",
+    "st-rm-rf": "^2.0.0-alpha.8",
     "superagent": "^5.1.0",
     "ts-node": "^8.4.1",
-    "typescript": "^3.6.4",
-    "st-run": "2.0.0-alpha.10",
+    "typescript": "^3.7.2",
+    "webpack-bundle-analyzer": "^3.6.0",
     "xml2js": "^0.4.22"
   },
   "dependencies": {
-    "springtype": "^2.0.0-alpha.1.17"
+    "material-components-web": "^4.0.0",
+    "st-start": "^2.0.0-beta.20"
   }
 }
