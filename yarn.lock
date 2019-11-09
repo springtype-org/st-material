@@ -8118,10 +8118,14 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
-springtype@2.0.0-alpha.1.19:
-  version "2.0.0-alpha.1.19"
-  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-alpha.1.19.tgz#9b1634d939158e87e9e715eb2e07b21b24fa8dea"
-  integrity sha512-sKbfi93oxlYai8nrAH6eNVby/2536nSPNjgaWm4b9WH3xn2z1X9WhaEwuxpcA0dqYw/Dc1a4ygPr0DiH7ic40Q==
+springtype@2.0.0-alpha.1.20:
+  version "2.0.0-alpha.1.20"
+  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-alpha.1.20.tgz#39fecebb27d4c75bc62c7a367378354734196fbb"
+  integrity sha512-vbmnMzyyT8Wh1byQM7kv8/ri+iJbUnxaiWueY+t36tuaSznCuetxZ+zr1yEIgu6DLy5oKoJDFYy4m4PBucZcrQ==
+  dependencies:
+    global "^4.4.0"
+    st-cp "^2.0.0-alpha.4"
+    st-rm-rf "^2.0.0-alpha.8"
 
 sprintf-js@~1.0.2:
   version "1.0.3"
@@ -8157,6 +8161,13 @@ ssri@^7.0.0:
   dependencies:
     figgy-pudding "^3.5.1"
     minipass "^3.1.1"
+
+st-cp@^2.0.0-alpha.4:
+  version "2.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/st-cp/-/st-cp-2.0.0-alpha.4.tgz#5681c536168fbaf5257aff07020004eabd79b2d2"
+  integrity sha512-MwQWv5+6iqjSPCaYUl326B2pKfRsXx2SOddL6/odWNvIIYY4pT5wul+LIJaFwNdwRRAUHmfbpTpfqh0Qyq6k7A==
+  dependencies:
+    chalk "^2.4.2"
 
 st-rm-rf@^2.0.0-alpha.8:
   version "2.0.0-alpha.8"

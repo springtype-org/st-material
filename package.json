@@ -30,7 +30,7 @@
     "raw-loader": "^3.1.0",
     "resolve-url-loader": "^3.1.0",
     "sass-loader": "^8.0.0",
-    "springtype": "2.0.0-alpha.1.19",
+    "springtype": "2.0.0-alpha.1.20",
     "st-rm-rf": "^2.0.0-alpha.8",
     "superagent": "^5.1.0",
     "ts-node": "^8.4.1",

@@ -6,7 +6,10 @@ import { tsx } from "springtype/web/vdom";
 //     yarn add material-components-web
 //
 // and us it like this:
-import "./mdc.scss";
+// 
+// import "./mdc.scss"; 
+//
+// But because we use it in html as css global style we don't need to.
 import { HomePage } from "./playground/page/home-page";
 
 @route(null, HomePage)
