@@ -1,19 +1,16 @@
 import { st } from "springtype/core/st";
 import { attr, component, state } from "springtype/web/component";
-import tss from "./mwc-top-bar-override.tss";
 import tpl from "./mwc-top-bar.tpl";
 export type VariantType = false | "fixed" | "prominent" | "fixed-prominent" | "short" | "fixed-short";
 
 @component({
   tpl,
-  tss,
 })
 export class MwcTopBar extends st.component {
-
   constructor() {
     super();
 
-    console.log('MwcTopBar');
+    console.log("MwcTopBar");
   }
 
   @attr()

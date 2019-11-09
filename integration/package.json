@@ -4,19 +4,17 @@
   "description": "Integration: Based on the SpringType scratch scaffolding project",
   "scripts": {
     "clean": "st-run st-rm-rf dist",
-    "start:prod": "cross-env NODE_ENV=production st-start",
-    "start": "cross-env NODE_ENV=development st-start"
+    "start:prod": "st-start -e production",
+    "start": "st-start"
   },
   "license": "MIT",
   "dependencies": {
     "@material/icon-button": "^3.2.0",
     "@material/top-app-bar": "^3.2.0",
-    "springtype": "2.0.0-alpha.1.17"
+    "springtype": "2.0.0-alpha.1.19"
   },
   "devDependencies": {
-    "cross-env": "^6.0.3",
-    "st-run": "2.0.0-alpha.10",
-    "st-start": "^2.0.0-alpha.21",
-    "typescript": "^3.6.4"
+    "st-run": "2.0.0-alpha.31",
+    "st-start": "^2.0.0-beta.17"
   }
 }
