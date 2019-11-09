@@ -1,15 +1,25 @@
 import { st } from "springtype/core";
 import { component } from "springtype/web/component";
-import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { tsx } from "springtype/web/vdom";
+import { MwcTopBar } from "../../component/mwc-top-bar/mwc-top-bar";
 
 @component()
-export class HomePage extends st.component implements ILifecycle {
+export class HomePage extends st.component {
 
   render() {
     return (
-      <div>
-        <h2>Playground</h2>
+      <div unwrap>
+        
+        <MwcTopBar mwc-title="Playground">
+          <template slot="start">
+            Test
+          </template>
+
+          <template slot="topbar-end">
+            Test Foo
+          </template>
+        </MwcTopBar>
+
       </div>
     );
   }

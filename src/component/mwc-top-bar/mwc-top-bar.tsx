@@ -7,12 +7,6 @@ export type VariantType = false | "fixed" | "prominent" | "fixed-prominent" | "s
   tpl,
 })
 export class MwcTopBar extends st.component {
-  constructor() {
-    super();
-
-    console.log("MwcTopBar");
-  }
-
   @attr()
   "mwc-dense": boolean = false;
 

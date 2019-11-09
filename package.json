@@ -9,8 +9,10 @@
   },
   "author": "Aron Homberg <info@aron-homberg.de>, Michael Mannseicher <m.mansi1@gmx.net>",
   "license": "MIT",
+  "peerDependencies": {
+    "@material/top-app-bar": "^4.0.0"
+  },
   "devDependencies": {
-    "@material/top-app-bar": "^4.0.0",
     "@types/node": "^12.12.6",
     "autoprefixer": "^9.7.1",
     "chalk": "^2.4.2",
@@ -38,6 +40,6 @@
   },
   "dependencies": {
     "material-components-web": "^4.0.0",
-    "st-start": "^2.0.0-beta.20"
+    "st-start": "^2.0.0-beta.21"
   }
 }

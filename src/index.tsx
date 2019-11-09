@@ -6,7 +6,7 @@ import { tsx } from "springtype/web/vdom";
 //     yarn add material-components-web
 //
 // and us it like this:
-import "./mdc.global.scss";
+import "./mdc.scss";
 import { HomePage } from "./playground/page/home-page";
 
 @route(null, HomePage)

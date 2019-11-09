@@ -1,16 +1,16 @@
 import { tsx } from "springtype/web/vdom";
 import { MwcTopBar } from "./mwc-top-bar";
 
+const HEIGHT = 32;
+const HEIGHT_DENSE = 48;
+
 export default (component: MwcTopBar) => {
-  const prominent = component["mwc-variant"] == "fixed-prominent" || component["mwc-variant"] == "prominent";
   const fixed = component["mwc-variant"] == "fixed-prominent" || component["mwc-variant"] == "fixed-short" || component["mwc-variant"] == "fixed";
   const short = (component["mwc-variant"] == "short" && !component["menu-open"]) || (component["mwc-variant"] == "fixed-short" && !component["menu-open"]);
 
   const style = {};
 
-  let width = "100%";
   if (short) {
-    width = "";
     style["height"] = HEIGHT.toString() + "px";
   }
 
@@ -18,31 +18,39 @@ export default (component: MwcTopBar) => {
     style["padding-top"] = HEIGHT_DENSE.toString() + "px";
   }
 
-  const classes = [];
+  const classes = ["mdc-top-app-bar", "mdc-top-app-bar--width"];
+  const fixedClasses = [];
 
-  
+  if (!fixed) {
+    classes.push("mdc-top-app-bar--non-fixed");
+  } else {
+    classes.push("mdc-top-app-bar--fixed", "mdc-top-app-bar--fixed-scrolled");
+  }
 
+  if (component["mwc-dense"]) {
+    classes.push("mdc-top-app-bar--dense");
+    fixedClasses.push("mdc-top-app-bar--dense");
+  }
 
+  if (short) {
+    classes.push("mdc-top-app-bar--short", "mdc-top-app-bar--short-collapsed", "mdc-top-app-bar--short-has-action-item");
+  }
+
+  if (fixed && component["mwc-variant"] != "fixed-prominent") {
+    fixedClasses.push("mdc-top-app-bar--fixed-adjust");
+  }
+
+  if (component["mwc-variant"] == "fixed-prominent") {
+    fixedClasses.push("mdc-top-app-bar--prominent-fixed-adjust");
+  }
+
+  // TODO: Use material button component once ready!
   return (
     <div unwrap>
-      <div
-        id="mdc-top-app-bar"
-        class={classes({
-          "mdc-top-app-bar": true,
-          "mdc-top-app-bar--non-fixed": !fixed,
-          "mdc-top-app-bar--fixed": fixed,
-          "mdc-top-app-bar--fixed-scrolled": fixed,
-          "mdc-top-app-bar--dense": component["mwc-dense"],
-          "mdc-top-app-bar--prominent": prominent,
-          "mdc-top-app-bar--short": short,
-          "mdc-top-app-bar--short-collapsed": short,
-          "mdc-top-app-bar--short-has-action-item": short,
-          "mdc-top-app-bar--width": true,
-        })}
-      >
+      <div id="mdc-top-app-bar" class={classes}>
         <div class="mdc-top-app-bar__row">
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-            {/* TODO: add topbar-start */}
+            <slot></slot>
             <button
               onClick={() => (component["menu-open"] = !component["menu-open"])}
               class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon mdc-ripple-upgraded--unbounded mdc-ripple-upgraded"
@@ -54,26 +62,16 @@ export default (component: MwcTopBar) => {
             <span class="mdc-top-app-bar__title">{component["mwc-title"]}</span>
           </section>
           <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-            {/* TODO: add topbar-end */}
+            <slot name="topbar-end"></slot>
             <button
-              class={
-                "mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded " +
-                classes({
-                  hidden: short,
-                })
-              }
+              class={"mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded " + (short ? "hidden" : "")}
               aria-label="Download"
               style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;"
             >
               file_download
             </button>
             <button
-              class={
-                " mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded " +
-                classes({
-                  hidden: short,
-                })
-              }
+              class={" mdc-icon-button material-icons mdc-top-app-bar__action-item mdc-ripple-upgraded--unbounded mdc-ripple-upgraded " + (short ? "hidden" : "")}
               aria-label="Print this page"
               style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:1.71429; --mdc-ripple-left:10px; --mdc-ripple-top:10px;"
             >
@@ -89,15 +87,7 @@ export default (component: MwcTopBar) => {
           </section>
         </div>
       </div>
-      <div
-        id="fixed"
-        style={style}
-        class={classes({
-          "mdc-top-app-bar--fixed-adjust": fixed && component["mwc-variant"] != "fixed-prominent",
-          "mdc-top-app-bar--prominent-fixed-adjust": component["mwc-variant"] == "fixed-prominent",
-          "mdc-top-app-bar--dense": component["mwc-dense"],
-        })}
-      ></div>
+      <div id="fixed" style={style} class={fixedClasses}></div>
       <div id="width-div"></div>
     </div>
   );
