@@ -1,9 +1,10 @@
+import { tsx } from "springtype/web/vdom";
+import { MwcCheckbox } from "./mwc-checkbox";
 import * as mwcTopBar from "./mwc-checkbox.tss.scss";
 
-import { MwcCheckbox } from "./mwc-checkbox";
-import { tsx } from "springtype/web/vdom";
-
-export default (component: MwcCheckbox) =>
-    <p>Component: MwcCheckbox</p>
-;
-
+export default (component: MwcCheckbox) => (
+  <p>
+    Component: MwcCheckbox
+    <div class={mwcTopBar.mdcCheckbox}></div>
+  </p>
+);
