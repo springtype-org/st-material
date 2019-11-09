@@ -1,26 +1,27 @@
-import { st } from "springtype/core";
-import { component } from "springtype/web/component";
-import { tsx } from "springtype/web/vdom";
-import { MwcTopBar } from "../../component/mwc-top-bar/mwc-top-bar";
+import {st} from "springtype/core";
+import {component} from "springtype/web/component";
+import {tsx} from "springtype/web/vdom";
+import {MwcTopBar} from "../../component/mwc-top-bar/mwc-top-bar";
+import {MwcCheckbox} from "../../component/mwccheckbox/mwc-checkbox";
 
 @component()
 export class HomePage extends st.component {
 
-  render() {
-    return (
-      <div unwrap>
-        
-        <MwcTopBar mwc-title="Playground">
-          <template slot="start">
-            Test
-          </template>
+    render() {
+        return (
+            <div unwrap>
 
-          <template slot="topbar-end">
-            Test Foo
-          </template>
-        </MwcTopBar>
+                <MwcTopBar mwc-title="Playground">
+                    <template slot="start">
+                        Test
+                    </template>
 
-      </div>
-    );
-  }
+                    <template slot="topbar-end">
+                        Test Foo
+                    </template>
+                </MwcTopBar>
+                <MwcCheckbox />
+            </div>
+        );
+    }
 }
