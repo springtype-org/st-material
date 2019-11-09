@@ -1,5 +1,7 @@
 import { tsx } from "springtype/web/vdom";
 import { MwcTopBar } from "./mwc-top-bar";
+import * as mwcTopBar from "./mwc-top-bar.tss.scss";
+
 
 const HEIGHT = 32;
 const HEIGHT_DENSE = 48;
@@ -22,7 +24,7 @@ export default (component: MwcTopBar) => {
   const fixedClasses = [];
 
   if (!fixed) {
-    classes.push("mdc-top-app-bar--non-fixed");
+    classes.push("mdc-top-app-bar--non-fixed", mwcTopBar.mdcTopAppBarNonFixed);
   } else {
     classes.push("mdc-top-app-bar--fixed", "mdc-top-app-bar--fixed-scrolled");
   }
