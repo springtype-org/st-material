@@ -24,12 +24,12 @@ export const ATTRIBUTE_NAME_PRIMARY_COLOR = '\'primary-color\'';
 export const ATTRIBUTE_NAME_SECONDARY_COLOR = '\'secondary-color\'';
 
 const getIconAttributes = (usePrimaryColor: boolean, useSecondaryColor: boolean): Array<string> => {
-    const result = [ATTRIBUTE_NAME_SIZE + '!: string;'];
+    const result = [ATTRIBUTE_NAME_SIZE + ': number = 24;'];
     if (usePrimaryColor) {
-        result.push(`${ATTRIBUTE_NAME_PRIMARY_COLOR}!: string;`)
+        result.push(`${ATTRIBUTE_NAME_PRIMARY_COLOR}: string = \'#b3b3b3\';`)
     }
     if (useSecondaryColor) {
-        result.push(`${ATTRIBUTE_NAME_SECONDARY_COLOR}!: string;`)
+        result.push(`${ATTRIBUTE_NAME_SECONDARY_COLOR}: string = \'#000000\';`)
     }
     return result;
 };
@@ -43,15 +43,17 @@ export const transformSvgToTsx = async (linksChunk: Array<ILink>, category: stri
     })
         .forEach((data, index) => {
             const type = linksChunk[index].type;
+            const typeSplit = type.split('_');
+            const themeSplit = theme.split('-');
 
-            const tagName = generateTagName(['mwc', 'icon', theme, type]);
-            const className = generateClassName(['mwc', 'icon', theme, type]);
+            const tagName = generateTagName(['mwc', 'icon', ...themeSplit, ...typeSplit]);
+            const className = generateClassName(['mwc', 'icon', ...themeSplit, ...typeSplit]);
             const tsx = render({
                 tagName: tagName,
                 className: className,
                 tsxLines: data.tsxLines,
                 attributes: getIconAttributes(data.usePrimaryColor, data.useSecondaryColor),
-                tssLines: generateIconTss(data.usePrimaryColor, data.useSecondaryColor)
+                tssLines: generateIconTss(className, data.usePrimaryColor, data.useSecondaryColor)
             });
             CUSTOM_ELEMENT_ICON_REGISTRY.push({
                 tagName: tagName,

@@ -2,3 +2,5 @@
 /.idea/
 dist
 .DS_Store
+/src/component/mwc-icon/
+/st-material.iml
