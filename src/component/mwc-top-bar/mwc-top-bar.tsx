@@ -1,8 +1,8 @@
 import { MDCTopAppBar } from "@material/top-app-bar";
 import { st } from "springtype/core/st";
 import { attr, component } from "springtype/web/component";
-import { ILifecycle } from "springtype/web/component/interface";
 import tpl from "./mwc-top-bar.tpl";
+import {ILifecycle} from "springtype/web/component/interface";
 
 export type VariantType = false | "fixed" | "prominent" | "fixed-prominent" | "short" | "fixed-short";
 
