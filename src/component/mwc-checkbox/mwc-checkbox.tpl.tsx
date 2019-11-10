@@ -1,11 +1,10 @@
-import {tsx} from "springtype/web/vdom";
-import {MwcCheckbox} from "./mwc-checkbox";
-import * as mwcCheckbox from "./mwc-checkbox.tss.scss";
+import { tsx } from "springtype/web/vdom";
+import { MwcCheckbox } from "./mwc-checkbox";
 
 export default (component: MwcCheckbox) => {
-    const classes = [mwcCheckbox.mdcCheckbox];
+    const classes = ["mdc-checkbox"];
     if (component.disabled === "true") {
-        classes.push(mwcCheckbox.mdcCheckboxDisabled)
+        classes.push("mdc-checkbox--disabled")
     }
     return <div id={component.formFieldId} class="mdc-form-field">
         <div id={component.checkboxId} class={classes}>
