@@ -8118,10 +8118,10 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
-springtype@2.0.0-alpha.1.20:
-  version "2.0.0-alpha.1.20"
-  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-alpha.1.20.tgz#39fecebb27d4c75bc62c7a367378354734196fbb"
-  integrity sha512-vbmnMzyyT8Wh1byQM7kv8/ri+iJbUnxaiWueY+t36tuaSznCuetxZ+zr1yEIgu6DLy5oKoJDFYy4m4PBucZcrQ==
+springtype@2.0.0-alpha.1.21:
+  version "2.0.0-alpha.1.21"
+  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-alpha.1.21.tgz#44d898bfcf3bff5d3bfa95f7bf7ae8c75e6f52d6"
+  integrity sha512-S9fA3sEJJNgbd2+w1abE5X3NQpNc+V1Kn9Z3suv7GrCDPtgnYgMekV4F1Pwmbuo5Mz/dHC0mWF9XVMzdb42ydQ==
   dependencies:
     global "^4.4.0"
     st-cp "^2.0.0-alpha.4"

@@ -1,42 +1,65 @@
+import { MDCCheckbox } from "@material/checkbox";
+import { MDCFormField } from "@material/form-field";
+import { MDCRipple } from "@material/ripple";
 import { st } from "springtype/core";
-import {attr, component} from "springtype/web/component";
-import {ILifecycle} from "springtype/web/component/interface/ilifecycle";
-import {domRef, newUniqueComponentName, tsx} from "springtype/web/vdom";
+import { attr, component } from "springtype/web/component";
+import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
+import { domRef, newUniqueComponentName } from "springtype/web/vdom";
 import tpl from "./mwc-checkbox.tpl";
-import {MDCFormField} from '@material/form-field';
-import {MDCCheckbox} from '@material/checkbox';
 
 @component({
-    tpl
+  tpl,
 })
 export class MwcCheckbox extends st.component implements ILifecycle {
+  @domRef("input")
+  input: HTMLElement;
 
-    @domRef("input")
-    input: HTMLElement;
+  @attr()
+  name: string = "";
 
-    @attr()
-    label: string = '';
+  @attr()
+  label: string = "";
 
-    @attr()
-    disabled: string = "false";
+  @attr()
+  ripple: boolean = true;
 
-    inputId = newUniqueComponentName();
-    checkboxId = newUniqueComponentName();
-    formFieldId = newUniqueComponentName();
+  @attr()
+  disabled: boolean = false;
 
-    onAfterInitialRender(): void  {
-      /*  const checkbox = new MDCCheckbox(this.getEl().querySelector(`#${this.checkboxId}`));
-        const formField = new MDCFormField(this.getEl().querySelector(`#${this.formFieldId}`));
-        formField.input = checkbox;*/
+  @attr()
+  indeterminate: boolean = false;
+
+  @attr()
+  checked: boolean = false;
+
+  @attr()
+  value: string = "";
+
+  inputId = newUniqueComponentName();
+  checkboxId = newUniqueComponentName();
+  formFieldId = newUniqueComponentName();
+
+  mdcCheckbox: MDCCheckbox;
+  mdcFormField: MDCFormField;
+
+  mdcRipple: MDCRipple;
+
+  onAfterInitialRender(): void {
+    const checkboxEl = this.getEl().querySelector(`#${this.checkboxId}`);
+    this.mdcCheckbox = new MDCCheckbox(checkboxEl);
+    this.mdcFormField = new MDCFormField(this.getEl().querySelector(`#${this.formFieldId}`));
+    this.mdcFormField.input = this.mdcCheckbox;
+
+    if (this.ripple) {
+      this.mdcRipple = new MDCRipple(checkboxEl);
     }
+  }
 }
 
 declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            'MwcCheckbox': Partial<MwcCheckbox>;
-        }
+  namespace JSX {
+    interface IntrinsicElements {
+      MwcCheckbox: Partial<MwcCheckbox>;
     }
+  }
 }
-
-
