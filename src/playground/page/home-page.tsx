@@ -2,7 +2,7 @@ import {st} from "springtype/core";
 import {component} from "springtype/web/component";
 import {tsx} from "springtype/web/vdom";
 import {MwcTopBar} from "../../component/mwc-top-bar/mwc-top-bar";
-import {MwcCheckbox} from "../../component/mwccheckbox/mwc-checkbox";
+import {MwcCheckbox} from "../../component/mwc-checkbox/mwc-checkbox";
 
 @component()
 export class HomePage extends st.component {
@@ -20,7 +20,7 @@ export class HomePage extends st.component {
                         Test Foo
                     </template>
                 </MwcTopBar>
-                <MwcCheckbox />
+                <MwcCheckbox label="Material Checkbox" disabled="false" />
             </div>
         );
     }
