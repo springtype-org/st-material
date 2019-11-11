@@ -7,7 +7,7 @@ import {MwcButtonVariant} from "../../component/mwc-button/mwc-button-variant-ty
 
 @component()
 export class ButtonPage extends st.component {
-    static ROUTE = "/button-page";
+    static ROUTE = "/#/button-page";
 
     render() {
         return (

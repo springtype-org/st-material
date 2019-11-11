@@ -14,12 +14,12 @@ import { MwcList } from "../../component/list/mwc-list/mwc-list";
 
 @component()
 export class DrawerPage extends st.component {
-  static ROUTE = "/drawer-page";
+  static ROUTE = "/#/drawer-page";
 
   render() {
     return (
       <div>
-        <MwcDrawer>
+        <MwcDrawer open={true}>
           <MwcDrawerHeader>
             <MwcDrawerTitle>Mail</MwcDrawerTitle>
             <MwcDrawerSubtitle>email@material.io</MwcDrawerSubtitle>

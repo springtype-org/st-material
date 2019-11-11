@@ -17,7 +17,7 @@ import { MwcSubtitle2 } from "../../component/typography/mwc-subtitle2/mwc-subti
 
 @component()
 export class TypographyPage extends st.component {
-  static ROUTE = "/typography-page";
+  static ROUTE = "/#/typography-page";
 
   render() {
     return (

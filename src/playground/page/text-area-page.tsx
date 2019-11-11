@@ -2,12 +2,12 @@ import {st} from "springtype/core";
 import {component} from "springtype/web/component";
 import {tsx} from "springtype/web/vdom";
 import {MwcH6} from "../../component/typography/mwc-h6/mwc-h6";
-import {MwcTextArea} from "../../component/mwc-text-are/mwc-text-area";
+import {MwcTextArea} from "../../component/mwc-text-area/mwc-text-area";
 import {MwcBaseTextFieldVariant} from "../../component/mwc-base-textfield/mwc-base-text-field-variant";
 
 @component()
 export class TextAreaPage extends st.component {
-    static ROUTE = "/text-area-page";
+    static ROUTE = "/#/text-area-page";
 
     render() {
         return (

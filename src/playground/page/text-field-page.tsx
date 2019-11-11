@@ -7,7 +7,7 @@ import {MwcTextFieldVariant} from "../../component/mwc-text-field/mwc-text-field
 
 @component()
 export class TextFieldPage extends st.component {
-    static ROUTE = "/text-field-page";
+    static ROUTE = "/#/text-field-page";
 
     render() {
         return (
