@@ -9,7 +9,6 @@ import { CheckboxPage } from "./checkbox-page";
 
 @component()
 export class HomePage extends st.component {
-  static ROUTE = "/home";
   render() {
     return (
       <MwcTypography>
