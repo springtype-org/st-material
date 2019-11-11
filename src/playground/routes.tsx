@@ -12,6 +12,7 @@ import { TextAreaPage } from "./page/text-area-page";
 import { TextFieldPage } from "./page/text-field-page";
 import { TypographyPage } from "./page/typography-page";
 import {HomePageContainer} from "./home-page-container";
+import {RadioButtonPage} from "./page/radio-button-page";
 
 export const ROUTES = <RouteList>
     <Route path={[PATH_DEFAULT, PATH_WILDCARD, CheckboxPage.ROUTE]}
@@ -26,4 +27,5 @@ export const ROUTES = <RouteList>
     <Route path={TabBarPage.ROUTE} component={<HomePageContainer><TabBarPage/></HomePageContainer>}/>
     <Route path={SnackbarPage.ROUTE} component={<HomePageContainer><SnackbarPage/></HomePageContainer>}/>
     <Route path={DialogPage.ROUTE} component={<HomePageContainer><DialogPage/></HomePageContainer>}/>
+    <Route path={RadioButtonPage.ROUTE} component={<HomePageContainer><RadioButtonPage/></HomePageContainer>}/>
 </RouteList>;

@@ -1,17 +1,17 @@
-import {MDCCheckbox} from "@material/checkbox";
-import {MDCFormField} from "@material/form-field";
+import {MDCFormField} from '@material/form-field';
+import {MDCRadio} from '@material/radio';
 import {MDCRipple} from "@material/ripple";
 import {st} from "springtype/core";
 import {attr, component} from "springtype/web/component";
 import {ILifecycle} from "springtype/web/component/interface/ilifecycle";
 import {AttrType} from "springtype/web/component/trait/attr";
 import {domRef, newUniqueComponentName} from "springtype/web/vdom";
-import tpl from "./mwc-checkbox.tpl";
+import tpl from "./mwc-radio-button.tpl";
 
 @component({
     tpl,
 })
-export class MwcCheckbox extends st.component implements ILifecycle {
+export class MwcRadioButton extends st.component implements ILifecycle {
     @domRef("input")
     input: HTMLElement;
 
@@ -28,9 +28,6 @@ export class MwcCheckbox extends st.component implements ILifecycle {
     disabled: boolean = false;
 
     @attr(AttrType.DOM_INTRANSPARENT)
-    indeterminate: boolean = false;
-
-    @attr(AttrType.DOM_INTRANSPARENT)
     checked: boolean = false;
 
     @attr(AttrType.DOM_INTRANSPARENT)
@@ -39,23 +36,24 @@ export class MwcCheckbox extends st.component implements ILifecycle {
     @attr(AttrType.DOM_INTRANSPARENT)
     class: string | Array<string>;
 
+    radioId = newUniqueComponentName();
     inputId = newUniqueComponentName();
-    checkboxId = newUniqueComponentName();
     formFieldId = newUniqueComponentName();
 
-    mdcCheckbox: MDCCheckbox;
+    mdcRadioButton: MDCRadio;
     mdcFormField: MDCFormField;
 
     mdcRipple: MDCRipple;
 
     onAfterInitialRender(): void {
 
-        const checkboxEl = this.el.querySelector(`#${this.checkboxId}`);
+        const checkboxEl = this.el.querySelector(`#${this.radioId}`);
         //@ts-ignore
-        this.mdcCheckbox = new MDCCheckbox(checkboxEl);
+        this.mdcRadioButton = new MDCRadio(this.el.querySelector('.mdc-radio'));
         //@ts-ignore
-        this.mdcFormField = new MDCFormField(this.el.querySelector(`#${this.formFieldId}`));
-        this.mdcFormField.input = this.mdcCheckbox;
+        this.mdcFormField = new MDCFormField(this.el.querySelector('.mdc-form-field'));
+
+        this.mdcFormField.input = this.mdcRadioButton;
 
         if (this.ripple) {
             //@ts-ignore
@@ -67,7 +65,7 @@ export class MwcCheckbox extends st.component implements ILifecycle {
 declare global {
     namespace JSX {
         interface IntrinsicElements {
-            MwcCheckbox: Partial<MwcCheckbox>;
+            MwcRadioButton: Partial<MwcRadioButton>;
         }
     }
 }
