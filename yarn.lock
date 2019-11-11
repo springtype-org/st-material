@@ -8108,10 +8108,10 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
-springtype@^2.0.0-alpha.1.23:
-  version "2.0.0-alpha.1.23"
-  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-alpha.1.23.tgz#2217a16b6304cd15382baee94b02959e73a9a0f1"
-  integrity sha512-ZRLDLEdb1vlug09ezHvjbt3nnUxIHGSnmk8JjoE7Ppfo2SOQVK73bVHUJoIoK05dtgcHoMZ+j84b5BP62bKmkg==
+springtype@^2.0.0-alpha.1.24:
+  version "2.0.0-alpha.1.24"
+  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-alpha.1.24.tgz#1f4a2f107002e473f8a992bf2e62c5094df58888"
+  integrity sha512-uxvTMHq/pbPcgy3M3/OuRPwRKMABfo3n2oMsWZaJWWeBgjrGHXO+a3m3z39WY6Rv1rPB7c924SL87owv6uBYTA==
   dependencies:
     global "^4.4.0"
     st-cp "^2.0.0-alpha.4"
