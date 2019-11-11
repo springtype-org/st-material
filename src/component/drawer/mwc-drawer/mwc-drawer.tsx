@@ -33,8 +33,14 @@ export class MwcDrawer extends st.component implements ILifecycle {
     } else {
       classes.push("mdc-drawer--modal");
     }
+
     if(this.open){
       classes.push('mdc-drawer--open');
+      classes.push('mdc-drawer--animate');
+      classes.push('mdc-drawer--opening');
+    }else{
+      classes.push('mdc-drawer--animate');
+      classes.push('mdc-drawer--closing');
     }
 
     if(this.fixed){

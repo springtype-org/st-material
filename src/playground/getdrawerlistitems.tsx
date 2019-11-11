@@ -14,9 +14,8 @@ import { TextAreaPage } from "./page/text-area-page";
 import { TextFieldPage } from "./page/text-field-page";
 import { TypographyPage } from "./page/typography-page";
 
-
-const drawerItems: Array<{route: string, text: string, activated?: boolean}> = [
-    {route: CheckboxPage.ROUTE, text: 'Checkbox', activated: true},
+const drawerItems: Array<{ route: string, text: string }> = [
+    {route: CheckboxPage.ROUTE, text: 'Checkbox'},
     {route: ButtonPage.ROUTE, text: 'Button'},
     {route: TextFieldPage.ROUTE, text: 'TextField'},
     {route: TextAreaPage.ROUTE, text: 'TextArea'},
@@ -32,7 +31,7 @@ export const getDrawerListItems = (homepage: HomePage) => {
     return drawerItems.map(drawerItem => <MwcListItem onClick={() => {
         st.router.navigate(drawerItem.route);
         homepage.drawerOpen = false;
-    }} autoWrapText={false} activated={drawerItem.activated || false}>
+    }} autoWrapText={false} activated={'/' + window.location.hash === drawerItem.route}>
         <MwcListItemText>{drawerItem.text}</MwcListItemText>
     </MwcListItem>);
 };
