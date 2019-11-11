@@ -4,7 +4,7 @@ import {attr, component} from "springtype/web/component";
 import {ILifecycle} from "springtype/web/component/interface/ilifecycle";
 import {AttrType} from "springtype/web/component/trait/attr";
 import {tsx} from "springtype/web/vdom";
-
+import * as mwcDrawer from "./mwc-drawer.tss.scss"
 @component()
 export class MwcDrawer extends st.component implements ILifecycle {
 
@@ -44,7 +44,7 @@ export class MwcDrawer extends st.component implements ILifecycle {
     }
 
     if(this.fixed){
-        this.el.setAttribute('style','position: fixed;');
+        classes.push('mwc-drawer--fixed',mwcDrawer.mwcDrawerFixed)
     }
 
     this.el.setAttribute("class", classes.join(" "));

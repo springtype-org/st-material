@@ -34,9 +34,9 @@ export class HomePage extends st.component {
         return (
             <MwcTypography>
                 <div>
-                    <MwcDrawer open={this.drawerOpen} fixed={this.drawerAndTopBarFixed}>
+                    <MwcDrawer class={["mwc-drawer--most-top",homePage.mwcDrawerMostTop]} open={this.drawerOpen} fixed={this.drawerAndTopBarFixed}>
                         <MwcDrawerHeader>
-                            <MwcDrawerTitle>Mail Web Components</MwcDrawerTitle>
+                            <MwcDrawerTitle>Material Web Components</MwcDrawerTitle>
                             <MwcDrawerSubtitle>springtype</MwcDrawerSubtitle>
                         </MwcDrawerHeader>
                         <MwcDrawerContent>
