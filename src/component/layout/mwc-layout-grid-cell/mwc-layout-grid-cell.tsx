@@ -55,7 +55,7 @@ export class MwcLayoutGridCell extends st.component implements ILifecycle {
     this.el.setAttribute('class', classes.join(' '));
     this.el.style.display = 'block';
 
-    return this.virtualSlotChildren.default || <div></div>;
+    return this.virtualSlotChildren.default || <fragment />;
   }
 }
 

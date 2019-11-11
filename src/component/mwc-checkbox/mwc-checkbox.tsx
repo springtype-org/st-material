@@ -4,6 +4,7 @@ import { MDCRipple } from "@material/ripple";
 import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
+import { AttrType } from "springtype/web/component/trait/attr";
 import { domRef, newUniqueComponentName } from "springtype/web/vdom";
 import tpl from "./mwc-checkbox.tpl";
 
@@ -14,27 +15,30 @@ export class MwcCheckbox extends st.component implements ILifecycle {
   @domRef("input")
   input: HTMLElement;
 
-  @attr()
+  @attr(AttrType.DOM_INTRANSPARENT)
   name: string = "";
 
-  @attr()
+  @attr(AttrType.DOM_INTRANSPARENT)
   label: string = "";
 
-  @attr()
+  @attr(AttrType.DOM_INTRANSPARENT)
   ripple: boolean = true;
 
-  @attr()
+  @attr(AttrType.DOM_INTRANSPARENT)
   disabled: boolean = false;
 
-  @attr()
+  @attr(AttrType.DOM_INTRANSPARENT)
   indeterminate: boolean = false;
 
-  @attr()
+  @attr(AttrType.DOM_INTRANSPARENT)
   checked: boolean = false;
 
-  @attr()
+  @attr(AttrType.DOM_INTRANSPARENT)
   value: string = "";
 
+  @attr(AttrType.DOM_INTRANSPARENT)
+  class: string | Array<string>;
+  
   inputId = newUniqueComponentName();
   checkboxId = newUniqueComponentName();
   formFieldId = newUniqueComponentName();
@@ -45,6 +49,7 @@ export class MwcCheckbox extends st.component implements ILifecycle {
   mdcRipple: MDCRipple;
 
   onAfterInitialRender(): void {
+
     const checkboxEl = this.el.querySelector(`#${this.checkboxId}`);
     this.mdcCheckbox = new MDCCheckbox(checkboxEl);
     this.mdcFormField = new MDCFormField(this.el.querySelector(`#${this.formFieldId}`));

@@ -47,7 +47,7 @@ export class MwcLayoutGrid extends st.component implements ILifecycle {
           </MwcLayoutGridInner>
       );
     } else {
-      return this.virtualSlotChildren.default
+      return this.virtualSlotChildren.default || <fragment />;
     }
   }
 }

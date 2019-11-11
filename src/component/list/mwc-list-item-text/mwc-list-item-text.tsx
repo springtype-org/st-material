@@ -5,18 +5,16 @@ import { AttrType } from "springtype/web/component/trait/attr";
 import { tsx } from "springtype/web/vdom";
 
 @component()
-export class MwcLayoutGridInner extends st.component implements ILifecycle {
+export class MwcListItemText extends st.component implements ILifecycle {
   @attr(AttrType.DOM_INTRANSPARENT)
   class: string | Array<string>;
 
   render() {
-
     this.class = Array.isArray(this.class) ? this.class : [this.class];
-    
-    const classes = ["mdc-layout-grid__inner", ...this.class]
-    
-    // top-level 
-    this.el.setAttribute('class', classes.join(' '));
+
+    const classes = ["mdc-list-item__text", ...this.class];
+
+    this.el.setAttribute("class", classes.join(" "));
 
     return this.virtualSlotChildren.default || <fragment />;
   }
@@ -25,7 +23,7 @@ export class MwcLayoutGridInner extends st.component implements ILifecycle {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      MwcLayoutGridInner: Partial<MwcLayoutGridInner>;
+      MwcListItemText: Partial<MwcListItemText>;
     }
   }
 }

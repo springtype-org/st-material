@@ -1,9 +1,12 @@
-import {tsx} from "springtype/web/vdom";
-import {MwcCheckbox} from "./mwc-checkbox";
+import { tsx } from "springtype/web/vdom";
+import { MwcCheckbox } from "./mwc-checkbox";
 
 export default (component: MwcCheckbox) => {
+    component.class = Array.isArray(component.class) ? component.class : [component.class];
     const classes = ["mdc-checkbox"];
     const rippleClass = [];
+
+    component.el.setAttribute('class', component.class.join(' '));
 
     const input = <input type="checkbox" class="mdc-checkbox__native-control" id={component.inputId}/>;
     if (component.ripple) {

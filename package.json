@@ -39,6 +39,8 @@
     "xml2js": "^0.4.22"
   },
   "dependencies": {
+    "@material/drawer": "^4.0.0",
+    "@material/list": "^4.0.0",
     "material-components-web": "^4.0.0",
     "st-start": "^2.0.0-beta.21"
   }
