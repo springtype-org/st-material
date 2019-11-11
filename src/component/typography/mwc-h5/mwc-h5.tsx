@@ -4,12 +4,12 @@ import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { tsx } from "springtype/web/vdom";
 
 @component()
-export class MwcH6 extends st.component implements ILifecycle {
+export class MwcH5 extends st.component implements ILifecycle {
   render() {
     return (
-      <h6 class="mdc-typography--headline6">
+      <h5 class="mdc-typography--headline5">
         <slot />
-      </h6>
+      </h5>
     );
   }
 }
@@ -17,7 +17,7 @@ export class MwcH6 extends st.component implements ILifecycle {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      MwcH6: Partial<MwcH6>;
+      MwcH5: Partial<MwcH5>;
     }
   }
 }

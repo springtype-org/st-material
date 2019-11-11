@@ -9,6 +9,7 @@ import { tsx } from "springtype/web/vdom";
 // import "./mdc.scss"; 
 //
 // But because we use it in html as css global style we don't need to.
-import { HomePage } from "./playground/page/home-page";
+import { HomePage } from "./playground/home-page";
+
 
 st.render(<HomePage />);
