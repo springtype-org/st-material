@@ -1,10 +1,10 @@
-import {st} from "springtype/core";
-import {attr, component} from "springtype/web/component";
-import {newUniqueComponentName, tsx} from "springtype/web/vdom";
+import { MDCRipple } from "@material/ripple";
+import { st } from "springtype/core";
+import { attr, component } from "springtype/web/component";
+import { ILifecycle } from "springtype/web/component/interface";
+import { newUniqueComponentName } from "springtype/web/vdom";
+import { ButtonVariant, DEFAULT_MWC_BUTTON_VARIANT_TYPE } from "./mwc-button-variant-type";
 import tpl from "./mwc-button.tpl";
-import {ILifecycle} from "springtype/web/component/interface";
-import {ButtonVariant, DEFAULT_MWC_BUTTON_VARIANT_TYPE} from "./mwc-button-variant-type";
-import {MDCRipple} from "@material/ripple";
 
 @component({
     tpl
@@ -33,7 +33,7 @@ export class MwcButton extends st.component implements ILifecycle {
     mdcRipple: MDCRipple;
 
     onAfterInitialRender(): void {
-        const buttonEl = this.getEl().querySelector(`#${this.buttonId}`);
+        const buttonEl = this.el.querySelector(`#${this.buttonId}`);
 
         if (this.ripple) {
             this.mdcRipple = new MDCRipple(buttonEl);

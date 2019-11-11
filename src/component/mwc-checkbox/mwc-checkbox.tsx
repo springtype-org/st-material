@@ -45,9 +45,9 @@ export class MwcCheckbox extends st.component implements ILifecycle {
   mdcRipple: MDCRipple;
 
   onAfterInitialRender(): void {
-    const checkboxEl = this.getEl().querySelector(`#${this.checkboxId}`);
+    const checkboxEl = this.el.querySelector(`#${this.checkboxId}`);
     this.mdcCheckbox = new MDCCheckbox(checkboxEl);
-    this.mdcFormField = new MDCFormField(this.getEl().querySelector(`#${this.formFieldId}`));
+    this.mdcFormField = new MDCFormField(this.el.querySelector(`#${this.formFieldId}`));
     this.mdcFormField.input = this.mdcCheckbox;
 
     if (this.ripple) {
