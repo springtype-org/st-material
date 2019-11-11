@@ -6,6 +6,7 @@ import { MwcTopBar } from "../component/mwc-top-bar/mwc-top-bar";
 import { MwcTypography } from "../component/typography/mwc-typography/mwc-typography";
 import { ButtonPage } from "./page/button-page";
 import { CheckboxPage } from "./page/checkbox-page";
+import { GridLayoutPage } from "./page/grid-layout-page";
 import { TextFieldPage } from "./page/text-field-page";
 import { TypographyPage } from "./page/typography-page";
 
@@ -33,6 +34,9 @@ export class HomePage extends st.component {
           <li>
             <a href={"/#" + TypographyPage.ROUTE}>Typography</a>
           </li>
+          <li>
+            <a href={"/#" + GridLayoutPage.ROUTE}>Grid Layout</a>
+          </li>
         </ul>
         <br />
         <RouteList>
@@ -40,6 +44,7 @@ export class HomePage extends st.component {
           <Route path={ButtonPage.ROUTE} component={<ButtonPage />} />
           <Route path={TextFieldPage.ROUTE} component={<TextFieldPage />} />
           <Route path={TypographyPage.ROUTE} component={<TypographyPage />} />
+          <Route path={GridLayoutPage.ROUTE} component={<GridLayoutPage />} />
         </RouteList>
       </MwcTypography>
     );

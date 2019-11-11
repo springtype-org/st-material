@@ -9,6 +9,7 @@
 		"jsxFactory": "tsx",
 		"experimentalDecorators": true,
 		"sourceMap": true,
+		"downlevelIteration": true,
 		"resolveJsonModule": true
 	},
 	"exclude": ["node_modules","script", "templates"],
