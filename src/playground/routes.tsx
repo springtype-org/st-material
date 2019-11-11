@@ -11,18 +11,19 @@ import { TabBarPage } from "./page/tabbar-page";
 import { TextAreaPage } from "./page/text-area-page";
 import { TextFieldPage } from "./page/text-field-page";
 import { TypographyPage } from "./page/typography-page";
+import {HomePageContainer} from "./home-page-container";
 
 export const ROUTES = <RouteList>
     <Route path={[PATH_DEFAULT, PATH_WILDCARD, CheckboxPage.ROUTE]}
-           component={<CheckboxPage/>}/>
-    <Route path={ButtonPage.ROUTE} component={<ButtonPage/>}/>
-    <Route path={TextFieldPage.ROUTE} component={<TextFieldPage/>}/>
-    <Route path={TextAreaPage.ROUTE} component={<TextAreaPage/>}/>
-    <Route path={TypographyPage.ROUTE} component={<TypographyPage/>}/>
-    <Route path={GridLayoutPage.ROUTE} component={<GridLayoutPage/>}/>
-    <Route path={DrawerPage.ROUTE} component={<DrawerPage/>}/>
-    <Route path={ListPage.ROUTE} component={<ListPage/>}/>
-    <Route path={TabBarPage.ROUTE} component={<TabBarPage/>}/>
-    <Route path={SnackbarPage.ROUTE} component={<SnackbarPage/>}/>
-    <Route path={DialogPage.ROUTE} component={<DialogPage/>}/>
+           component={<HomePageContainer><CheckboxPage/></HomePageContainer>}/>
+    <Route path={ButtonPage.ROUTE} component={<HomePageContainer><ButtonPage/></HomePageContainer>}/>
+    <Route path={TextFieldPage.ROUTE} component={<HomePageContainer><TextFieldPage/></HomePageContainer>}/>
+    <Route path={TextAreaPage.ROUTE} component={<HomePageContainer><TextAreaPage/></HomePageContainer>}/>
+    <Route path={TypographyPage.ROUTE} component={<HomePageContainer><TypographyPage/></HomePageContainer>}/>
+    <Route path={GridLayoutPage.ROUTE} component={<HomePageContainer><GridLayoutPage/></HomePageContainer>}/>
+    <Route path={DrawerPage.ROUTE} component={<HomePageContainer><DrawerPage/></HomePageContainer>}/>
+    <Route path={ListPage.ROUTE} component={<HomePageContainer><ListPage/></HomePageContainer>}/>
+    <Route path={TabBarPage.ROUTE} component={<HomePageContainer><TabBarPage/></HomePageContainer>}/>
+    <Route path={SnackbarPage.ROUTE} component={<HomePageContainer><SnackbarPage/></HomePageContainer>}/>
+    <Route path={DialogPage.ROUTE} component={<HomePageContainer><DialogPage/></HomePageContainer>}/>
 </RouteList>;

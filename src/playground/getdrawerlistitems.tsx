@@ -1,39 +1,94 @@
-import { st } from "springtype/core";
-import { tsx } from "springtype/web/vdom";
-import { MwcListItemText } from "../component/list/mwc-list-item-text/mwc-list-item-text";
-import { MwcListItem } from "../component/list/mwc-list-item/mwc-list-item";
-import { HomePage } from "./home-page";
-import { ButtonPage } from "./page/button-page";
-import { CheckboxPage } from "./page/checkbox-page";
+import {st} from "springtype/core";
+import {tsx} from "springtype/web/vdom";
+import {MwcListItemText} from "../component/list/mwc-list-item-text/mwc-list-item-text";
+import {MwcListItem} from "../component/list/mwc-list-item/mwc-list-item";
+import {HomePage} from "./home-page";
+import {ButtonPage} from "./page/button-page";
+import {CheckboxPage} from "./page/checkbox-page";
 import { DialogPage } from "./page/dialog-page";
-import { DrawerPage } from "./page/drawer-page";
-import { GridLayoutPage } from "./page/grid-layout-page";
-import { ListPage } from "./page/list-page";
+import {DrawerPage} from "./page/drawer-page";
+import {GridLayoutPage} from "./page/grid-layout-page";
+import {ListPage} from "./page/list-page";
 import { SnackbarPage } from "./page/snackbar-page";
-import { TabBarPage } from "./page/tabbar-page";
-import { TextAreaPage } from "./page/text-area-page";
-import { TextFieldPage } from "./page/text-field-page";
-import { TypographyPage } from "./page/typography-page";
+import {TabBarPage} from "./page/tabbar-page";
+import {TextAreaPage} from "./page/text-area-page";
+import {TextFieldPage} from "./page/text-field-page";
+import {TypographyPage} from "./page/typography-page";
+import {MwcListItemIcon} from "../component/list/mwc-list-item-icon/mwc-list-item-icon";
 
-const drawerItems: Array<{ route: string, text: string }> = [
-    {route: CheckboxPage.ROUTE, text: 'Checkbox'},
-    {route: ButtonPage.ROUTE, text: 'Button'},
-    {route: TextFieldPage.ROUTE, text: 'TextField'},
-    {route: TextAreaPage.ROUTE, text: 'TextArea'},
-    {route: TypographyPage.ROUTE, text: 'Typography'},
-    {route: GridLayoutPage.ROUTE, text: 'Grid Layout'},
-    {route: DrawerPage.ROUTE, text: 'Drawer'},
-    {route: ListPage.ROUTE, text: 'List'},
-    {route: TabBarPage.ROUTE, text: 'Tab Bar'},
-    {route: SnackbarPage.ROUTE, text: 'Snackbar'},
-    {route: DialogPage.ROUTE, text: 'Dialog'},
+const drawerItems: Array<{ route: string, text: any }> = [
+    {
+        route: CheckboxPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="check_box"/>
+            <MwcListItemText>Checkbox</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: ButtonPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="add_circle_outline"/>
+            <MwcListItemText>Button</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: TextFieldPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="drag_handle"/>
+            <MwcListItemText>TextField</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: TextAreaPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="format_align_justify"/>
+            <MwcListItemText>TextArea</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: TypographyPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="text_fields"/>
+            <MwcListItemText>Typography</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: GridLayoutPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="grid_on"/>
+            <MwcListItemText>Grid Layout</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: DrawerPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="menu_book"/>
+            <MwcListItemText>Drawer</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: ListPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="list"/>
+            <MwcListItemText>List</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: TabBarPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="tab"/>
+            <MwcListItemText>Tab Bar</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: SnackbarPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="chat_bubble_outline"/>
+            <MwcListItemText>Snackbar</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: DialogPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="chat"/>
+            <MwcListItemText>Dialog</MwcListItemText>
+        </fragment>
+    },
 ];
 
 export const getDrawerListItems = (homepage: HomePage) => {
     return drawerItems.map(drawerItem => <MwcListItem onClick={() => {
         st.router.navigate(drawerItem.route);
         homepage.drawerOpen = false;
-    }} autoWrapText={false} activated={'/' + window.location.hash === drawerItem.route}>
-        <MwcListItemText>{drawerItem.text}</MwcListItemText>
+    }} autoWrapText={false} activated={'/' + window.location.hash === drawerItem.route}>{drawerItem.text}
     </MwcListItem>);
 };
