@@ -5,10 +5,11 @@ import { MwcListItem } from "../component/list/mwc-list-item/mwc-list-item";
 import { HomePage } from "./home-page";
 import { ButtonPage } from "./page/button-page";
 import { CheckboxPage } from "./page/checkbox-page";
+import { DialogPage } from "./page/dialog-page";
 import { DrawerPage } from "./page/drawer-page";
 import { GridLayoutPage } from "./page/grid-layout-page";
 import { ListPage } from "./page/list-page";
-import { SnackbarPage } from "./page/snackbar";
+import { SnackbarPage } from "./page/snackbar-page";
 import { TabBarPage } from "./page/tabbar-page";
 import { TextAreaPage } from "./page/text-area-page";
 import { TextFieldPage } from "./page/text-field-page";
@@ -25,6 +26,7 @@ const drawerItems: Array<{ route: string, text: string }> = [
     {route: ListPage.ROUTE, text: 'List'},
     {route: TabBarPage.ROUTE, text: 'Tab Bar'},
     {route: SnackbarPage.ROUTE, text: 'Snackbar'},
+    {route: DialogPage.ROUTE, text: 'Dialog'},
 ];
 
 export const getDrawerListItems = (homepage: HomePage) => {

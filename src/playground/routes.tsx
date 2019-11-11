@@ -2,10 +2,11 @@ import { PATH_DEFAULT, PATH_WILDCARD, Route, RouteList } from "springtype/web/ro
 import { tsx } from "springtype/web/vdom";
 import { ButtonPage } from "./page/button-page";
 import { CheckboxPage } from "./page/checkbox-page";
+import { DialogPage } from "./page/dialog-page";
 import { DrawerPage } from "./page/drawer-page";
 import { GridLayoutPage } from "./page/grid-layout-page";
 import { ListPage } from "./page/list-page";
-import { SnackbarPage } from "./page/snackbar";
+import { SnackbarPage } from "./page/snackbar-page";
 import { TabBarPage } from "./page/tabbar-page";
 import { TextAreaPage } from "./page/text-area-page";
 import { TextFieldPage } from "./page/text-field-page";
@@ -23,4 +24,5 @@ export const ROUTES = <RouteList>
     <Route path={ListPage.ROUTE} component={<ListPage/>}/>
     <Route path={TabBarPage.ROUTE} component={<TabBarPage/>}/>
     <Route path={SnackbarPage.ROUTE} component={<SnackbarPage/>}/>
+    <Route path={DialogPage.ROUTE} component={<DialogPage/>}/>
 </RouteList>;
