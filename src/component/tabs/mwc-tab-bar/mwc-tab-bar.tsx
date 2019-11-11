@@ -15,13 +15,11 @@ export interface IActivateEvent {
 export interface TabActivateEvent extends IEvent<TabActivateDetail> {}
 
 @component()
-export class MwcTabBar extends st.component implements ILifecycle {
+export class  MwcTabBar extends st.component implements ILifecycle {
 
   @evt
   onStClick: IEventListener<TabActivateDetail, Event> = evt;
   
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string | Array<string>;
 
   @attr(AttrType.DOM_INTRANSPARENT)
   focusOnActivate: boolean = true;
@@ -32,24 +30,26 @@ export class MwcTabBar extends st.component implements ILifecycle {
   protected mdcComponent: MDCTabBar;
 
   render() {
-    this.class = Array.isArray(this.class) ? this.class : [this.class];
 
-    const classes = ["mdc-tab-bar", ...this.class];
+    const classes = ["mdc-tab-bar"];
 
-    this.el.setAttribute("class", classes.join(" "));
     this.el.style.display = "block";
 
     return (
+        <div class={classes} role="tablist" >
       <div class="mdc-tab-scroller">
         <div class="mdc-tab-scroller__scroll-area">
           <div class="mdc-tab-scroller__scroll-content">{this.virtualSlotChildren.default}</div>
         </div>
       </div>
+      </div>
     );
   }
   onAfterInitialRender(): void {
+    //@ts-ignore
     this.mdcComponent = new MDCTabBar(this.el);
 
+    //@ts-ignore
     this.mdcComponent.listen("MDCTabBar:activated", ((evt: IActivateEvent) => {
 
       emit<TabActivateDetail>(this.el, "tab-activated", {
