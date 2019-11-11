@@ -1,0 +1,14 @@
+.mwc-text-field--filled-shaped {
+  border-radius: 16px 16px 0 0;
+}
+
+.mdc-notched-outline--shaped__leading{
+  border-top-left-radius: 28px !important;
+  border-bottom-left-radius: 28px !important;
+  width: 28px !important;
+}
+.mdc-notched-outline--shaped__trailing {
+  border-top-right-radius: 28px !important;
+  border-bottom-right-radius: 28px !important;
+  width: 28px !important;
+}

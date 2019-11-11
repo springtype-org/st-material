@@ -1,7 +1,7 @@
 import {MwcButton} from "./mwc-button";
 import {tsx} from 'springtype/web/vdom';
-import {ButtonVariant} from "./mwc-button-variant-type";
-import './mwc-button.tss.scss'
+import {MwcButtonVariant} from "./mwc-button-variant-type";
+import * as mwcButton from './mwc-button.tss.scss'
 
 export default (component: MwcButton) => {
     const classesFixed = ['mdc-button'];
@@ -11,13 +11,13 @@ export default (component: MwcButton) => {
         classesRipple.push('mdc-button__ripple');
     }
     switch (component.variant) {
-        case ButtonVariant.RAISED:
+        case MwcButtonVariant.RAISED:
             classesFixed.push('mdc-button--raised');
             break;
-        case ButtonVariant.UNELEVATED:
+        case MwcButtonVariant.UNELEVATED:
             classesFixed.push('mdc-button--unelevated');
             break;
-        case ButtonVariant.OUTLINED:
+        case MwcButtonVariant.OUTLINED:
             classesFixed.push('mdc-button--outlined');
             break;
         //Nothing for text
@@ -28,14 +28,14 @@ export default (component: MwcButton) => {
     }
 
     if (component.shaped) {
-        classesFixed.push('mwc-button--shaped');
+        classesFixed.push('mwc-button--shaped', mwcButton.mwcButtonShaped);
     }
 
     const button = <button id={component.buttonId} class={classesFixed}>
         <span class={classesRipple}/>
-        <slot name="leading-icon"/>
+        <slot name={MwcButton.SLOT_NAME_LEADING_ICON}/>
         <span class="mdc-button__label">{component.label}</span>
-        <slot name="trailing-icon"/>
+        <slot name={MwcButton.SLOT_NAME_TRAILING_ICON}/>
         <slot/>
     </button>;
 

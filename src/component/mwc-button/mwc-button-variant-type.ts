@@ -1,8 +1,8 @@
-export enum ButtonVariant {
+export enum MwcButtonVariant {
     TEXT = 'text',
     RAISED = 'raised',
     UNELEVATED = 'unelevated',
     OUTLINED = 'outlined'
 }
 
-export const DEFAULT_MWC_BUTTON_VARIANT_TYPE = ButtonVariant.TEXT;
+export const DEFAULT_MWC_BUTTON_VARIANT: MwcButtonVariant = MwcButtonVariant.TEXT;

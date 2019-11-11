@@ -3,13 +3,16 @@ import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface";
 import { newUniqueComponentName } from "springtype/web/vdom";
-import { ButtonVariant, DEFAULT_MWC_BUTTON_VARIANT_TYPE } from "./mwc-button-variant-type";
+import {DEFAULT_MWC_BUTTON_VARIANT, MwcButtonVariant} from "./mwc-button-variant-type";
 import tpl from "./mwc-button.tpl";
 
 @component({
     tpl
 })
 export class MwcButton extends st.component implements ILifecycle {
+    static SLOT_NAME_TRAILING_ICON: string = "trailing-icon";
+    static SLOT_NAME_LEADING_ICON: string = "leading-icon";
+
     @attr()
     label: string = "";
 
@@ -17,7 +20,7 @@ export class MwcButton extends st.component implements ILifecycle {
     ripple: boolean = true;
 
     @attr()
-    variant: ButtonVariant = DEFAULT_MWC_BUTTON_VARIANT_TYPE;
+    variant: MwcButtonVariant = DEFAULT_MWC_BUTTON_VARIANT;
 
     @attr()
     disabled: boolean = false;
