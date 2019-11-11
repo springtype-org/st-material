@@ -16,6 +16,7 @@ import {TextFieldPage} from "./page/text-field-page";
 import {TypographyPage} from "./page/typography-page";
 import {MwcListItemIcon} from "../component/list/mwc-list-item-icon/mwc-list-item-icon";
 import {RadioButtonPage} from "./page/radio-button-page";
+import {SelectPage} from "./page/select-page";
 
 const drawerItems: Array<{ route: string | Array<string>, text: any }> = [
     {
@@ -52,6 +53,12 @@ const drawerItems: Array<{ route: string | Array<string>, text: any }> = [
         route: TypographyPage.ROUTE, text: <fragment>
             <MwcListItemIcon type="text_fields"/>
             <MwcListItemText>Typography</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: SelectPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="select_all"/>
+            <MwcListItemText>Select</MwcListItemText>
         </fragment>
     },
     {

@@ -64,12 +64,14 @@ export class MwcList extends st.component implements ILifecycle {
   }
 
   onAfterInitialRender(): void {
+    //@ts-ignore
     this.mdcList = new MDCList(this.el);
 
     this.mdcList.singleSelection = this.singleSelection;
     this.mdcList.wrapFocus = this.wrapFocus;
 
     if (this.ripple) {
+      //@ts-ignore
       this.mdcListItemRipples = this.mdcList.listElements.map(listItemEl => new MDCRipple(listItemEl));
     }
   }

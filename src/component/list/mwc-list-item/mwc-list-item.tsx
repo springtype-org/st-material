@@ -35,6 +35,9 @@ export class MwcListItem extends st.component implements ILifecycle {
   @attr(AttrType.DOM_INTRANSPARENT)
   activated: boolean = false;
 
+  @attr(AttrType.DOM_INTRANSPARENT)
+  'data-value': any;
+
   render() {
     this.class = Array.isArray(this.class) ? this.class : [this.class];
 
@@ -50,6 +53,10 @@ export class MwcListItem extends st.component implements ILifecycle {
 
     if (this.disabled) {
       classes.push("mdc-list-item--disabled");
+    }
+
+    if(this['data-value'] !== undefined){
+      this.el.setAttribute("data-value", JSON.stringify(this['data-value']));
     }
 
     this.el.setAttribute("class", classes.join(" "));
