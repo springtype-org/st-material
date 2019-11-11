@@ -1,6 +1,8 @@
 import {MwcTextField} from "./mwc-text-field";
 import {tsx} from 'springtype/web/vdom';
 import {MwcBaseTextField} from "../mwc-base-textfield/mwc-base-text-field";
+import {MwcBaseTextFieldVariant} from "../mwc-base-textfield/mwc-base-text-field-variant";
+import {MwcTextFieldVariant} from "./mwc-text-field-variant";
 
 export default (component: MwcTextField) => {
     let leadingIconSlotChildren = '';
@@ -15,9 +17,25 @@ export default (component: MwcTextField) => {
             {component.trailingIconSlot.children}
         </template>
     }
-    return <MwcBaseTextField name={component.name} label={component.label} variant={component.variant}
+
+    let fullwidth = false;
+    let variant: MwcBaseTextFieldVariant = MwcBaseTextFieldVariant.FILLED;
+    switch (component.variant) {
+        case MwcTextFieldVariant.FILLED:
+            //nothing to do
+            break;
+        case MwcTextFieldVariant.FILLED_FULL_WIDTH:
+            fullwidth = true;
+            break;
+        case MwcTextFieldVariant.OUTLINED:
+            variant = MwcBaseTextFieldVariant.OUTLINED;
+            break;
+
+    }
+
+    return <MwcBaseTextField name={component.name} label={component.label} variant={variant}
                              ripple={component.ripple} disabled={component.disabled} value={component.value}
-                             shaped={component.shaped}>
+                             shaped={component.shaped} fullwidth={fullwidth}>
         {leadingIconSlotChildren}
         {trailingIconSlotChildren}
 

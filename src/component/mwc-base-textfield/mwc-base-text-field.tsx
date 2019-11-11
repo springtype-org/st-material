@@ -3,7 +3,7 @@ import {attr, component} from "springtype/web/component";
 import {ILifecycle} from "springtype/web/component/interface";
 import {newUniqueComponentName, tsx} from "springtype/web/vdom";
 import tpl from "./mwc-base-text-field.tpl";
-import {DEFAULT_BASE_TEXT_FIELD_VARIANT, MwcBaseTextFieldVariant} from "./mwc-base-text-field-variant";
+import {MwcBaseTextFieldVariant} from "./mwc-base-text-field-variant";
 import {MDCTextField} from '@material/textfield';
 
 @component({
@@ -19,7 +19,7 @@ export class MwcBaseTextField extends st.component implements ILifecycle {
     label: string | false = false;
 
     @attr()
-    variant: MwcBaseTextFieldVariant = DEFAULT_BASE_TEXT_FIELD_VARIANT;
+    variant: MwcBaseTextFieldVariant = MwcBaseTextFieldVariant.FILLED;
 
     @attr()
     ripple: boolean = true;
@@ -32,6 +32,12 @@ export class MwcBaseTextField extends st.component implements ILifecycle {
 
     @attr()
     shaped = false;
+
+    @attr()
+    textarea = false;
+
+    @attr()
+    fullwidth = false;
 
     textFieldId = newUniqueComponentName();
     inputId = newUniqueComponentName();

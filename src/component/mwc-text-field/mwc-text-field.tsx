@@ -3,11 +3,8 @@ import {attr, component} from "springtype/web/component";
 import {ILifecycle} from "springtype/web/component/interface";
 import {tsx} from "springtype/web/vdom";
 import tpl from "./mwc-text-field.tpl";
-import {
-    DEFAULT_BASE_TEXT_FIELD_VARIANT,
-    MwcBaseTextFieldVariant
-} from "../mwc-base-textfield/mwc-base-text-field-variant";
-import {IVirtualNode} from "springtype/web/vdom/interface/ivirtual-node";
+import {MwcTextFieldVariant} from "./mwc-text-field-variant";
+
 
 @component({
     tpl
@@ -22,7 +19,7 @@ export class MwcTextField extends st.component implements ILifecycle {
     label: string = '';
 
     @attr()
-    variant: MwcBaseTextFieldVariant = DEFAULT_BASE_TEXT_FIELD_VARIANT;
+    variant: MwcTextFieldVariant = MwcTextFieldVariant.FILLED;
 
     @attr()
     ripple: boolean = true;
@@ -36,8 +33,8 @@ export class MwcTextField extends st.component implements ILifecycle {
     @attr()
     shaped = false;
 
-    trailingIconSlot: IVirtualNode | Array<IVirtualNode> | false = false;
-    leadingIconSlot: IVirtualNode | Array<IVirtualNode> | false = false;
+    trailingIconSlot: any | false = false;
+    leadingIconSlot: any | false = false;
 
     onBeforeRender(): void {
         this.trailingIconSlot = this.virtualSlotChildren[MwcTextField.SLOT_NAME_TRAILING_ICON];

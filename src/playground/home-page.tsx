@@ -9,13 +9,14 @@ import { CheckboxPage } from "./page/checkbox-page";
 import { GridLayoutPage } from "./page/grid-layout-page";
 import { TextFieldPage } from "./page/text-field-page";
 import { TypographyPage } from "./page/typography-page";
+import {TextAreaPage} from "./page/text-area-page";
 
 @component()
 export class HomePage extends st.component {
   render() {
     return (
       <MwcTypography>
-        <MwcTopBar title="Playground"></MwcTopBar>
+        <MwcTopBar title="Playground"/>
         <br />
         <br />
         <br />
@@ -34,6 +35,9 @@ export class HomePage extends st.component {
           <li>
             <a href={"/#" + TypographyPage.ROUTE}>Typography</a>
           </li>
+            <li>
+            <a href={"/#" + TextAreaPage.ROUTE}>TextAreaPage</a>
+          </li>
           <li>
             <a href={"/#" + GridLayoutPage.ROUTE}>Grid Layout</a>
           </li>
@@ -43,6 +47,7 @@ export class HomePage extends st.component {
           <Route path={[PATH_DEFAULT, PATH_WILDCARD, CheckboxPage.ROUTE]} component={<CheckboxPage />} />
           <Route path={ButtonPage.ROUTE} component={<ButtonPage />} />
           <Route path={TextFieldPage.ROUTE} component={<TextFieldPage />} />
+          <Route path={TextAreaPage.ROUTE} component={<TextAreaPage />} />
           <Route path={TypographyPage.ROUTE} component={<TypographyPage />} />
           <Route path={GridLayoutPage.ROUTE} component={<GridLayoutPage />} />
         </RouteList>
