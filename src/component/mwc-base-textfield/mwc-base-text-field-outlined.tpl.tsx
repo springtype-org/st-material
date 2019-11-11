@@ -1,8 +1,8 @@
-import {MwcTextField} from "./mwc-text-field";
+import {MwcBaseTextField} from "./mwc-base-text-field";
 import {tsx} from 'springtype/web/vdom';
-import * as mwcTextField from "./mwc-text-field.tss.scss";
+import * as mwcTextField from "./mwc-base-text-field.tss.scss";
 
-export const getOutlinedTextField = (component: MwcTextField, inputElement) => {
+export const getOutlinedTextField = (component: MwcBaseTextField, inputElement) => {
     const classLeading = ['mdc-notched-outline__leading'];
     const classTrailing = ['mdc-notched-outline__trailing'];
     if (component.shaped) {
