@@ -1,16 +1,18 @@
-import {MwcListItem} from "../component/list/mwc-list-item/mwc-list-item";
-import {st} from "springtype/core";
-import {CheckboxPage} from "./page/checkbox-page";
-import {MwcListItemText} from "../component/list/mwc-list-item-text/mwc-list-item-text";
-import {ButtonPage} from "./page/button-page";
-import {TextFieldPage} from "./page/text-field-page";
-import {TypographyPage} from "./page/typography-page";
-import {TextAreaPage} from "./page/text-area-page";
-import {GridLayoutPage} from "./page/grid-layout-page";
-import {DrawerPage} from "./page/drawer-page";
-import {ListPage} from "./page/list-page";
-import {tsx} from "springtype/web/vdom";
-import {HomePage} from "./home-page";
+import { st } from "springtype/core";
+import { tsx } from "springtype/web/vdom";
+import { MwcListItemText } from "../component/list/mwc-list-item-text/mwc-list-item-text";
+import { MwcListItem } from "../component/list/mwc-list-item/mwc-list-item";
+import { HomePage } from "./home-page";
+import { ButtonPage } from "./page/button-page";
+import { CheckboxPage } from "./page/checkbox-page";
+import { DrawerPage } from "./page/drawer-page";
+import { GridLayoutPage } from "./page/grid-layout-page";
+import { ListPage } from "./page/list-page";
+import { SnackbarPage } from "./page/snackbar";
+import { TabBarPage } from "./page/tabbar-page";
+import { TextAreaPage } from "./page/text-area-page";
+import { TextFieldPage } from "./page/text-field-page";
+import { TypographyPage } from "./page/typography-page";
 
 
 const drawerItems: Array<{route: string, text: string, activated?: boolean}> = [
@@ -22,6 +24,8 @@ const drawerItems: Array<{route: string, text: string, activated?: boolean}> = [
     {route: GridLayoutPage.ROUTE, text: 'Grid Layout'},
     {route: DrawerPage.ROUTE, text: 'Drawer'},
     {route: ListPage.ROUTE, text: 'List'},
+    {route: TabBarPage.ROUTE, text: 'Tab Bar'},
+    {route: SnackbarPage.ROUTE, text: 'Snackbar'},
 ];
 
 export const getDrawerListItems = (homepage: HomePage) => {
