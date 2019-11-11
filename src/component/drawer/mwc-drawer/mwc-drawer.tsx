@@ -17,7 +17,6 @@ export class MwcDrawer extends st.component implements ILifecycle {
   @attr(AttrType.DOM_TRANSPARENT)
   fixed: boolean = false;
 
-
   @attr(AttrType.DOM_INTRANSPARENT)
   class: string | Array<string>;
 
@@ -35,7 +34,11 @@ export class MwcDrawer extends st.component implements ILifecycle {
       classes.push("mdc-drawer--modal");
     }
     if(this.open){
-      classes.push('mdc-drawer--open')
+      classes.push('mdc-drawer--open');
+    }
+
+    if(this.fixed){
+        this.el.setAttribute('style','position: fixed;');
     }
 
     this.el.setAttribute("class", classes.join(" "));
