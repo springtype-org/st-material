@@ -3558,16 +3558,6 @@ error-ex@^1.2.0, error-ex@^1.3.1:
   dependencies:
     is-arrayish "^0.2.1"
 
-error-overlay-webpack-plugin@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/error-overlay-webpack-plugin/-/error-overlay-webpack-plugin-0.4.1.tgz#3d3cf944c96c7cf22ca02a89c642a7d95f98abf4"
-  integrity sha512-1SyHaKmggmEN9yt8aQeh/hKV3moXpqpOK1p5EEP/u9U0KngBdRHoiVRQLV8ZunUYRA/mSA0HB00KY+eeM9YKxw==
-  dependencies:
-    react-dev-utils "^9.0.3"
-    react-error-overlay "^6.0.1"
-    sockjs-client "^1.4.0"
-    url "^0.11.0"
-
 error-stack-parser@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/error-stack-parser/-/error-stack-parser-2.0.4.tgz#a757397dc5d9de973ac9a5d7d4e8ade7cfae9101"
@@ -7343,7 +7333,7 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dev-utils@^9.0.3:
+react-dev-utils@^9.1.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-9.1.0.tgz#3ad2bb8848a32319d760d0a84c56c14bdaae5e81"
   integrity sha512-X2KYF/lIGyGwP/F/oXgGDF24nxDA2KC4b7AFto+eqzc/t838gpSGiaU8trTqHXOohuLxxc5qi1eDzsl9ucPDpg==
@@ -7374,7 +7364,7 @@ react-dev-utils@^9.0.3:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
-react-error-overlay@^6.0.1, react-error-overlay@^6.0.3:
+react-error-overlay@^6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.3.tgz#c378c4b0a21e88b2e159a3e62b2f531fd63bf60d"
   integrity sha512-bOUvMWFQVk5oz8Ded9Xb7WVdEi3QGLC8tH7HmYP0Fdp4Bn3qw0tRFmr5TW6mvahzvmrK4a6bqWGfCevBflP+Xw==
@@ -7989,7 +7979,7 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-sockjs-client@1.4.0, sockjs-client@^1.4.0:
+sockjs-client@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/sockjs-client/-/sockjs-client-1.4.0.tgz#c9f2568e19c8fd8173b4997ea3420e0bb306c7d5"
   integrity sha512-5zaLyO8/nri5cua0VtOrFXBPK1jbL4+1cebT/mmKA1E1ZXOvJrII75bPu0l0k843G/+iAbhEqzyKr0w/eCCj7g==
@@ -8118,10 +8108,10 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
-springtype@^2.0.0-alpha.1.22:
-  version "2.0.0-alpha.1.22"
-  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-alpha.1.22.tgz#4948b34a98e2e8f73f52095acadf72fbcf76878b"
-  integrity sha512-4zvfLv58uTf29Hh7svCtqITjFMtr+xJGX59dNqJtzAxKI5mWWGJ3ux8OeNPLVUl6vnFZkGDN+CJag6dJ0C0Pug==
+springtype@^2.0.0-alpha.1.23:
+  version "2.0.0-alpha.1.23"
+  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-alpha.1.23.tgz#2217a16b6304cd15382baee94b02959e73a9a0f1"
+  integrity sha512-ZRLDLEdb1vlug09ezHvjbt3nnUxIHGSnmk8JjoE7Ppfo2SOQVK73bVHUJoIoK05dtgcHoMZ+j84b5BP62bKmkg==
   dependencies:
     global "^4.4.0"
     st-cp "^2.0.0-alpha.4"
@@ -8176,10 +8166,10 @@ st-rm-rf@^2.0.0-alpha.8:
   dependencies:
     chalk "^2.4.2"
 
-st-start@^2.0.0-beta.21:
-  version "2.0.0-beta.21"
-  resolved "https://registry.yarnpkg.com/st-start/-/st-start-2.0.0-beta.21.tgz#c0827931938b89f33580bdad9fc6c69d105cf1cc"
-  integrity sha512-QDXMMyqh20b0WXt9G/O/9V1PHthXydA7kYHIWbJwfEg4SllM9/UP5n+sUr9XmC/Qxq056VywLwKesLgEHhGxYA==
+st-start@^2.0.0-beta.22:
+  version "2.0.0-beta.22"
+  resolved "https://registry.yarnpkg.com/st-start/-/st-start-2.0.0-beta.22.tgz#d3e473d1c36258a1df0e25a567338b2f7f498f5c"
+  integrity sha512-FXbRm30zLOVtSsGHyUCwPD0lxpXAMsKz+QWBCUWbS4YLylX85f7Z6NIQwdiA2FhQDwO4W9kZBpzqaQ3RHmb9Ow==
   dependencies:
     "@babel/core" "^7.7.2"
     "@babel/helper-create-class-features-plugin" "^7.7.0"
@@ -8208,7 +8198,6 @@ st-start@^2.0.0-beta.21:
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
     envinfo "^7.4.0"
-    error-overlay-webpack-plugin "^0.4.1"
     escape-string-regexp "^2.0.0"
     file-loader "^4.2.0"
     friendly-errors-webpack-plugin "^1.7.0"
@@ -8216,11 +8205,12 @@ st-start@^2.0.0-beta.21:
     html-webpack-plugin "4.0.0-beta.5"
     mini-css-extract-plugin "^0.8.0"
     optimize-css-assets-webpack-plugin "5.0.3"
+    react-dev-utils "^9.1.0"
+    react-error-overlay "^6.0.3"
     resolve "1.12.0"
     style-loader "1.0.0"
     terser-webpack-plugin "2.2.1"
     webpack "4.41.2"
-    webpack-dev-server "3.9.0"
     webpack-inject-plugin "^1.5.3"
 
 stable@^0.1.8:
@@ -8938,7 +8928,7 @@ webpack-dev-middleware@^3.7.2:
     range-parser "^1.2.1"
     webpack-log "^2.0.0"
 
-webpack-dev-server@3.9.0:
+webpack-dev-server@^3.9.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-3.9.0.tgz#27c3b5d0f6b6677c4304465ac817623c8b27b89c"
   integrity sha512-E6uQ4kRrTX9URN9s/lIbqTAztwEPdvzVrcmHE8EQ9YnuT9J8Es5Wrd8n9BKg1a0oZ5EgEke/EQFgUsp18dSTBw==

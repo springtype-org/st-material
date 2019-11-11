@@ -1,10 +1,10 @@
-import {st} from 'springtype/core/st';
-import {attr, component} from 'springtype/web/component';
-import {ILifecycle} from 'springtype/web/component/interface';
+import { st } from 'springtype/core/st';
+import { attr, component } from 'springtype/web/component';
+import { ILifecycle } from 'springtype/web/component/interface';
+import { AttrType } from "springtype/web/component/trait/attr";
+import { newUniqueComponentName } from "springtype/web/vdom";
+import { MwcTopBarVariant } from "./mwc-top-bar-variant";
 import tpl from './mwc-top-bar.tpl';
-import {MwcTopBarVariant} from "./mwc-top-bar-variant";
-import {newUniqueComponentName} from "springtype/web/vdom";
-import {AttrType} from "springtype/web/component/trait/attr";
 
 
 @component({
@@ -54,7 +54,7 @@ export class MwcTopBar extends st.component implements ILifecycle {
 
 
     onBeforeRender(): void {
-        this.trailingIconSlot = this.virtualSlotChildren[MwcTopBar.SLOT_NAME_TRAILING_ICONS];
+        this.trailingIconSlot = this.slotChildren[MwcTopBar.SLOT_NAME_TRAILING_ICONS];
     }
 }
 

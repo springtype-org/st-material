@@ -13,7 +13,7 @@ export class DialogPage extends st.component {
   simple: MwcDialog;
 
   onSimple = () => {
-    this.simple.component.open();
+    this.simple.open();
   };
 
   render() {
@@ -27,7 +27,7 @@ export class DialogPage extends st.component {
             <MwcButton
               label="Close"
               onClick={() => {
-                this.simple.component.close();
+                this.simple.close();
               }}
             />
           </template>

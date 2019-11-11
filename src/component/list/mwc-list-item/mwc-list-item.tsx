@@ -63,13 +63,13 @@ export class MwcListItem extends st.component implements ILifecycle {
     this.el["tabindex"] = this.tabIndex;
 
     if (this.autoWrapText) {
-      return <MwcListItemText class={this.textClass}>{this.virtualSlotChildren.default}</MwcListItemText>;
+      return <MwcListItemText class={this.textClass}>{this.renderChildren()}</MwcListItemText>;
     }
 
     if (this.autoWrapGraphic) {
-      return <MwcListItemGraphic class={this.graphicClass}>{this.virtualSlotChildren.default}</MwcListItemGraphic>;
+      return <MwcListItemGraphic class={this.graphicClass}>{this.renderChildren()}</MwcListItemGraphic>;
     }
-    return this.virtualSlotChildren.default || <fragment />;
+    return this.renderChildren();
   }
 }
 

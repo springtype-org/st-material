@@ -8,7 +8,7 @@ export class MwcH6 extends st.component implements ILifecycle {
   render() {
     return (
       <h6 class="mdc-typography--headline6">
-        <slot />
+        {this.renderChildren()}
       </h6>
     );
   }

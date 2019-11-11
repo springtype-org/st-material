@@ -8,7 +8,7 @@ export class MwcButtonText extends st.component implements ILifecycle {
   render() {
     return (
       <p class="mdc-typography--button">
-        <slot />
+        {this.renderChildren()}
       </p>
     );
   }

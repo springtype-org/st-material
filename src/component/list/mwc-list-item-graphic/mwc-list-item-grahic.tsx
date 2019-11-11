@@ -2,7 +2,6 @@ import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { AttrType } from "springtype/web/component/trait/attr";
-import { tsx } from "springtype/web/vdom";
 
 @component()
 export class MwcListItemGraphic extends st.component implements ILifecycle {
@@ -16,7 +15,7 @@ export class MwcListItemGraphic extends st.component implements ILifecycle {
 
     this.el.setAttribute("class", classes.join(" "));
 
-    return this.virtualSlotChildren.default || <fragment />;
+    return this.renderChildren();
   }
 }
 

@@ -8,7 +8,7 @@ export class MwcTypography extends st.component implements ILifecycle {
   render() {
     return (
       <p class="mdc-typography">
-        <slot />
+        {this.renderChildren()}
       </p>
     );
   }

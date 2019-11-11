@@ -8,7 +8,7 @@ export class MwcOverlineText extends st.component implements ILifecycle {
   render() {
     return (
       <p class="mdc-typography--overline">
-        <slot />
+        {this.renderChildren()}
       </p>
     );
   }

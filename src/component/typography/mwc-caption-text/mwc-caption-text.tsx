@@ -8,7 +8,7 @@ export class MwcCaptionText extends st.component implements ILifecycle {
   render() {
     return (
       <p class="mdc-typography--caption">
-        <slot />
+        {this.renderChildren()}
       </p>
     );
   }

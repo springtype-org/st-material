@@ -19,10 +19,10 @@ export class MwcListGroup extends st.component implements ILifecycle {
 
     this.el.setAttribute("class", classes.join(" "));
 
-    if (this.virtualSlotChildren.header) {
-      return [<div class="mdc-list-group__subheader">{this.virtualSlotChildren.header}</div>, this.virtualSlotChildren.default];
+    if (this.slotChildren.header) {
+      return [<div class="mdc-list-group__subheader">{this.renderSlot('header')}</div>, this.renderChildren()];
     } else {
-      return this.virtualSlotChildren.default || <fragment />;
+      return this.renderChildren();
     }
   }
 }

@@ -1,7 +1,6 @@
-import {attr, component} from "springtype/web/component";
-import {st} from "springtype/core";
-import {tsx} from "springtype/web/vdom";
-import {AttrType} from "springtype/web/component/trait/attr";
+import { st } from "springtype/core";
+import { attr, component } from "springtype/web/component";
+import { AttrType } from "springtype/web/component/trait/attr";
 import * as homePageContainer from "./home-page-container.tss.scss";
 
 @component()
@@ -16,7 +15,7 @@ export class HomePageContainer extends st.component {
 
         this.el.setAttribute("class", classes.join(" "));
 
-        return this.virtualSlotChildren.default || <fragment/>;
+        return this.renderChildren();
     }
 }
 

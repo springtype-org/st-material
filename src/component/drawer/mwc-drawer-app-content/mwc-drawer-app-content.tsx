@@ -16,7 +16,7 @@ export class MwcDrawerAppContent extends st.component implements ILifecycle {
 
     const classes = ["mdc-drawer-app-content", ...this.class];
 
-    return <h3 class={classes}>{this.virtualSlotChildren.default || <fragment />}</h3>;
+    return <h3 class={classes}>{this.renderChildren()}</h3>;
   }
 }
 

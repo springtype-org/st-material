@@ -1,10 +1,10 @@
-import {st} from "springtype/core";
-import {component} from "springtype/web/component";
-import {domRef, tsx} from "springtype/web/vdom";
-import {MwcButton} from "../../component/mwc-button/mwc-button";
-import {MwcSnackbar} from "../../component/mwc-snackbar/mwc-snackbar";
-import {MwcH6} from "../../component/typography/mwc-h6/mwc-h6";
-import {MwcButtonVariant} from "../../component/mwc-button/mwc-button-variant-type";
+import { st } from "springtype/core";
+import { component } from "springtype/web/component";
+import { domRef, tsx } from "springtype/web/vdom";
+import { MwcButton } from "../../component/mwc-button/mwc-button";
+import { MwcButtonVariant } from "../../component/mwc-button/mwc-button-variant-type";
+import { MwcSnackbar } from "../../component/mwc-snackbar/mwc-snackbar";
+import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
 
 @component()
 export class SnackbarPage extends st.component {
@@ -20,15 +20,15 @@ export class SnackbarPage extends st.component {
     stackedSnackbar: MwcSnackbar;
 
     onBaseline = () => {
-        this.snackbar.component.open();
+        this.snackbar.open();
     };
 
     onLeading = () => {
-        this.leadingSnackbar.component.open();
+        this.leadingSnackbar.open();
     };
 
     onStacked = () => {
-        this.stackedSnackbar.component.open();
+        this.stackedSnackbar.open();
     };
 
     render() {
@@ -38,19 +38,19 @@ export class SnackbarPage extends st.component {
 
                 <MwcSnackbar ref={{snackbar: this}} label="Can't send photos. Retry in 5 sec">
                     <MwcButton label="Retry" onClick={() => {
-                        this.snackbar.component.close()
+                        this.snackbar.close()
                     }}/>
                 </MwcSnackbar>
 
                 <MwcSnackbar ref={{leadingSnackbar: this}} leading={true} label="Can't send photos. Retry in 5 sec">
                     <MwcButton label="Retry" onClick={() => {
-                        this.leadingSnackbar.component.close()
+                        this.leadingSnackbar.close()
                     }}/>
                 </MwcSnackbar>
 
                 <MwcSnackbar ref={{stackedSnackbar: this}} stacked={true} label="Can't send photos. Retry in 5 sec">
                     <MwcButton label="Retry" onClick={() => {
-                        this.stackedSnackbar.component.close()
+                        this.stackedSnackbar.close()
                     }}/>
                 </MwcSnackbar>
 

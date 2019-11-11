@@ -1,9 +1,8 @@
-import {st} from "springtype/core";
-import {attr, component} from "springtype/web/component";
-import {ILifecycle} from "springtype/web/component/interface";
-import {tsx} from "springtype/web/vdom";
+import { st } from "springtype/core";
+import { attr, component } from "springtype/web/component";
+import { ILifecycle } from "springtype/web/component/interface";
+import { MwcTextFieldVariant } from "./mwc-text-field-variant";
 import tpl from "./mwc-text-field.tpl";
-import {MwcTextFieldVariant} from "./mwc-text-field-variant";
 
 
 @component({
@@ -37,8 +36,8 @@ export class MwcTextField extends st.component implements ILifecycle {
     leadingIconSlot: any | false = false;
 
     onBeforeRender(): void {
-        this.trailingIconSlot = this.virtualSlotChildren[MwcTextField.SLOT_NAME_TRAILING_ICON];
-        this.leadingIconSlot = this.virtualSlotChildren[MwcTextField.SLOT_NAME_LEADING_ICON];
+        this.trailingIconSlot = this.slotChildren[MwcTextField.SLOT_NAME_TRAILING_ICON];
+        this.leadingIconSlot = this.slotChildren[MwcTextField.SLOT_NAME_LEADING_ICON];
     }
 }
 

@@ -8,7 +8,7 @@ export class MwcBody2 extends st.component implements ILifecycle {
   render() {
     return (
       <p class="mdc-typography--body2">
-        <slot />
+        {this.renderChildren()}
       </p>
     );
   }

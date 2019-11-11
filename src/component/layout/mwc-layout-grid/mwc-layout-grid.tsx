@@ -43,11 +43,11 @@ export class MwcLayoutGrid extends st.component implements ILifecycle {
     if (this.autoWrapInner) {
       return (
         <MwcLayoutGridInner class={this.innerClass}>
-            {this.virtualSlotChildren.default}
+            {this.renderChildren()}
           </MwcLayoutGridInner>
       );
     } else {
-      return this.virtualSlotChildren.default || <fragment />;
+      return this.renderChildren();
     }
   }
 }

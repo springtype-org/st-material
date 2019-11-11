@@ -19,7 +19,6 @@ export class MwcSnackbar extends st.component implements ILifecycle {
   @attr(AttrType.DOM_INTRANSPARENT)
   stacked: boolean;
 
-
   mdcComponent: MDCSnackbar;
 
   render() {
@@ -28,24 +27,22 @@ export class MwcSnackbar extends st.component implements ILifecycle {
     const classes = ["mdc-snackbar", ...this.class];
 
     if (this.leading) {
-      classes.push("mdc-snackbar--leading")
+      classes.push("mdc-snackbar--leading");
     }
 
     if (this.stacked) {
-      classes.push("mdc-snackbar--stacked")
+      classes.push("mdc-snackbar--stacked");
     }
 
     this.el.setAttribute("class", classes.join(" "));
 
     return (
-        <div class="mdc-snackbar__surface">
-          <div class="mdc-snackbar__label" role="status" aria-live="polite">
-            {this.label}
-          </div>
-          <div class="mdc-snackbar__actions">
-            <slot />
-          </div>
+      <div class="mdc-snackbar__surface">
+        <div class="mdc-snackbar__label" role="status" aria-live="polite">
+          {this.label}
         </div>
+        <div class="mdc-snackbar__actions">{this.renderChildren()}</div>
+      </div>
     );
   }
 

@@ -1,6 +1,6 @@
-import {tsx} from "springtype/web/vdom";
-import {MwcSelect} from "./mwc-select";
-import {MwcList} from "../list/mwc-list/mwc-list";
+import { tsx } from "springtype/web/vdom";
+import { MwcList } from "../list/mwc-list/mwc-list";
+import { MwcSelect } from "./mwc-select";
 
 export default (component: MwcSelect) => {
     component.class = Array.isArray(component.class) ? component.class : [component.class];
@@ -25,7 +25,7 @@ export default (component: MwcSelect) => {
 
             <div class="mdc-select__menu mdc-menu mdc-menu-surface">
                 <MwcList>
-                    <slot name={MwcSelect.SLOT_NAME_LIST_ITEMS}/>
+                    {component.renderSlot(MwcSelect.SLOT_NAME_LIST_ITEMS)}
                 </MwcList>
             </div>
         </div>

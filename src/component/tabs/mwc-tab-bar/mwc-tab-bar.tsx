@@ -39,7 +39,7 @@ export class  MwcTabBar extends st.component implements ILifecycle {
         <div class={classes} role="tablist" >
       <div class="mdc-tab-scroller">
         <div class="mdc-tab-scroller__scroll-area">
-          <div class="mdc-tab-scroller__scroll-content">{this.virtualSlotChildren.default}</div>
+          <div class="mdc-tab-scroller__scroll-content">{this.renderChildren()}</div>
         </div>
       </div>
       </div>

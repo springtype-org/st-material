@@ -8,7 +8,7 @@ export class MwcSubtitle1 extends st.component implements ILifecycle {
   render() {
     return (
       <h6 class="mdc-typography--subtitle1">
-        <slot />
+        {this.renderChildren()}
       </h6>
     );
   }

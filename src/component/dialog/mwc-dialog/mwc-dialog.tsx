@@ -33,15 +33,15 @@ export class MwcDialog extends st.component implements ILifecycle {
 
     surfaceElements.push(
       <div class="mdc-dialog__content" id="my-dialog-content">
-      {this.virtualSlotChildren.content.children}
+      {this.renderSlot('content')}
       </div>,
     );
 
-    console.log('has buttons?', this.virtualSlotChildren);
+    console.log('has buttons?', this.slotChildren);
 
     surfaceElements.push(
       <footer class="mdc-dialog__actions">
-        {this.virtualSlotChildren.buttons.children}
+        {this.renderSlot('buttons')}
       </footer>,
     );
 

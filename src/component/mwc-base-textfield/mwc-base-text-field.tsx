@@ -1,10 +1,10 @@
-import {st} from "springtype/core";
-import {attr, component} from "springtype/web/component";
-import {ILifecycle} from "springtype/web/component/interface";
-import {newUniqueComponentName, tsx} from "springtype/web/vdom";
+import { MDCTextField } from '@material/textfield';
+import { st } from "springtype/core";
+import { attr, component } from "springtype/web/component";
+import { ILifecycle } from "springtype/web/component/interface";
+import { newUniqueComponentName } from "springtype/web/vdom";
+import { MwcBaseTextFieldVariant } from "./mwc-base-text-field-variant";
 import tpl from "./mwc-base-text-field.tpl";
-import {MwcBaseTextFieldVariant} from "./mwc-base-text-field-variant";
-import {MDCTextField} from '@material/textfield';
 
 @component({
     tpl
@@ -53,8 +53,8 @@ export class MwcBaseTextField extends st.component implements ILifecycle {
     }
 
     onBeforeRender(): void {
-        this.trailingIconActive = !!this.virtualSlotChildren[MwcBaseTextField.SLOT_NAME_TRAILING_ICON];
-        this.leadingIconActive = !!this.virtualSlotChildren[MwcBaseTextField.SLOT_NAME_LEADING_ICON];
+        this.trailingIconActive = !!this.slotChildren[MwcBaseTextField.SLOT_NAME_TRAILING_ICON];
+        this.leadingIconActive = !!this.slotChildren[MwcBaseTextField.SLOT_NAME_LEADING_ICON];
     }
 }
 
