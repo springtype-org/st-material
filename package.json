@@ -46,7 +46,6 @@
     "@material/tab": "^4.0.0",
     "@material/tab-bar": "^4.0.0",
     "material-components-web": "^4.0.0",
-    "st-start": "^2.0.0-beta.22",
-    "webpack-dev-server": "^3.9.0"
+    "st-start": "^2.0.0-beta.26"
   }
 }
