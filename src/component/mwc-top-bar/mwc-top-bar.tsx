@@ -8,11 +8,14 @@ import tpl from "./mwc-top-bar.tpl";
 import { MDCTopAppBar } from "@material/top-app-bar";
 
 @component({
-  tpl,
+  tpl
 })
 export class MwcTopBar extends st.component implements ILifecycle {
   static SLOT_NAME_BODY: string = "body";
   static SLOT_NAME_TRAILING_ICONS: string = "trailing-icons";
+
+  @domRef("topBarRef")
+  topBarRef: HTMLElement;
 
   @attr()
   dense: boolean = false;
@@ -45,7 +48,8 @@ export class MwcTopBar extends st.component implements ILifecycle {
   }
 
   onAfterRender() {
-    this.mdcComponent = MDCTopAppBar.attachTo(this.el);
+    console.log(this.topBarRef);
+    this.mdcComponent = new MDCTopAppBar(this.topBarRef);
   }
 }
 
