@@ -60,10 +60,8 @@ export class MwcListItem extends st.component implements ILifecycle {
     }
 
     this.el.setAttribute("class", classes.join(" "));
+
     this.el["tabindex"] = this.tabIndex;
-    console.log('this',this);
-    console.log('autoWrapText',this.autoWrapText);
-    console.log('autoWrapGraphic',this.autoWrapGraphic);
 
     if (this.autoWrapText) {
       return <MwcListItemText class={this.textClass}>{this.renderChildren()}</MwcListItemText>;
@@ -71,7 +69,6 @@ export class MwcListItem extends st.component implements ILifecycle {
     if (this.autoWrapGraphic) {
       return <MwcListItemGraphic class={this.graphicClass}>{this.renderChildren()}</MwcListItemGraphic>;
     }
-    console.log('result',this.renderChildren());
     return this.renderChildren();
   }
 }
