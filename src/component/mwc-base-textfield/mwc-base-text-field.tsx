@@ -37,6 +37,12 @@ export class MwcBaseTextField extends st.component implements ILifecycle {
     textarea = false;
 
     @attr()
+    textareaRows = 2;
+
+    @attr()
+    textareaCols = 40;
+
+    @attr()
     fullwidth = false;
 
     textFieldId = newUniqueComponentName();
@@ -47,7 +53,7 @@ export class MwcBaseTextField extends st.component implements ILifecycle {
     trailingIconActive: boolean = false;
     leadingIconActive: boolean = false;
 
-    onAfterInitialRender(): void {
+    onAfterRender(): void {
         const textFieldId = this.el.querySelector(`#${this.textFieldId}`);
         this.textField = new MDCTextField(textFieldId);
     }
