@@ -18,6 +18,7 @@ import { TabBarPage } from "./page/tabbar-page";
 import { TextAreaPage } from "./page/text-area-page";
 import { TextFieldPage } from "./page/text-field-page";
 import { TypographyPage } from "./page/typography-page";
+import {LinearProgressPage} from "./page/linear-progress-page";
 
 const drawerItems: Array<{ route: string | Array<string>, text: any }> = [
     {
@@ -102,6 +103,11 @@ const drawerItems: Array<{ route: string | Array<string>, text: any }> = [
         route: CardPage.ROUTE, text: <fragment>
             <MwcListItemIcon type="vertical_split"/>
             <MwcListItemText>Card</MwcListItemText>
+        </fragment>
+    }, {
+        route: LinearProgressPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="linear_scale"/>
+            <MwcListItemText>Linear Progress</MwcListItemText>
         </fragment>
     },
 
