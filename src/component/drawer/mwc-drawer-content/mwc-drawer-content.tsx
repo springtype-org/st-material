@@ -2,16 +2,13 @@ import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { AttrType } from "springtype/web/component/trait/attr";
+import {tsx} from "springtype/web/vdom";
 
 @component()
 export class MwcDrawerContent extends st.component implements ILifecycle {
 
-  onAfterElCreate() {
-    this.elClass = [...this.elClass, "mdc-drawer__content"];
-  }
-
   render() {
-    return this.renderChildren();
+    return <div class="mdc-drawer__content">{this.renderChildren()}</div>;
   }
 }
 

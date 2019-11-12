@@ -150,12 +150,12 @@ export class ListPage extends st.component {
 
         <MwcList class={listPageStyle.demoList} avatarList={true} twoLine={true} singleSelection={true}>
           <MwcListItem autoWrapText={false}>
-            <MwcListItemIcon type="folder" graphic={true}></MwcListItemIcon>
+            <MwcListItemIcon type="folder" graphic={true}/>
             <MwcListItemText>
               <MwcListItemTextPrimary>Dog Photos</MwcListItemTextPrimary>
               <MwcListItemTextSecondary>9 Jan 2018</MwcListItemTextSecondary>
             </MwcListItemText>
-            <MwcListItemIcon type="info" meta={true}></MwcListItemIcon>
+            <MwcListItemIcon type="info" meta={true}/>
           </MwcListItem>
 
           <MwcListDivider />

@@ -126,7 +126,7 @@ export const getDrawerListItems = (homepage: HomePage) => {
             st.router.navigate(route[0]);
             homepage.drawer.close();
 
-        }} autoWrapText={false} activated={route.indexOf('/' + window.location.hash) > -1}>{drawerItem.text}
+        }} autoWrapText={false} activated={route.indexOf('/' + window.location.hash) > -1 || route.indexOf(window.location.hash) > -1}>{drawerItem.text}
         </MwcListItem>
     });
 };
