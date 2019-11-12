@@ -14,3 +14,4 @@ export * from "./component/list";
 export * from "./component/mwc-top-bar";
 export * from "./component/drawer";
 export * from "./component/mwc-checkbox";
+export * from "./component/mwc-linear-progress";
