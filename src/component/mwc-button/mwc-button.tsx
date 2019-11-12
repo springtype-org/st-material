@@ -35,7 +35,7 @@ export class MwcButton extends st.component implements ILifecycle {
 
     mdcRipple: MDCRipple;
 
-    onAfterInitialRender(): void {
+    onAfterRender(): void {
         const buttonEl = this.el.querySelector(`#${this.buttonId}`);
 
         if (this.ripple) {
