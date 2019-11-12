@@ -14,6 +14,7 @@ import { TypographyPage } from "./page/typography-page";
 import {HomePageContainer} from "./home-page-container";
 import {RadioButtonPage} from "./page/radio-button-page";
 import {SelectPage} from "./page/select-page";
+import {CardPage} from "./page/card-page";
 
 export const ROUTES = <RouteList>
     <Route path={[PATH_DEFAULT, PATH_WILDCARD, CheckboxPage.ROUTE]}
@@ -30,4 +31,5 @@ export const ROUTES = <RouteList>
     <Route path={DialogPage.ROUTE} component={<HomePageContainer><DialogPage/></HomePageContainer>}/>
     <Route path={RadioButtonPage.ROUTE} component={<HomePageContainer><RadioButtonPage/></HomePageContainer>}/>
     <Route path={SelectPage.ROUTE} component={<HomePageContainer><SelectPage/></HomePageContainer>}/>
+    <Route path={CardPage.ROUTE} component={<HomePageContainer><CardPage/></HomePageContainer>}/>
 </RouteList>;

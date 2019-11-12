@@ -17,6 +17,7 @@ import {TypographyPage} from "./page/typography-page";
 import {MwcListItemIcon} from "../component/list/mwc-list-item-icon/mwc-list-item-icon";
 import {RadioButtonPage} from "./page/radio-button-page";
 import {SelectPage} from "./page/select-page";
+import {CardPage} from "./page/card-page";
 
 const drawerItems: Array<{ route: string | Array<string>, text: any }> = [
     {
@@ -95,6 +96,12 @@ const drawerItems: Array<{ route: string | Array<string>, text: any }> = [
         route: DialogPage.ROUTE, text: <fragment>
             <MwcListItemIcon type="chat"/>
             <MwcListItemText>Dialog</MwcListItemText>
+        </fragment>
+    },
+    {
+        route: CardPage.ROUTE, text: <fragment>
+            <MwcListItemIcon type="vertical_split"/>
+            <MwcListItemText>Card</MwcListItemText>
         </fragment>
     },
 
