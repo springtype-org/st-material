@@ -7,7 +7,7 @@ import { MwcSubtitle1 } from "../../component/typography/mwc-subtitle1/mwc-subti
 
 @component()
 export class TabBarPage extends st.component {
-    static ROUTE = "/#/tabbar-page";
+    static ROUTE = "#/tabbar-page";
 
     render() {
         return (

@@ -15,7 +15,7 @@ export class MwcListItem extends st.component implements ILifecycle {
   class: string | Array<string>;
 
   @attr(AttrType.DOM_INTRANSPARENT)
-  autoWrapText: boolean = false;
+  autoWrapText: boolean = true;
 
   @attr(AttrType.DOM_INTRANSPARENT)
   textClass: string | Array<string>;

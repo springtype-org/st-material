@@ -11,7 +11,7 @@ import * as gridLayoutPageStyle from "./grid-layout-page.tss.scss";
 
 @component()
 export class GridLayoutPage extends st.component {
-  static ROUTE = "/#/grid-layout-page";
+  static ROUTE = "#/grid-layout-page";
 
   render() {
     return (

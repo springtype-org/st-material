@@ -1,13 +1,13 @@
-import {st} from "springtype/core";
-import {component} from "springtype/web/component";
-import {tsx} from "springtype/web/vdom";
-import {MwcH6} from "../../component/typography/mwc-h6/mwc-h6";
-import {MwcTextField} from "../../component/mwc-text-field/mwc-text-field";
-import {MwcTextFieldVariant} from "../../component/mwc-text-field/mwc-text-field-variant";
+import { st } from "springtype/core";
+import { component } from "springtype/web/component";
+import { tsx } from "springtype/web/vdom";
+import { MwcTextField } from "../../component/mwc-text-field/mwc-text-field";
+import { MwcTextFieldVariant } from "../../component/mwc-text-field/mwc-text-field-variant";
+import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
 
 @component()
 export class TextFieldPage extends st.component {
-    static ROUTE = "/#/text-field-page";
+    static ROUTE = "#/text-field-page";
 
     render() {
         return (

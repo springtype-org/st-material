@@ -1,12 +1,12 @@
-import {st} from "springtype/core";
-import {component} from "springtype/web/component";
-import {tsx} from "springtype/web/vdom";
-import {MwcH6} from "../../component/typography/mwc-h6/mwc-h6";
-import {MwcRadioButton} from "../../component/mwc-radio-button/mwc-radio-button";
+import { st } from "springtype/core";
+import { component } from "springtype/web/component";
+import { tsx } from "springtype/web/vdom";
+import { MwcRadioButton } from "../../component/mwc-radio-button/mwc-radio-button";
+import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
 
 @component()
 export class RadioButtonPage extends st.component {
-    static ROUTE = "/#/radio-button-page";
+    static ROUTE = "#/radio-button-page";
 
     render() {
         const radioGroupName = 'gender-group';

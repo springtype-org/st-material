@@ -1,13 +1,13 @@
-import {st} from "springtype/core";
-import {component} from "springtype/web/component";
-import {tsx} from "springtype/web/vdom";
-import {MwcH6} from "../../component/typography/mwc-h6/mwc-h6";
-import {MwcSelect} from "../../component/mwc-select/mwc-select";
-import {MwcListItem} from "../../component/list/mwc-list-item/mwc-list-item";
+import { st } from "springtype/core";
+import { component } from "springtype/web/component";
+import { tsx } from "springtype/web/vdom";
+import { MwcListItem } from "../../component/list/mwc-list-item/mwc-list-item";
+import { MwcSelect } from "../../component/mwc-select/mwc-select";
+import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
 
 @component()
 export class SelectPage extends st.component {
-    static ROUTE = "/#/select-page";
+    static ROUTE = "#/select-page";
 
     render() {
         const radioGroupName = 'gender-group';

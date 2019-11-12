@@ -1,17 +1,15 @@
-import {st} from "springtype/core";
-import {component} from "springtype/web/component";
-import {tsx} from "springtype/web/vdom";
-import {MwcH6} from "../../component/typography/mwc-h6/mwc-h6";
-import {MwcCard} from "../../component/mwc-card/mwc-card";
-import {MwcSubtitle2} from "../../component/typography/mwc-subtitle2/mwc-subtitle2";
+import { st } from "springtype/core";
+import { component } from "springtype/web/component";
+import { tsx } from "springtype/web/vdom";
+import { MwcCard } from "../../component/mwc-card/mwc-card";
+import { MwcBody2 } from "../../component/typography/mwc-body2/mwc-body2";
+import { MwcH5 } from "../../component/typography/mwc-h5/mwc-h5";
+import { MwcSubtitle1 } from "../../component/typography/mwc-subtitle1/mwc-subtitle1";
 import * as cardPage from "./card-page.tss.scss";
-import {MwcH5} from "../../component/typography/mwc-h5/mwc-h5";
-import {MwcSubtitle1} from "../../component/typography/mwc-subtitle1/mwc-subtitle1";
-import {MwcBody2} from "../../component/typography/mwc-body2/mwc-body2";
 
 @component()
 export class CardPage extends st.component {
-    static ROUTE = "/#/card-page";
+    static ROUTE = "#/card-page";
 
     render() {
         const contentClasses = ["demo-card--content", cardPage.demoCardContent];
@@ -19,7 +17,7 @@ export class CardPage extends st.component {
         return (
             <div>
                 <div>
-                    <MwcH6>Cards</MwcH6>
+                    <MwcH5>Cards</MwcH5>
                     <MwcCard class={['card-size', cardPage.cardSize]}>
                         <template slot={MwcCard.SLOT_NAME_PRIMARY}>
                             <div
@@ -27,8 +25,8 @@ export class CardPage extends st.component {
 
                             <div class={contentClasses}>
                                 <MwcH5 class={noMarginClasses}>Changing Development</MwcH5>
-                                <MwcSubtitle1 class={noMarginClasses}>by Michael Mannseicher</MwcSubtitle1>
-                                <MwcSubtitle1 class={noMarginClasses}>Aron Homberg</MwcSubtitle1>
+                                <MwcSubtitle1 class={noMarginClasses}>by Aron Homberg &amp;</MwcSubtitle1>
+                                <MwcSubtitle1 class={noMarginClasses}>Michael Mannseicher</MwcSubtitle1>
                                 <div style="height: 15px"/>
                                 <MwcSubtitle1 class={noMarginClasses}><b>Our Motivation</b></MwcSubtitle1>
                                 <MwcBody2 class={noMarginClasses}>SpringType aims to be the web development framework with the most elegant API's

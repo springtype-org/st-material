@@ -7,7 +7,7 @@ import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
 
 @component()
 export class DialogPage extends st.component {
-  static ROUTE = "/#/dialog-page";
+  static ROUTE = "#/dialog-page";
 
   @domRef("simple")
   simple: MwcDialog;

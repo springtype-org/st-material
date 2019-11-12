@@ -6,7 +6,7 @@ import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
 
 @component()
 export class CheckboxPage extends st.component {
-  static ROUTE = "/#/checkbox-page";
+  static ROUTE = "#/checkbox-page";
 
   render() {
     return (

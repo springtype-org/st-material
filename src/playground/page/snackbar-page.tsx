@@ -8,7 +8,7 @@ import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
 
 @component()
 export class SnackbarPage extends st.component {
-    static ROUTE = "/#/snackbar-page";
+    static ROUTE = "#/snackbar-page";
 
     @domRef("snackbar")
     snackbar: MwcSnackbar;
