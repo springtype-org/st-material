@@ -1,0 +1,1 @@
+export { MwcDialog } from "./mwc-dialog";

@@ -1,7 +1,6 @@
 import { tsx } from "springtype/web/vdom";
 import { MwcButton } from "./mwc-button";
 import { MwcButtonVariant } from "./mwc-button-variant-type";
-import * as mwcButton from "./mwc-button.tss.scss";
 
 export default (component: MwcButton) => {
   const classesFixed = ["mdc-button"];
@@ -28,7 +27,7 @@ export default (component: MwcButton) => {
   }
 
   if (component.shaped) {
-    classesFixed.push("mwc-button--shaped", mwcButton.mwcButtonShaped);
+    classesFixed.push("mwc-button--shaped");
   }
 
   const button = (

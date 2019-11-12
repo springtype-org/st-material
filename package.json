@@ -1,6 +1,6 @@
 {
   "name": "st-material",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-beta.2",
   "publishConfig": {
     "access": "public"
   },
@@ -12,11 +12,11 @@
     "start:prod": "st-start -e production",
     "start": "st-start"
   },
+  "peerDependencies": {
+    "material-components-web": "^4.0.0"
+  },
   "author": "Aron Homberg <info@aron-homberg.de>, Michael Mannseicher <m.mansi1@gmx.net>",
   "license": "MIT",
-  "peerDependencies": {
-    "@material/top-app-bar": "^4.0.0"
-  },
   "devDependencies": {
     "@types/node": "^12.12.6",
     "autoprefixer": "^9.7.1",
@@ -42,7 +42,8 @@
     "ts-node": "^8.4.1",
     "typescript": "^3.7.2",
     "webpack-bundle-analyzer": "^3.6.0",
-    "xml2js": "^0.4.22"
+    "xml2js": "^0.4.22",
+    "st-start": "^2.0.0-beta.26"
   },
   "dependencies": {
     "@material/dialog": "^4.0.0",
@@ -51,7 +52,6 @@
     "@material/snackbar": "^4.0.0",
     "@material/tab": "^4.0.0",
     "@material/tab-bar": "^4.0.0",
-    "material-components-web": "^4.0.0",
-    "st-start": "^2.0.0-beta.26"
+    "material-components-web": "^4.0.0"
   }
 }

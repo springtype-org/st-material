@@ -1,0 +1,1 @@
+export { MwcSelect } from "./mwc-select";

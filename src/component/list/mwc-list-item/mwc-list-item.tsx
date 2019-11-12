@@ -3,7 +3,7 @@ import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { AttrType } from "springtype/web/component/trait/attr";
 import { tsx } from "springtype/web/vdom";
-import { MwcListItemGraphic } from "../mwc-list-item-graphic/mwc-list-item-grahic";
+import { MwcListItemGraphic } from "../mwc-list-item-graphic/mwc-list-item-graphic";
 import { MwcListItemText } from "../mwc-list-item-text/mwc-list-item-text";
 
 @component()

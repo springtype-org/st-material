@@ -3,7 +3,6 @@ import {MwcBaseTextField} from "./mwc-base-text-field";
 import {getFilledTextField} from "./mwc-base-text-field-filled.tpl";
 import {getOutlinedTextField} from "./mwc-base-text-field-outlined.tpl";
 import {MwcBaseTextFieldVariant} from "./mwc-base-text-field-variant";
-import * as mwcBaseTextField from "./mwc-base-text-field.tss.scss";
 
 export default (component: MwcBaseTextField) => {
     const classesFixed = ["mdc-text-field"];
@@ -24,7 +23,7 @@ export default (component: MwcBaseTextField) => {
             break;
     }
     if (component.shaped && component.variant === MwcBaseTextFieldVariant.FILLED) {
-        classesFixed.push("mwc-text-field--filled-shaped", mwcBaseTextField.mwcTextFieldFilledShaped);
+        classesFixed.push("mwc-text-field--filled-shaped");
     }
 
     if (component.fullwidth) {
@@ -38,7 +37,7 @@ export default (component: MwcBaseTextField) => {
         : (<input id={component.inputId} class="mdc-text-field__input" name={component.name} value={component.value}/>);
 
     if (component.textarea) {
-        classesFixed.push("mwc-text-field--textarea", mwcBaseTextField.mwcTextFieldTextarea);
+        classesFixed.push("mwc-text-field--textarea");
     }
 
     if (component.disabled) {

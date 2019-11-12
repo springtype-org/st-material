@@ -1,0 +1,1 @@
+export { MwcTopBar } from "./mwc-top-bar";
