@@ -1,7 +1,6 @@
 import { tsx } from "springtype/web/vdom";
 import { MwcTopBar } from "./mwc-top-bar";
 import { MwcTopBarVariant } from "./mwc-top-bar-variant";
-import * as mwcTopBar from "./mwc-top-bar.tss.scss";
 
 export default (component: MwcTopBar) => {
   const fixedBodyClasses = [];
@@ -33,7 +32,7 @@ export default (component: MwcTopBar) => {
   }
 
   //add padding to top-app-bar borders
-  fixedBodyClasses.push("mdc-top-app-bar--fixed-adjust--body", mwcTopBar.mdcTopAppBarFixedAdjustBody);
+  fixedBodyClasses.push("mdc-top-app-bar--fixed-adjust--body");
 
   if (component.dense) {
     appBarClasses.push("mdc-top-app-bar mdc-top-app-bar--dense");

@@ -14,6 +14,18 @@ export class MwcCard extends st.component implements ILifecycle {
     @attr()
     title: string = "";
 
+    @attr()
+    actionsClass: string;
+
+    @attr()
+    primaryActionsClass: string;
+
+    @attr()
+    primaryCardMedia: boolean = false;
+
+    @attr()
+    primaryMediaClass: string;
+
     onAfterElCreate() {
         this.elClass = [...this.elClass, "mdc-card"];
     }

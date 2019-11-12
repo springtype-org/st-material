@@ -1,8 +1,7 @@
 import { st } from "springtype/core/st";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface";
-import { AttrType } from "springtype/web/component/trait/attr";
-import { newUniqueComponentName, domRef } from "springtype/web/vdom";
+import { newUniqueComponentName } from "springtype/web/vdom";
 import { MwcTopBarVariant } from "./mwc-top-bar-variant";
 import tpl from "./mwc-top-bar.tpl";
 import { MDCTopAppBar } from "@material/top-app-bar";

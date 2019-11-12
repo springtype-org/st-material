@@ -17,6 +17,10 @@ export class TextFieldPage extends st.component {
                     <MwcTextField label="filled" shaped={false} variant={MwcTextFieldVariant.FILLED}/>
                 </div>
                 <div>
+                    <MwcH6>TextField Password Filled</MwcH6>
+                    <MwcTextField type="password" label="filled" shaped={false} variant={MwcTextFieldVariant.FILLED}/>
+                </div>
+                <div>
                     <MwcH6>TextField Filled-Full-Width</MwcH6>
                     <MwcTextField label="filled + full-width" shaped={false}
                                   variant={MwcTextFieldVariant.FILLED_FULL_WIDTH}/>

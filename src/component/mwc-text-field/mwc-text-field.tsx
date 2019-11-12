@@ -32,6 +32,9 @@ export class MwcTextField extends st.component implements ILifecycle {
     @attr()
     shaped = false;
 
+    @attr()
+    type: 'password' | 'text' = 'text';
+
     trailingIconSlot: any | false = false;
     leadingIconSlot: any | false = false;
 

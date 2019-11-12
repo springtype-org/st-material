@@ -30,10 +30,11 @@ export default (component: MwcTextField) => {
         case MwcTextFieldVariant.OUTLINED:
             variant = MwcBaseTextFieldVariant.OUTLINED;
             break;
-
     }
 
-    return <MwcBaseTextField name={component.name} label={component.label} variant={variant}
+    console.log('text type', component.type);
+
+    return <MwcBaseTextField type={component.type} name={component.name} label={component.label} variant={variant}
                              ripple={component.ripple} disabled={component.disabled} value={component.value}
                              shaped={component.shaped} fullwidth={fullwidth}>
         {leadingIconSlotChildren}

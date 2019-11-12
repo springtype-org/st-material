@@ -45,6 +45,9 @@ export class MwcBaseTextField extends st.component implements ILifecycle {
     @attr()
     fullwidth = false;
 
+    @attr()
+    type: 'password' | 'text' = 'text';
+
     textFieldId: string;
     inputId: string;
 
