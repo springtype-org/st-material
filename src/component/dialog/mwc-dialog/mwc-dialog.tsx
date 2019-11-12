@@ -4,27 +4,24 @@ import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface";
 import { AttrType } from "springtype/web/component/trait/attr";
 import { tsx } from "springtype/web/vdom";
+import { IVirtualNode, IElement } from "springtype/web/vdom/interface";
 
 @component()
 export class MwcDialog extends st.component implements ILifecycle {
+
   static SLOT_NAME_CONTENT = "content";
   static SLOT_NAME_BUTTONS = "buttons";
 
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string | Array<string>;
-
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   title: string;
 
   mdcComponent: MDCDialog;
 
+  onAfterElCreate() {
+    this.elClass = ['mdc-dialog', ...this.elClass as Array<string>];
+  }
+
   render() {
-    this.class = Array.isArray(this.class) ? this.class : [this.class];
-
-    const classes = ["mdc-dialog", ...this.class];
-
-    this.el.setAttribute("class", classes.join(" "));
-
     const surfaceElements = [];
 
     if (this.title) {
@@ -33,26 +30,22 @@ export class MwcDialog extends st.component implements ILifecycle {
 
     surfaceElements.push(
       <div class="mdc-dialog__content" id="my-dialog-content">
-      {this.renderSlot('content')}
+      {this.renderSlot(MwcDialog.SLOT_NAME_CONTENT)}
       </div>,
     );
 
-    console.log('has buttons?', this.slotChildren);
-
     surfaceElements.push(
       <footer class="mdc-dialog__actions">
-        {this.renderSlot('buttons')}
+        {this.renderSlot(MwcDialog.SLOT_NAME_BUTTONS)}
       </footer>,
     );
 
-    const elements = [
+    return [
       <div class="mdc-dialog__container">
         <div class="mdc-dialog__surface">{surfaceElements}</div>
       </div>,
       <div class="mdc-dialog__scrim"></div>,
     ];
-
-    return elements;
   }
 
   onAfterRender() {
@@ -65,6 +58,10 @@ export class MwcDialog extends st.component implements ILifecycle {
 
   close() {
     this.mdcComponent.close();
+  }
+
+  onDisconnect() {
+    this.mdcComponent.destroy();
   }
 }
 

@@ -15,51 +15,55 @@ export class MwcCheckbox extends st.component implements ILifecycle {
     @domRef("input")
     input: HTMLElement;
 
-    @attr(AttrType.DOM_INTRANSPARENT)
+    @domRef("formFieldRef")
+    formFieldRef: HTMLElement;
+
+    @domRef("checkboxContainerRef")
+    checkboxContainerRef: HTMLElement;
+
+    @attr()
     name: string = "";
 
-    @attr(AttrType.DOM_INTRANSPARENT)
+    @attr()
     label: string = "";
 
-    @attr(AttrType.DOM_INTRANSPARENT)
+    @attr()
     ripple: boolean = true;
 
-    @attr(AttrType.DOM_INTRANSPARENT)
+    @attr()
     disabled: boolean = false;
 
-    @attr(AttrType.DOM_INTRANSPARENT)
+    @attr()
     indeterminate: boolean = false;
 
-    @attr(AttrType.DOM_INTRANSPARENT)
+    @attr()
     checked: boolean = false;
 
-    @attr(AttrType.DOM_INTRANSPARENT)
+    @attr()
     value: string = "";
 
-    @attr(AttrType.DOM_INTRANSPARENT)
-    class: string | Array<string>;
-
-    inputId = newUniqueComponentName();
-    checkboxId = newUniqueComponentName();
-    formFieldId = newUniqueComponentName();
+    inputId: string;
+    checkboxId: string;
+    formFieldId: string;
 
     mdcCheckbox: MDCCheckbox;
     mdcFormField: MDCFormField;
-
     mdcRipple: MDCRipple;
 
-    onAfterInitialRender(): void {
+    onAfterElCreate() {
+        this.inputId = newUniqueComponentName();
+        this.checkboxId = newUniqueComponentName();
+        this.formFieldId = newUniqueComponentName();
+    }
 
-        const checkboxEl = this.el.querySelector(`#${this.checkboxId}`);
-        //@ts-ignore
-        this.mdcCheckbox = new MDCCheckbox(checkboxEl);
-        //@ts-ignore
-        this.mdcFormField = new MDCFormField(this.el.querySelector(`#${this.formFieldId}`));
+    onAfterRender(): void {
+
+        this.mdcCheckbox = new MDCCheckbox(this.checkboxContainerRef);
+        this.mdcFormField = new MDCFormField(this.formFieldRef);
         this.mdcFormField.input = this.mdcCheckbox;
 
         if (this.ripple) {
-            //@ts-ignore
-            this.mdcRipple = new MDCRipple(checkboxEl);
+            this.mdcRipple = new MDCRipple(this.checkboxContainerRef);
         }
     }
 }

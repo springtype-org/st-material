@@ -1,67 +1,58 @@
-import { st } from 'springtype/core/st';
-import { attr, component } from 'springtype/web/component';
-import { ILifecycle } from 'springtype/web/component/interface';
+import { st } from "springtype/core/st";
+import { attr, component } from "springtype/web/component";
+import { ILifecycle } from "springtype/web/component/interface";
 import { AttrType } from "springtype/web/component/trait/attr";
-import { newUniqueComponentName } from "springtype/web/vdom";
+import { newUniqueComponentName, domRef } from "springtype/web/vdom";
 import { MwcTopBarVariant } from "./mwc-top-bar-variant";
-import tpl from './mwc-top-bar.tpl';
-
+import tpl from "./mwc-top-bar.tpl";
+import { MDCTopAppBar } from "@material/top-app-bar";
 
 @component({
-    tpl,
+  tpl,
 })
 export class MwcTopBar extends st.component implements ILifecycle {
-    static SLOT_NAME_TOP_BAR_BODY: string = 'default';
-    static SLOT_NAME_MENU_ICON_BUTTON: string = 'menu-icon';
-    static SLOT_NAME_TRAILING_ICONS: string = 'trailing-icons';
+  static SLOT_NAME_BODY: string = "body";
+  static SLOT_NAME_TRAILING_ICONS: string = "trailing-icons";
 
-    @attr()
-    dense: boolean = false;
+  @attr()
+  dense: boolean = false;
 
-    @attr()
-    title: string = '';
+  @attr()
+  title: string = "";
 
-    @attr()
-    variant: MwcTopBarVariant = MwcTopBarVariant.STANDARD;
+  @attr()
+  variant: MwcTopBarVariant = MwcTopBarVariant.STANDARD;
 
-    @attr()
-    fixed: boolean = false;
+  @attr()
+  fixed: boolean = false;
 
-    @attr()
-    trailingIconSlot: any | false = false;
+  @attr()
+  showMenuButton: boolean = true;
 
-    @attr(AttrType.DOM_INTRANSPARENT)
-    scrolled: boolean = false;
+  @attr()
+  menuIcon: string = 'menu';
 
-    headerId = newUniqueComponentName();
+  @attr()
+  scrolled: boolean = false;
 
-    onAfterInitialRender(): void {
-        window.addEventListener("scroll", () => {
-                if (!this.fixed) {
-                    const header: HTMLElement = this.el.querySelector(`#${this.headerId}`);
-                    const offsetHeight = header.offsetHeight;
-                    if (window.scrollY < offsetHeight) {
-                        header.setAttribute("style", `top: -${window.scrollY}px`);
-                    } else {
-                        header.setAttribute("style", `top: -${offsetHeight}px`);
-                    }
-                }
-                this.scrolled = window.scrollY > 0;
+  @attr()
+  headerId: string;
 
-            }
-        );
-    }
+  mdcComponent: MDCTopAppBar;
 
+  onBeforeElCreate() {
+      this.headerId = this.headerId || newUniqueComponentName();
+  }
 
-    onBeforeRender(): void {
-        this.trailingIconSlot = this.slotChildren[MwcTopBar.SLOT_NAME_TRAILING_ICONS];
-    }
+  onAfterRender() {
+    this.mdcComponent = MDCTopAppBar.attachTo(this.el);
+  }
 }
 
 declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            MwcTopBar: Partial<MwcTopBar>;
-        }
+  namespace JSX {
+    interface IntrinsicElements {
+      MwcTopBar: Partial<MwcTopBar>;
     }
+  }
 }

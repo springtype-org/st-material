@@ -2,7 +2,7 @@ import { st } from "springtype/core";
 import { component } from "springtype/web/component";
 import { tsx } from "springtype/web/vdom";
 import { MwcListItem } from "../../component/list/mwc-list-item/mwc-list-item";
-import { MwcSelect } from "../../component/mwc-select/mwc-select";
+import { MwcSelect, MwcSelectEvent } from "../../component/mwc-select/mwc-select";
 import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
 
 @component()
@@ -16,7 +16,7 @@ export class SelectPage extends st.component {
                 <div>
                     <MwcH6>Select</MwcH6>
 
-                    <MwcSelect label="Please select" onStChange={(evt)=> console.log(evt) }>
+                    <MwcSelect label="Please select" onSelect={(evt: MwcSelectEvent)=> console.log('got selection value', evt) }>
                         <template slot={MwcSelect.SLOT_NAME_LIST_ITEMS}>
                             <MwcListItem autoWrapText={true} data-value={{level: 'noob'}}>
                                 Noob

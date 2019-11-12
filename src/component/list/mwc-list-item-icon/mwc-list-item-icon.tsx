@@ -3,26 +3,22 @@ import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { AttrType } from "springtype/web/component/trait/attr";
 import { tsx } from "springtype/web/vdom";
+import { IVirtualNode } from "springtype/web/vdom/interface";
 
 @component()
 export class MwcListItemIcon extends st.component implements ILifecycle {
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string | Array<string>;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   type: string;
   
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   meta: boolean;
 
+  onAfterElCreate() {
+    this.elClass =  [...this.elClass, "material-icons", this.meta ? "mdc-list-item__meta" : "mdc-list-item__graphic"];
+  }
+
   render() {
-    this.class = Array.isArray(this.class) ? this.class : [this.class];
-
-    const classes = ["material-icons", this.meta ? "mdc-list-item__meta" : "mdc-list-item__graphic", ...this.class];
-
-    this.el.setAttribute("class", classes.join(" "));
-    
-    // TODO: Support return primitive type
     return <fragment />;
   }
 

@@ -7,6 +7,7 @@ import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
 
 @component()
 export class DialogPage extends st.component {
+
   static ROUTE = "#/dialog-page";
 
   @domRef("simple")
@@ -21,11 +22,11 @@ export class DialogPage extends st.component {
       <div>
         <MwcH6>Dialog</MwcH6>
 
-        <MwcDialog ref={{ simple: this }} title="SpringType rocks">
-          <template slot={MwcDialog.SLOT_NAME_CONTENT}>Really, doesn't it?</template>
-          <template slot={MwcDialog.SLOT_NAME_BUTTONS}>
+        <MwcDialog ref={{ simple: this }} class="foo" title="SpringType is simple & powerful">
+          <template slot="content">Really, isn't it?</template>
+          <template slot="buttons">
             <MwcButton
-              label="Close"
+              label="Stop, wasting time on StackOverflow :o)"
               onClick={() => {
                 this.simple.close();
               }}
@@ -34,7 +35,7 @@ export class DialogPage extends st.component {
         </MwcDialog>
 
         <div>
-          <MwcButton label="Simple" onClick={this.onSimple}></MwcButton>
+          <MwcButton label="Open bragging Dialog :)" onClick={this.onSimple}></MwcButton>
         </div>
       </div>
     );

@@ -17,56 +17,43 @@ import { ROUTES } from "./routes";
 
 @component()
 export class HomePage extends st.component {
-  //@attr(AttrType.DOM_INTRANSPARENT)
-  drawerAndTopBarFixed: boolean = true;
-
   @domRef("drawer")
   drawer!: MwcDrawer;
 
+  @domRef("topBar")
+  topBar!: MwcTopBar;
+
+  @domRef("appContent")
+  appContent!: HTMLElement;
+
+  drawerAndTopBarFixed: boolean = true;
+
   render() {
-    //const fixedIconButtonsClass = ['material-icons', 'mdc-top-app-bar__action-item mdc-icon-button'];
-    const fixedMenuButtonClass = ["mdc-icon-button", "material-icons", "mdc-top-app-bar__navigation-icon"];
-    const drawerRootClasses = [];
     return (
       <MwcTypography>
-        <MwcDrawer ref={{ drawer: this }} variant="modal" customClass={["mwc-drawer--most-top", homePage.mwcDrawerMostTop]} fixed={this.drawerAndTopBarFixed}>
+        <MwcTopBar ref={{ topBar: this }} title="Material Design Components for springtype" variant={MwcTopBarVariant.STANDARD} fixed={this.drawerAndTopBarFixed} />
+        <MwcDrawer ref={{ drawer: this }} variant="modal" fixed={this.drawerAndTopBarFixed}>
           <MwcDrawerHeader>
-            <MwcDrawerTitle>Material Web Components</MwcDrawerTitle>
-            <MwcDrawerSubtitle>springtype</MwcDrawerSubtitle>
+            <MwcDrawerTitle>Material Design for SpringType</MwcDrawerTitle>
+            <MwcDrawerSubtitle>{process.env.ST_MATERIAL_VERSION}</MwcDrawerSubtitle>
           </MwcDrawerHeader>
           <MwcDrawerContent>
             <MwcList>{getDrawerListItems(this)}</MwcList>
           </MwcDrawerContent>
         </MwcDrawer>
-        <MwcDrawerAppContent>
-          <div class={drawerRootClasses}>
-            <MwcTopBar title="Material Design Components for springtype" variant={MwcTopBarVariant.STANDARD} fixed={this.drawerAndTopBarFixed}>
-              <template slot={MwcTopBar.SLOT_NAME_MENU_ICON_BUTTON}>
-                <button
-                  onClick={() => {
-                    if (this.drawer.isOpen) {
-                      this.drawer.close();
-                    } else {
-                      this.drawer.open();
-                    }
-                  }}
-                  class={fixedMenuButtonClass}
-                >
-                  menu
-                </button>
-              </template>
-              <template slot={MwcTopBar.SLOT_NAME_TRAILING_ICONS}>
-                {/*
-                                    <button class={fixedIconButtonsClass} aria-label="Download">file_download</button>
-                                    <button class={fixedIconButtonsClass} aria-label="Print this page">print</button>
-                                    <button class={fixedIconButtonsClass} aria-label="Bookmark this page">bookmark</button>
-                                        */}
-              </template>
-              <template slot={MwcTopBar.SLOT_NAME_TOP_BAR_BODY}>{ROUTES}</template>
-            </MwcTopBar>
-          </div>
+        <MwcDrawerAppContent fixed={this.drawerAndTopBarFixed}>
+          <div class="main-content" ref={{ appContent: this }}>{ROUTES}</div>
         </MwcDrawerAppContent>
       </MwcTypography>
     );
+  }
+
+  onAfterRender() {
+
+    this.topBar.mdcComponent.setScrollTarget(this.appContent);
+    this.topBar.mdcComponent.listen("MDCTopAppBar:nav", () => {
+      console.log("nav happened!");
+      this.drawer.toggle();
+    });
   }
 }

@@ -2,13 +2,10 @@ import { tsx } from "springtype/web/vdom";
 import { MwcCheckbox } from "./mwc-checkbox";
 
 export default (component: MwcCheckbox) => {
-    component.class = Array.isArray(component.class) ? component.class : [component.class];
     const classes = ["mdc-checkbox"];
     const rippleClass = [];
-
-    component.el.setAttribute('class', component.class.join(' '));
-
     const input = <input type="checkbox" class="mdc-checkbox__native-control" id={component.inputId}/>;
+
     if (component.ripple) {
         rippleClass.push('mdc-checkbox__ripple');
     }
@@ -37,8 +34,8 @@ export default (component: MwcCheckbox) => {
     }
 
     return (
-        <div id={component.formFieldId} class="mdc-form-field">
-            <div id={component.checkboxId} class={classes}>
+        <div id={component.formFieldId} ref={{ formFieldRef: component }} class="mdc-form-field">
+            <div id={component.checkboxId} ref={{ checkboxContainerRef: component }} class={classes}>
                 {input}
                 <div class="mdc-checkbox__background">
                     <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">

@@ -36,8 +36,8 @@ export class MwcTextField extends st.component implements ILifecycle {
     leadingIconSlot: any | false = false;
 
     onBeforeRender(): void {
-        this.trailingIconSlot = this.slotChildren[MwcTextField.SLOT_NAME_TRAILING_ICON];
-        this.leadingIconSlot = this.slotChildren[MwcTextField.SLOT_NAME_LEADING_ICON];
+        this.trailingIconSlot = this.virtualNode.slotChildren[MwcTextField.SLOT_NAME_TRAILING_ICON];
+        this.leadingIconSlot = this.virtualNode.slotChildren[MwcTextField.SLOT_NAME_LEADING_ICON];
     }
 }
 

@@ -1,20 +1,13 @@
 import { st } from "springtype/core";
-import {attr, component} from "springtype/web/component";
+import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { tsx } from "springtype/web/vdom";
-import {AttrType} from "springtype/web/component/trait/attr";
+import { AttrType } from "springtype/web/component/trait/attr";
 
 @component()
 export class MwcH4 extends st.component implements ILifecycle {
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string;
-
   render() {
-    return (
-      <h4  class={['mdc-typography--headline4', this.class]}>
-        {this.renderChildren()}
-      </h4>
-    );
+    return <h4 class={["mdc-typography--headline4", ...this.elClass]}>{this.renderChildren()}</h4>;
   }
 }
 

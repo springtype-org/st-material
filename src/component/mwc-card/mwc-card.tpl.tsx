@@ -4,12 +4,6 @@ import { MwcCard } from "./mwc-card";
 import {MwcButton} from "../mwc-button/mwc-button";
 
 export default (component: MwcCard) => {
-    component.class = Array.isArray(component.class) ? component.class : [component.class];
-    const classes = ["mdc-card", ...component.class];
-
-    component.el.setAttribute('class', classes.join(' '));
-
-
     return (
         <fragment>
             <div class="mdc-card__primary-action">

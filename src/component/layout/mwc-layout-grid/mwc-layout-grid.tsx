@@ -7,26 +7,20 @@ import { MwcLayoutGridInner } from "../mwc-layout-grid-inner/mwc-layout-grid-inn
 
 @component()
 export class MwcLayoutGrid extends st.component implements ILifecycle {
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   autoWrapInner: boolean = true;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   fixedColumnWidth: boolean = false;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   align: "middle" | "left" | "right";
 
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string | Array<string>;
-
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   innerClass: string | Array<string>;
 
-  render() {
-
-    this.class = Array.isArray(this.class) ? this.class : [this.class];
-
-    const classes = ["mdc-layout-grid", ...this.class];
+  onAfterElCreate() {
+    const classes = [...this.elClass];
 
     if (this.fixedColumnWidth) {
       classes.push("mdc-layout-grid--fixed-column-width");
@@ -35,17 +29,17 @@ export class MwcLayoutGrid extends st.component implements ILifecycle {
     if (this.align && this.align !== "middle") {
       classes.push(`mdc-layout-grid--align-${this.align}`);
     }
+    this.elClass = [...classes, "mdc-layout-grid"];
 
-    // top-level 
-    this.el.setAttribute('class', classes.join(' '));
-    this.el.style.display = 'block';
+    this.elStyle = {
+      ...this.elStyle,
+      display: "block",
+    };
+  }
 
+  render() {
     if (this.autoWrapInner) {
-      return (
-        <MwcLayoutGridInner class={this.innerClass}>
-            {this.renderChildren()}
-          </MwcLayoutGridInner>
-      );
+      return <MwcLayoutGridInner class={this.innerClass}>{this.renderChildren()}</MwcLayoutGridInner>;
     } else {
       return this.renderChildren();
     }

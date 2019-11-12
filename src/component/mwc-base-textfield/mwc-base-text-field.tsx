@@ -45,22 +45,27 @@ export class MwcBaseTextField extends st.component implements ILifecycle {
     @attr()
     fullwidth = false;
 
-    textFieldId = newUniqueComponentName();
-    inputId = newUniqueComponentName();
+    textFieldId: string;
+    inputId: string;
 
     textField: MDCTextField;
 
     trailingIconActive: boolean = false;
     leadingIconActive: boolean = false;
 
-    onAfterRender(): void {
-        const textFieldId = this.el.querySelector(`#${this.textFieldId}`);
-        this.textField = new MDCTextField(textFieldId);
+    onBeforeElCreate() {
+        this.textFieldId =  newUniqueComponentName();
+        this.inputId = newUniqueComponentName();
     }
 
     onBeforeRender(): void {
-        this.trailingIconActive = !!this.slotChildren[MwcBaseTextField.SLOT_NAME_TRAILING_ICON];
-        this.leadingIconActive = !!this.slotChildren[MwcBaseTextField.SLOT_NAME_LEADING_ICON];
+        this.trailingIconActive = !!this.virtualNode.slotChildren[MwcBaseTextField.SLOT_NAME_TRAILING_ICON];
+        this.leadingIconActive = !!this.virtualNode.slotChildren[MwcBaseTextField.SLOT_NAME_LEADING_ICON];
+    }
+
+    onAfterRender(): void {
+        const textFieldId = this.el.querySelector(`#${this.textFieldId}`);
+        this.textField = new MDCTextField(textFieldId);
     }
 }
 

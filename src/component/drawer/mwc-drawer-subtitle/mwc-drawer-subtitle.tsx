@@ -5,19 +5,16 @@ import { AttrType } from "springtype/web/component/trait/attr";
 
 @component()
 export class MwcDrawerSubtitle extends st.component implements ILifecycle {
+  onAfterElCreate() {
+    this.elStyle = {
+      ...this.elStyle,
+      display: "block",
+    };
 
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string | Array<string>;
+    this.elClass = [...this.elClass, "mdc-drawer__subtitle"];
+  }
 
   render() {
-
-    this.class = Array.isArray(this.class) ? this.class : [this.class];
-
-    const classes = ["mdc-drawer__subtitle", ...this.class];
-
-    this.el.setAttribute('class', classes.join(' '));
-    this.el.style.display = 'block';
-
     return this.renderChildren();
   }
 }

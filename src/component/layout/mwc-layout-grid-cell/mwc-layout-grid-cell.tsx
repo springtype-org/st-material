@@ -11,26 +11,20 @@ export interface IColumnPerDeviceType {
 
 @component()
 export class MwcLayoutGridCell extends st.component implements ILifecycle {
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   columns: number;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   align: "top" | "middle" | "bottom";
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   order: number;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   columnsPerDeviceType: IColumnPerDeviceType;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string | Array<string>;
-
-  render() {
-
-    this.class = Array.isArray(this.class) ? this.class : [this.class];
-    
-    const classes = ["mdc-layout-grid__cell", ...this.class];
+  onAfterElCreate() {
+    const classes = [...this.elClass];
 
     if (typeof this.columns !== "undefined") {
       classes.push(`mdc-layout-grid__cell--span-${this.columns}`);
@@ -49,11 +43,15 @@ export class MwcLayoutGridCell extends st.component implements ILifecycle {
     if (this.align) {
       classes.push(`mdc-layout-grid__cell--align-${this.align}`);
     }
+    this.elClass = [...classes, "mdc-layout-grid__cell"];
 
-    // top-level 
-    this.el.setAttribute('class', classes.join(' '));
-    this.el.style.display = 'block';
+    this.elStyle = {
+      ...this.elStyle,
+      display: "block",
+    };
+  }
 
+  render() {
     return this.renderChildren();
   }
 }

@@ -8,40 +8,30 @@ import { MwcListItemText } from "../mwc-list-item-text/mwc-list-item-text";
 
 @component()
 export class MwcListItem extends st.component implements ILifecycle {
-  @attr(AttrType.DOM_INTRANSPARENT)
-  tabIndex: number = 0;
-
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string | Array<string>;
-
-  @attr(AttrType.DOM_INTRANSPARENT)
+  
+  @attr()
   autoWrapText: boolean = true;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   textClass: string | Array<string>;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   autoWrapGraphic: boolean = false;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   graphicClass: string | Array<string>;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   selected: boolean = false;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   disabled: boolean = false;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   activated: boolean = false;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
-  'data-value': any;
-
-  render() {
-    this.class = Array.isArray(this.class) ? this.class : [this.class];
-
-    const classes = ["mdc-list-item", ...this.class];
+  onAfterElCreate() {
+    const classes = [...this.elClass];
 
     if (this.selected) {
       classes.push("mdc-list-item--selected");
@@ -54,14 +44,10 @@ export class MwcListItem extends st.component implements ILifecycle {
     if (this.disabled) {
       classes.push("mdc-list-item--disabled");
     }
+    this.elClass = [ "mdc-list-item", ...classes];
+  }
 
-    if(this['data-value'] !== undefined){
-      this.el.setAttribute("data-value", JSON.stringify(this['data-value']));
-    }
-
-    this.el.setAttribute("class", classes.join(" "));
-
-    this.el["tabindex"] = this.tabIndex;
+  render() {
 
     if (this.autoWrapText) {
       return <MwcListItemText class={this.textClass}>{this.renderChildren()}</MwcListItemText>;

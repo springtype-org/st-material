@@ -8,23 +8,15 @@ import tpl from "./mwc-card.tpl";
     tpl,
 })
 export class MwcCard extends st.component implements ILifecycle {
-    static SLOT_NAME_PRIMARY: string = "mwc-card-primary-slot";
-    static SLOT_NAME_ACTION: string = "mwc-card-action-slot";
+    static SLOT_NAME_PRIMARY: string = "primary-slot";
+    static SLOT_NAME_ACTION: string = "action-slot";
 
-
-    @attr(AttrType.DOM_INTRANSPARENT)
+    @attr()
     title: string = "";
 
-
-    @attr(AttrType.DOM_INTRANSPARENT)
-    class: string | Array<string>;
-
-
-    onAfterInitialRender(): void {
-
+    onAfterElCreate() {
+        this.elClass = [...this.elClass, "mdc-card"];
     }
-
-
 }
 
 declare global {

@@ -6,33 +6,31 @@ import { tsx } from "springtype/web/vdom";
 
 @component()
 export class MwcListDivider extends st.component implements ILifecycle {
-
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string | Array<string>;
-
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   padded: boolean = false;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   inset: boolean = false;
 
-  render() {
-
-    this.class = Array.isArray(this.class) ? this.class : [this.class];
-
-    const classes = ["mdc-list-divider", ...this.class];
+  onAfterElCreate() {
+    const classes = [...this.elClass];
 
     if (this.padded) {
-      classes.push("mdc-list-divider--padded")
+      classes.push("mdc-list-divider--padded");
     }
 
     if (this.inset) {
-      classes.push("mdc-list-divider--inset")
+      classes.push("mdc-list-divider--inset");
     }
+    this.elClass = [...classes, "mdc-list-divider"];
 
-    this.el.setAttribute("class", classes.join(" "));
-    this.el.style.display = 'block';
+    this.elStyle = {
+      ...this.elStyle,
+      display: "block",
+    };
+  }
 
+  render() {
     return <fragment />;
   }
 }

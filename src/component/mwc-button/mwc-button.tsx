@@ -31,9 +31,13 @@ export class MwcButton extends st.component implements ILifecycle {
     @attr()
     shaped = false;
 
-    buttonId = newUniqueComponentName();
+    buttonId: string;
 
     mdcRipple: MDCRipple;
+
+    onBeforeElCreate() {
+        this.buttonId = newUniqueComponentName();
+    }
 
     onAfterRender(): void {
         const buttonEl = this.el.querySelector(`#${this.buttonId}`);

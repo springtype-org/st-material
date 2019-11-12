@@ -7,24 +7,19 @@ import { tsx } from "springtype/web/vdom";
 
 @component()
 export class MwcSnackbar extends st.component implements ILifecycle {
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string | Array<string>;
-
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   label: string;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   leading: boolean;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   stacked: boolean;
 
-  mdcComponent: MDCSnackbar;
+  mdcSnackbar: MDCSnackbar;
 
-  render() {
-    this.class = Array.isArray(this.class) ? this.class : [this.class];
-
-    const classes = ["mdc-snackbar", ...this.class];
+  onAfterElCreate() {
+    const classes = [...this.elClass, "mdc-snackbar"];
 
     if (this.leading) {
       classes.push("mdc-snackbar--leading");
@@ -33,9 +28,10 @@ export class MwcSnackbar extends st.component implements ILifecycle {
     if (this.stacked) {
       classes.push("mdc-snackbar--stacked");
     }
+    this.elClass = classes;
+  }
 
-    this.el.setAttribute("class", classes.join(" "));
-
+  render() {
     return (
       <div class="mdc-snackbar__surface">
         <div class="mdc-snackbar__label" role="status" aria-live="polite">
@@ -47,15 +43,19 @@ export class MwcSnackbar extends st.component implements ILifecycle {
   }
 
   onAfterRender() {
-    this.mdcComponent = new MDCSnackbar(this.el);
+    this.mdcSnackbar = new MDCSnackbar(this.el);
   }
 
   open() {
-    this.mdcComponent.open();
+    this.mdcSnackbar.open();
   }
 
   close() {
-    this.mdcComponent.close();
+    this.mdcSnackbar.close();
+  }
+
+  onDisconnect() {
+    this.mdcSnackbar.destroy();
   }
 }
 

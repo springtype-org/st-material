@@ -21,10 +21,10 @@ export class  MwcTabBar extends st.component implements ILifecycle {
   onStClick: IEventListener<TabActivateDetail, Event> = evt;
   
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   focusOnActivate: boolean = true;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   useAutomaticActivation: boolean = true;
 
   protected mdcComponent: MDCTabBar;

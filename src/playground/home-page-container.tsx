@@ -5,24 +5,19 @@ import * as homePageContainer from "./home-page-container.tss.scss";
 
 @component()
 export class HomePageContainer extends st.component {
-    @attr(AttrType.DOM_INTRANSPARENT)
-    class: string | Array<string>;
+  onAfterElCreate() {
+    this.elClass = [...this.elClass, "home-page-container", homePageContainer.homePageContainer];
+  }
 
-    render() {
-        this.class = Array.isArray(this.class) ? this.class : [this.class];
-
-        const classes = ['home-page-container', homePageContainer.homePageContainer, ...this.class];
-
-        this.el.setAttribute("class", classes.join(" "));
-
-        return this.renderChildren();
-    }
+  render() {
+    return this.renderChildren();
+  }
 }
 
 declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            HomePageContainer: Partial<HomePageContainer>;
-        }
+  namespace JSX {
+    interface IntrinsicElements {
+      HomePageContainer: Partial<HomePageContainer>;
     }
+  }
 }

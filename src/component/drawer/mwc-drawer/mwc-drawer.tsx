@@ -3,41 +3,32 @@ import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { AttrType } from "springtype/web/component/trait/attr";
-import * as mwcDrawer from "./mwc-drawer.tss.scss";
+
 @component()
 export class MwcDrawer extends st.component implements ILifecycle {
-  @attr(AttrType.DOM_INTRANSPARENT)
+
+  @attr()
   variant: "modal" | "dismissible" = "dismissible";
 
-  @attr(AttrType.DOM_INTRANSPARENT)
+  @attr()
   fixed: boolean = false;
 
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string | Array<string>;
+  mdcDrawer!: MDCDrawer;
 
-  protected mdcDrawerFoundation!: MDCDismissibleDrawerFoundation;
-  protected mdcDrawer!: MDCDrawer;
-
-  isOpen: boolean = false;
+  toggle() {
+    this.mdcDrawer.open = !this.mdcDrawer.open;
+  }
 
   open() {
-    this.mdcDrawerFoundation.open();
-    this.isOpen = true;
-    this.updateClases();
+    this.mdcDrawer.open = true;
   }
 
   close() {
-    this.mdcDrawerFoundation.close();
-    this.isOpen = false;
-    this.updateClases();
+    this.mdcDrawer.open = false;
   }
 
-  onBeforeConnect() {
-    this.class = Array.isArray(this.class) ? this.class : [this.class];
-  }
-
-  updateClases() {
-    const classes = ["mdc-drawer", ...this.class];
+  onAfterElCreate() {
+    const classes = ["mdc-drawer", ...this.elClass];
 
     if (this.variant === "dismissible") {
       classes.push("mdc-drawer--dismissible");
@@ -45,29 +36,22 @@ export class MwcDrawer extends st.component implements ILifecycle {
       classes.push("mdc-drawer--modal");
     }
 
-    if (this.isOpen) {
-      classes.push("mdc-drawer--open");
-      classes.push("mdc-drawer--animate");
-      classes.push("mdc-drawer--opening");
-    } else {
-      classes.push("mdc-drawer--animate");
-      classes.push("mdc-drawer--closing");
-    }
-
     if (this.fixed) {
-      classes.push("mwc-drawer--fixed", mwcDrawer.mwcDrawerFixed);
+      classes.push("mwc-drawer--fixed");
     }
-    this.el.setAttribute("class", classes.join(" "));
+    this.elClass = classes;
   }
 
   render() {
-    this.updateClases();
     return this.renderChildren();
   }
 
-  onAfterInitialRender(): void {
+  onAfterRender(): void {
     this.mdcDrawer = MDCDrawer.attachTo(this.el);
-    this.mdcDrawerFoundation = this.mdcDrawer.getDefaultFoundation();
+  }
+
+  onDisconnect() {
+    this.mdcDrawer.destroy();
   }
 }
 

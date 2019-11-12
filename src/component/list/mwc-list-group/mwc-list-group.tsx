@@ -8,19 +8,18 @@ import { tsx } from "springtype/web/vdom";
 export class MwcListGroup extends st.component implements ILifecycle {
   static SLOT_NAME_HEADER: string = "header";
 
-  @attr(AttrType.DOM_INTRANSPARENT)
-  class: string | Array<string>;
-  
+  onAfterElCreate() {
+    this.elClass = [...this.elClass, "mdc-list-group"];
+
+    this.elStyle = {
+      ...this.elStyle,
+      display: "block",
+    };
+  }
+
   render() {
-
-    this.class = Array.isArray(this.class) ? this.class : [this.class];
-    
-    const classes = ["mdc-list-group", ...this.class];
-
-    this.el.setAttribute("class", classes.join(" "));
-
-    if (this.slotChildren.header) {
-      return [<div class="mdc-list-group__subheader">{this.renderSlot('header')}</div>, this.renderChildren()];
+    if (this.virtualNode.slotChildren[MwcListGroup.SLOT_NAME_HEADER]) {
+      return [<div class="mdc-list-group__subheader">{this.renderSlot(MwcListGroup.SLOT_NAME_HEADER)}</div>, this.renderChildren()];
     } else {
       return this.renderChildren();
     }

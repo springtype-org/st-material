@@ -1,5 +1,7 @@
 module.exports = {
+    entryPoint: 'src/playground.tsx',
+    indexHTMLTemplate: 'playground.html',
     staticStyleEntryPoints: {
-        'src/mdc.scss': 'dist/mdc.css'
+        'src/playground.scss': 'dist/playground.css'
     },
 };
