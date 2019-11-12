@@ -24,6 +24,7 @@ export interface SelectChangeEvent extends IEvent<IChangeEvent> {
 })
 export class MwcSelect extends st.component implements ILifecycle {
     static SLOT_NAME_LIST_ITEMS: string = "mwc-select-items-slot";
+
     @evt
     onStChange: IEventListener<SelectChangeEvent, Event> = evt;
 
@@ -46,7 +47,6 @@ export class MwcSelect extends st.component implements ILifecycle {
     class: string | Array<string>;
 
     selectId = newUniqueComponentName();
-    inputId = newUniqueComponentName();
 
     mdcSelect: MDCSelect;
     mdcRipple: MDCRipple;
@@ -58,7 +58,7 @@ export class MwcSelect extends st.component implements ILifecycle {
 
         //@ts-ignore
         this.mdcSelect.listen('MDCSelect:change', ((evt) => {
-            emit<SelectedData>(this.el, "select-changed", {
+            emit<SelectedData>(this.el, "mwc-select-changed", {
                 bubbles: true,
                 cancelable: true,
                 composed: true,

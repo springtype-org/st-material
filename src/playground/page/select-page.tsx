@@ -15,10 +15,23 @@ export class SelectPage extends st.component {
             <div>
                 <div>
                     <MwcH6>Select</MwcH6>
-                    <MwcSelect label="Please select">
+
+                    <MwcSelect label="Please select" onStChange={(evt)=> console.log(evt) }>
                         <template slot={MwcSelect.SLOT_NAME_LIST_ITEMS}>
                             <MwcListItem autoWrapText={true} data-value={{level: 'noob'}}>
                                 Noob
+                            </MwcListItem>
+                            <MwcListItem autoWrapText={true} data-value={{level: 'beginner'}}>
+                                Beginner
+                            </MwcListItem>
+                            <MwcListItem autoWrapText={true} data-value={{level: 'normal'}}>
+                                Normal
+                            </MwcListItem>
+                            <MwcListItem autoWrapText={true} data-value={{level: 'advanced'}}>
+                                Advanced
+                            </MwcListItem>
+                            <MwcListItem autoWrapText={true} data-value={{level: 'expert'}}>
+                                Expert
                             </MwcListItem>
                         </template>
                     </MwcSelect>
@@ -26,6 +39,4 @@ export class SelectPage extends st.component {
             </div>
         );
     }
-
-
 }
