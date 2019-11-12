@@ -15,7 +15,7 @@ export class MwcListItem extends st.component implements ILifecycle {
   class: string | Array<string>;
 
   @attr(AttrType.DOM_INTRANSPARENT)
-  autoWrapText: boolean = true;
+  autoWrapText: boolean = false;
 
   @attr(AttrType.DOM_INTRANSPARENT)
   textClass: string | Array<string>;
@@ -61,14 +61,17 @@ export class MwcListItem extends st.component implements ILifecycle {
 
     this.el.setAttribute("class", classes.join(" "));
     this.el["tabindex"] = this.tabIndex;
+    console.log('this',this);
+    console.log('autoWrapText',this.autoWrapText);
+    console.log('autoWrapGraphic',this.autoWrapGraphic);
 
     if (this.autoWrapText) {
       return <MwcListItemText class={this.textClass}>{this.renderChildren()}</MwcListItemText>;
     }
-
     if (this.autoWrapGraphic) {
       return <MwcListItemGraphic class={this.graphicClass}>{this.renderChildren()}</MwcListItemGraphic>;
     }
+    console.log('result',this.renderChildren());
     return this.renderChildren();
   }
 }
