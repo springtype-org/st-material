@@ -1,13 +1,17 @@
 import { st } from "springtype/core";
-import { component } from "springtype/web/component";
+import {attr, component} from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { tsx } from "springtype/web/vdom";
+import {AttrType} from "springtype/web/component/trait/attr";
 
 @component()
 export class MwcOverlineText extends st.component implements ILifecycle {
+  @attr(AttrType.DOM_INTRANSPARENT)
+  class: string;
+
   render() {
     return (
-      <p class="mdc-typography--overline">
+      <p  class={['mdc-typography--overline', this.class]}>
         {this.renderChildren()}
       </p>
     );
