@@ -53,7 +53,9 @@ export class MwcDialog extends st.component implements ILifecycle {
   }
 
   open() {
+    try {
     this.mdcComponent.open();
+  } catch(e) {}
   }
 
   close() {
