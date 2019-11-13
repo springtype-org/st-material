@@ -3,10 +3,14 @@ import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { AttrType } from "springtype/web/component/trait/attr";
-import { tsx } from "springtype/web/vdom";
+import {domRef, tsx} from "springtype/web/vdom";
 
 @component()
 export class MwcTab extends st.component implements ILifecycle {
+  @domRef("tabRef")
+  tabRef: HTMLElement;
+
+
   @attr()
   ripple: boolean = true;
 
@@ -51,7 +55,7 @@ export class MwcTab extends st.component implements ILifecycle {
       elements.push(<span class="mdc-tab__ripple" />);
     }
 
-    return elements;
+    return <div ref={{tabRef: this}} class={classes}>{elements}</div>;
   }
 
   private getIndicator() {
@@ -68,7 +72,7 @@ export class MwcTab extends st.component implements ILifecycle {
   }
 
   onAfterRender(): void {
-    this.mdcTab = new MDCTab(this.el);
+    this.mdcTab = new MDCTab(this.tabRef);
   }
 
   onDisconnect() {
