@@ -4,7 +4,7 @@ import { attr, component, emit, evt } from "springtype/web/component";
 import { IEvent, IEventListener } from "springtype/web/component/interface";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { AttrType } from "springtype/web/component/trait/attr";
-import { tsx } from "springtype/web/vdom";
+import {domRef, tsx} from "springtype/web/vdom";
 
 export interface TabActivateDetail { index: number };
 
@@ -16,6 +16,9 @@ export interface TabActivateEvent extends IEvent<TabActivateDetail> {}
 
 @component()
 export class  MwcTabBar extends st.component implements ILifecycle {
+
+  @domRef("tabBarRef")
+  tabBarRef: HTMLElement;
 
   @evt
   onStClick: IEventListener<TabActivateDetail, Event> = evt;
@@ -36,7 +39,7 @@ export class  MwcTabBar extends st.component implements ILifecycle {
     this.el.style.display = "block";
 
     return (
-        <div class={classes} role="tablist" >
+        <div class={classes} ref={{tabBarRef: this}} role="tablist" >
       <div class="mdc-tab-scroller">
         <div class="mdc-tab-scroller__scroll-area">
           <div class="mdc-tab-scroller__scroll-content">{this.renderChildren()}</div>
@@ -47,7 +50,7 @@ export class  MwcTabBar extends st.component implements ILifecycle {
   }
   onAfterInitialRender(): void {
     //@ts-ignore
-    this.mdcComponent = new MDCTabBar(this.el);
+    this.mdcComponent = new MDCTabBar(this.tabBarRef);
 
     //@ts-ignore
     this.mdcComponent.listen("MDCTabBar:activated", ((evt: IActivateEvent) => {

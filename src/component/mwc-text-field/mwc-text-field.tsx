@@ -1,8 +1,11 @@
-import { st } from "springtype/core";
-import { attr, component } from "springtype/web/component";
-import { ILifecycle } from "springtype/web/component/interface";
-import { MwcTextFieldVariant } from "./mwc-text-field-variant";
+import {st} from "springtype/core";
+import {attr, component} from "springtype/web/component";
+import {ILifecycle} from "springtype/web/component/interface";
+import {MwcTextFieldVariant} from "./mwc-text-field-variant";
 import tpl from "./mwc-text-field.tpl";
+import {domRef} from "springtype/web/vdom";
+import {MwcBaseTextField} from "../mwc-base-textfield";
+import {INPUT_PROPERTIES} from "../mwc-base-textfield/mwc-base-text-field";
 
 
 @component({
@@ -11,6 +14,9 @@ import tpl from "./mwc-text-field.tpl";
 export class MwcTextField extends st.component implements ILifecycle {
     static SLOT_NAME_TRAILING_ICON: string = "trailing-icon";
     static SLOT_NAME_LEADING_ICON: string = "leading-icon";
+    @domRef('mwcBaseTextFieldRef')
+    mwcBaseTextFieldRef!: MwcBaseTextField;
+
     @attr()
     name: string = '';
 
@@ -41,6 +47,13 @@ export class MwcTextField extends st.component implements ILifecycle {
     onBeforeRender(): void {
         this.trailingIconSlot = this.virtualNode.slotChildren[MwcTextField.SLOT_NAME_TRAILING_ICON];
         this.leadingIconSlot = this.virtualNode.slotChildren[MwcTextField.SLOT_NAME_LEADING_ICON];
+    }
+
+    getAttribute(name: string): any {
+        if(this.mwcBaseTextFieldRef && INPUT_PROPERTIES.indexOf(name) >0){
+            return this.mwcBaseTextFieldRef.getAttribute(name);
+        }
+        return super.getAttribute(name);
     }
 }
 

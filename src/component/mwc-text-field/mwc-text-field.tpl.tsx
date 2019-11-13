@@ -1,6 +1,6 @@
 import {MwcTextField} from "./mwc-text-field";
 import {tsx} from 'springtype/web/vdom';
-import {MwcBaseTextField} from "../mwc-base-textfield/mwc-base-text-field";
+import {MwcBaseTextField} from "../mwc-base-textfield";
 import {MwcBaseTextFieldVariant} from "../mwc-base-textfield/mwc-base-text-field-variant";
 import {MwcTextFieldVariant} from "./mwc-text-field-variant";
 
@@ -32,10 +32,9 @@ export default (component: MwcTextField) => {
             break;
     }
 
-    console.log('text type', component.type);
-
-    return <MwcBaseTextField type={component.type} name={component.name} label={component.label} variant={variant}
-                             ripple={component.ripple} disabled={component.disabled} value={component.value}
+    return <MwcBaseTextField ref={{mwcBaseTextFieldRef: component}} type={component.type} name={component.name}
+                             label={component.label} variant={variant} ripple={component.ripple}
+                             disabled={component.disabled} value={component.value}
                              shaped={component.shaped} fullwidth={fullwidth}>
         {leadingIconSlotChildren}
         {trailingIconSlotChildren}

@@ -1,16 +1,19 @@
 import {st} from "springtype/core";
 import {attr, component} from "springtype/web/component";
 import {ILifecycle} from "springtype/web/component/interface";
-import {tsx} from "springtype/web/vdom";
+import {domRef, tsx} from "springtype/web/vdom";
 import tpl from "./mwc-text-area.tpl";
 import {MwcBaseTextFieldVariant} from "../mwc-base-textfield/mwc-base-text-field-variant";
+import {MwcBaseTextField} from "../mwc-base-textfield";
+import {INPUT_PROPERTIES} from "../mwc-base-textfield/mwc-base-text-field";
 
 @component({
     tpl
 })
 export class MwcTextArea extends st.component implements ILifecycle {
-    static SLOT_NAME_TRAILING_ICON: string = "trailing-icon";
-    static SLOT_NAME_LEADING_ICON: string = "leading-icon";
+    @domRef('mwcBaseTextFieldRef')
+    mwcBaseTextFieldRef!: MwcBaseTextField;
+
     @attr()
     name: string = '';
 
@@ -34,6 +37,13 @@ export class MwcTextArea extends st.component implements ILifecycle {
 
     @attr()
     fullwidth = false;
+
+    getAttribute(name: string): any {
+        if(this.mwcBaseTextFieldRef && INPUT_PROPERTIES.indexOf(name) >0){
+            return this.mwcBaseTextFieldRef.getAttribute(name);
+        }
+        return super.getAttribute(name);
+    }
 }
 
 declare global {

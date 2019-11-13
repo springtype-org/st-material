@@ -1,20 +1,24 @@
-import { st } from "springtype/core";
-import { component } from "springtype/web/component";
-import { tsx } from "springtype/web/vdom";
-import { MwcTextField } from "../../component/mwc-text-field/mwc-text-field";
-import { MwcTextFieldVariant } from "../../component/mwc-text-field/mwc-text-field-variant";
-import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
+import {st} from "springtype/core";
+import {component} from "springtype/web/component";
+import {domRef, tsx} from "springtype/web/vdom";
+import {MwcTextField} from "../../component/mwc-text-field/mwc-text-field";
+import {MwcTextFieldVariant} from "../../component/mwc-text-field/mwc-text-field-variant";
+import {MwcH6} from "../../component/typography/mwc-h6/mwc-h6";
 
 @component()
 export class TextFieldPage extends st.component {
     static ROUTE = "#/text-field-page";
+    @domRef("textField")
+    textField!: MwcTextField;
 
     render() {
         return (
             <div>
                 <div>
                     <MwcH6>TextField Filled</MwcH6>
-                    <MwcTextField label="filled" shaped={false} variant={MwcTextFieldVariant.FILLED}/>
+                    <MwcTextField ref={{textField: this}} onClick={() => {
+                        console.log(this.textField.value)
+                    }} label="filled" shaped={false} variant={MwcTextFieldVariant.FILLED} value={"test"}/>
                 </div>
                 <div>
                     <MwcH6>TextField Password Filled</MwcH6>

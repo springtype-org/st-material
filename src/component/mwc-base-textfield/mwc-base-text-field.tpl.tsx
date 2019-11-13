@@ -30,13 +30,12 @@ export default (component: MwcBaseTextField) => {
         classesFixed.push("mdc-text-field--fullwidth");
     }
 
-    console.log('base type', component.type);
-
     const inputElement = component.textarea
-        ? (<textarea id={component.inputId} class="mdc-text-field__input" name={component.name} value={component.value}
-                     //@ts-ignore
-                     rows={component.textareaRows} cols={component.textareaCols}/>)
-        : (<input id={component.inputId} type={component.type} class="mdc-text-field__input" name={component.name} value={component.value}/>);
+        ? (<textarea id={component.inputId} ref={{inputRef: component}} class="mdc-text-field__input"
+                     name={component.name} value={component.value} rows={component.textareaRows}
+                     cols={component.textareaCols}/>)
+        : (<input id={component.inputId} ref={{inputRef: component}} type={component.type} class="mdc-text-field__input"
+                  name={component.name} value={component.value}/>);
 
     if (component.textarea) {
         classesFixed.push("mwc-text-field--textarea");
