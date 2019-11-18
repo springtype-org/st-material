@@ -1,33 +1,31 @@
 import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { AttrType } from "springtype/web/component/trait/attr";
 import { tsx } from "springtype/web/vdom";
 import { MwcListItemGraphic } from "../mwc-list-item-graphic/mwc-list-item-graphic";
 import { MwcListItemText } from "../mwc-list-item-text/mwc-list-item-text";
 
-@component()
+@component
 export class MwcListItem extends st.component implements ILifecycle {
-  
-  @attr()
+  @attr
   autoWrapText: boolean = true;
 
-  @attr()
+  @attr
   textClass: string | Array<string>;
 
-  @attr()
+  @attr
   autoWrapGraphic: boolean = false;
 
-  @attr()
+  @attr
   graphicClass: string | Array<string>;
 
-  @attr()
+  @attr
   selected: boolean = false;
 
-  @attr()
+  @attr
   disabled: boolean = false;
 
-  @attr()
+  @attr
   activated: boolean = false;
 
   onAfterElCreate() {
@@ -44,11 +42,10 @@ export class MwcListItem extends st.component implements ILifecycle {
     if (this.disabled) {
       classes.push("mdc-list-item--disabled");
     }
-    this.elClass = [ "mdc-list-item", ...classes];
+    this.elClass = ["mdc-list-item", ...classes];
   }
 
   render() {
-
     if (this.autoWrapText) {
       return <MwcListItemText class={this.textClass}>{this.renderChildren()}</MwcListItemText>;
     }

@@ -5,21 +5,21 @@ import { MwcTabBar } from "../../component/tabs/mwc-tab-bar/mwc-tab-bar";
 import { MwcTab } from "../../component/tabs/mwc-tab/mwc-tab";
 import { MwcSubtitle1 } from "../../component/typography/mwc-subtitle1/mwc-subtitle1";
 
-@component()
+@component
 export class TabBarPage extends st.component {
-    static ROUTE = "#/tabbar-page";
+  static ROUTE = "#/tabbar-page";
 
-    render() {
-        return (
-            <div>
-                <MwcSubtitle1>Tabs</MwcSubtitle1>
+  render() {
+    return (
+      <div>
+        <MwcSubtitle1>Tabs</MwcSubtitle1>
 
-                <MwcTabBar>
-                    <MwcTab icon="star" label="Aron"></MwcTab>
-                    <MwcTab icon="star" label="Michi"></MwcTab>
-                    <MwcTab icon="star" label="René"></MwcTab>
-                </MwcTabBar>
-            </div>
-        );
-    }
+        <MwcTabBar>
+          <MwcTab icon="star" label="Aron"></MwcTab>
+          <MwcTab icon="star" label="Michi"></MwcTab>
+          <MwcTab icon="star" label="René"></MwcTab>
+        </MwcTabBar>
+      </div>
+    );
+  }
 }

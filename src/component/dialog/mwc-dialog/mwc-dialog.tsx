@@ -2,23 +2,24 @@ import { MDCDialog } from "@material/dialog";
 import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface";
-import { AttrType } from "springtype/web/component/trait/attr";
 import { tsx } from "springtype/web/vdom";
-import { IVirtualNode, IElement } from "springtype/web/vdom/interface";
 
-@component()
-export class MwcDialog extends st.component implements ILifecycle {
+export interface MwcDialogAttrs {
+  title?: string;
+}
 
+@component
+export class MwcDialog extends st.component<MwcDialogAttrs> implements ILifecycle, MwcDialogAttrs {
   static SLOT_NAME_CONTENT = "content";
   static SLOT_NAME_BUTTONS = "buttons";
 
-  @attr()
+  @attr
   title: string;
 
   mdcComponent: MDCDialog;
 
   onAfterElCreate() {
-    this.elClass = ['mdc-dialog', ...this.elClass as Array<string>];
+    this.elClass = ["mdc-dialog", ...(this.elClass as Array<string>)];
   }
 
   render() {
@@ -30,15 +31,11 @@ export class MwcDialog extends st.component implements ILifecycle {
 
     surfaceElements.push(
       <div class="mdc-dialog__content" id="my-dialog-content">
-      {this.renderSlot(MwcDialog.SLOT_NAME_CONTENT)}
+        {this.renderSlot(MwcDialog.SLOT_NAME_CONTENT)}
       </div>,
     );
 
-    surfaceElements.push(
-      <footer class="mdc-dialog__actions">
-        {this.renderSlot(MwcDialog.SLOT_NAME_BUTTONS)}
-      </footer>,
-    );
+    surfaceElements.push(<footer class="mdc-dialog__actions">{this.renderSlot(MwcDialog.SLOT_NAME_BUTTONS)}</footer>);
 
     return [
       <div class="mdc-dialog__container">
@@ -54,8 +51,8 @@ export class MwcDialog extends st.component implements ILifecycle {
 
   open() {
     try {
-    this.mdcComponent.open();
-  } catch(e) {}
+      this.mdcComponent.open();
+    } catch (e) {}
   }
 
   close() {
@@ -64,13 +61,5 @@ export class MwcDialog extends st.component implements ILifecycle {
 
   onDisconnect() {
     this.mdcComponent.destroy();
-  }
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      MwcDialog: Partial<MwcDialog>;
-    }
   }
 }

@@ -5,15 +5,15 @@ import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { AttrType } from "springtype/web/component/trait/attr";
 import { tsx } from "springtype/web/vdom";
 
-@component()
+@component
 export class MwcSnackbar extends st.component implements ILifecycle {
-  @attr()
+  @attr
   label: string;
 
-  @attr()
+  @attr
   leading: boolean;
 
-  @attr()
+  @attr
   stacked: boolean;
 
   mdcSnackbar: MDCSnackbar;

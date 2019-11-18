@@ -2,39 +2,38 @@ import { MDCFormField } from "@material/form-field";
 import { MDCRadio } from "@material/radio";
 import { MDCRipple } from "@material/ripple";
 import { st } from "springtype/core";
+import { ref } from "springtype/core/ref";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { AttrType } from "springtype/web/component/trait/attr";
-import { domRef, newUniqueComponentName } from "springtype/web/vdom";
+import { newUniqueComponentName } from "springtype/web/vdom";
 import tpl from "./mwc-radio-field.tpl";
 
 @component({
   tpl,
 })
 export class MwcRadioField extends st.component implements ILifecycle {
- 
-  @domRef("radio")
+  @ref
   radio: HTMLElement;
 
-  @domRef("formField")
+  @ref
   formField: HTMLElement;
 
-  @attr()
+  @attr
   name: string = "";
 
-  @attr()
+  @attr
   label: string = "";
 
-  @attr()
+  @attr
   ripple: boolean = true;
 
-  @attr()
+  @attr
   disabled: boolean = false;
 
-  @attr()
+  @attr
   checked: boolean = false;
 
-  @attr()
+  @attr
   value: string = "";
 
   radioId = newUniqueComponentName();

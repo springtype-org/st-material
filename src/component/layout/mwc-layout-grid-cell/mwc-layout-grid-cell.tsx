@@ -1,7 +1,6 @@
 import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { AttrType } from "springtype/web/component/trait/attr";
 
 export interface IColumnPerDeviceType {
   desktop: number;
@@ -9,18 +8,18 @@ export interface IColumnPerDeviceType {
   phone: number;
 }
 
-@component()
+@component
 export class MwcLayoutGridCell extends st.component implements ILifecycle {
-  @attr()
+  @attr
   columns: number;
 
-  @attr()
+  @attr
   align: "top" | "middle" | "bottom";
 
-  @attr()
+  @attr
   order: number;
 
-  @attr()
+  @attr
   columnsPerDeviceType: IColumnPerDeviceType;
 
   onAfterElCreate() {

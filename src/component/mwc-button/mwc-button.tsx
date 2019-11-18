@@ -2,58 +2,64 @@ import { MDCRipple } from "@material/ripple";
 import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface";
-import { newUniqueComponentName } from "springtype/web/vdom";
-import {DEFAULT_MWC_BUTTON_VARIANT, MwcButtonVariant} from "./mwc-button-variant-type";
 import tpl from "./mwc-button.tpl";
+import { ref } from "springtype/core/ref";
+import { IVirtualNode } from "springtype/web/vdom/interface";
+import { IComponentLifecycle } from "springtype/web/component/interface/ilifecycle";
+import { IOnStateChange } from "springtype/web/component/interface/ion-state-change";
+
+export type MwcButtonVariant = "text" | "raised" | "unelevated" | "outlined";
+
+interface MwcButtonAttrs {
+  label?: string;
+  ripple?: boolean;
+  variant?: MwcButtonVariant;
+  disabled?: boolean;
+  dense?: boolean;
+  shaped?: boolean;
+}
 
 @component({
-    tpl
+  tpl,
 })
-export class MwcButton extends st.component implements ILifecycle {
-    static SLOT_NAME_TRAILING_ICON: string = "trailing-icon";
-    static SLOT_NAME_LEADING_ICON: string = "leading-icon";
+export class MwcButton extends st.component<MwcButtonAttrs> implements ILifecycle, MwcButtonAttrs {
+  static SLOT_NAME_TRAILING_ICON: string = "trailing-icon";
+  static SLOT_NAME_LEADING_ICON: string = "leading-icon";
 
-    @attr()
-    label: string = "";
+  @ref
+  btnEl: HTMLElement;
 
-    @attr()
-    ripple: boolean = true;
+  @attr
+  label: string = "";
 
-    @attr()
-    variant: MwcButtonVariant = DEFAULT_MWC_BUTTON_VARIANT;
+  @attr
+  ripple: boolean = true;
 
-    @attr()
-    disabled: boolean = false;
+  @attr
+  variant: MwcButtonVariant = "text";
 
-    @attr()
-    dense: boolean = false;
+  @attr
+  disabled: boolean = false;
 
-    @attr()
-    shaped = false;
+  @attr
+  dense: boolean = false;
 
-    buttonId: string;
+  @attr
+  shaped = false;
 
-    mdcRipple: MDCRipple;
+  buttonId: string;
 
-    onBeforeElCreate() {
-        this.buttonId = newUniqueComponentName();
+  mdcRipple: MDCRipple;
+
+  onAfterRender(): void {
+    if (this.ripple) {
+      this.mdcRipple = new MDCRipple(this.btnEl);
     }
+  }
 
-    onAfterRender(): void {
-        const buttonEl = this.el.querySelector(`#${this.buttonId}`);
-
-        if (this.ripple) {
-            this.mdcRipple = new MDCRipple(buttonEl);
-        }
+  onDisconnect() {
+    if (this.ripple) {
+      this.mdcRipple.destroy();
     }
+  }
 }
-
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            'MwcButton': Partial<MwcButton>;
-        }
-    }
-}
-
-

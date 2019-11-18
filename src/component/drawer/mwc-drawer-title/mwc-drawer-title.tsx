@@ -1,9 +1,8 @@
 import { st } from "springtype/core";
-import { attr, component } from "springtype/web/component";
+import { component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { AttrType } from "springtype/web/component/trait/attr";
 
-@component()
+@component
 export class MwcDrawerTitle extends st.component implements ILifecycle {
   onAfterElCreate() {
     this.elStyle = {
@@ -16,13 +15,5 @@ export class MwcDrawerTitle extends st.component implements ILifecycle {
 
   render() {
     return this.renderChildren();
-  }
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      MwcDrawerTitle: Partial<MwcDrawerTitle>;
-    }
   }
 }

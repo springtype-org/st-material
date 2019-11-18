@@ -1,15 +1,14 @@
 import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { AttrType } from "springtype/web/component/trait/attr";
 import { tsx } from "springtype/web/vdom";
 
-@component()
+@component
 export class MwcListDivider extends st.component implements ILifecycle {
-  @attr()
+  @attr
   padded: boolean = false;
 
-  @attr()
+  @attr
   inset: boolean = false;
 
   onAfterElCreate() {

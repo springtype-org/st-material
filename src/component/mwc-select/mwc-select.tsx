@@ -1,8 +1,8 @@
 import { st } from "springtype/core";
-import { attr, component, emit, evt } from "springtype/web/component";
+import { ref } from "springtype/core/ref";
+import { attr, component, event } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { AttrType } from "springtype/web/component/trait/attr";
-import { newUniqueComponentName, domRef } from "springtype/web/vdom";
+import { newUniqueComponentName } from "springtype/web/vdom";
 import tpl from "./mwc-select.tpl";
 import { MDCSelect } from "@material/select/component";
 import { MDCRipple } from "@material/ripple";
@@ -23,25 +23,25 @@ export interface MwcSelectEvent extends IEvent<ISelectEventDetails> {}
 export class MwcSelect extends st.component implements ILifecycle {
   static SLOT_NAME_LIST_ITEMS: string = "mwc-select-items-slot";
 
-  @domRef("selectContainer")
+  @ref
   selectContainer: HTMLElement;
 
-  @evt
-  onSelect: IEventListener<MwcSelectEvent, Event> = evt;
+  @event
+  onSelect: IEventListener<MwcSelectEvent, Event> = event;
 
-  @attr()
+  @attr
   name: string = "";
 
-  @attr()
+  @attr
   label: string = "";
 
-  @attr()
+  @attr
   ripple: boolean = true;
 
-  @attr()
+  @attr
   disabled: boolean = false;
 
-  @attr()
+  @attr
   value: string = "";
 
   selectId: string;
@@ -54,11 +54,10 @@ export class MwcSelect extends st.component implements ILifecycle {
   }
 
   onAfterRender(): void {
-
     this.mdcSelect = new MDCSelect(this.selectContainer);
 
     this.mdcSelect.listen("MDCSelect:change", ((evt: any) => {
-      emit<ISelectEventDetails>(this.el, "select", {
+      st.event<ISelectEventDetails>(this.el, "select", {
         bubbles: true,
         cancelable: true,
         composed: true,

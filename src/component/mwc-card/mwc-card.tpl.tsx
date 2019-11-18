@@ -1,7 +1,5 @@
 import { tsx } from "springtype/web/vdom";
-import { MwcList } from "../list/mwc-list/mwc-list";
 import { MwcCard } from "./mwc-card";
-import { MwcButton } from "../mwc-button/mwc-button";
 
 export default (component: MwcCard) => {
   const actionsClasses = ["mdc-card__actions"];
@@ -20,7 +18,11 @@ export default (component: MwcCard) => {
     primaryCardMediaClasses.push(component.primaryMediaClass);
   }
 
-  const primaryContent = component.primaryCardMedia ? <div class={primaryCardMediaClasses}>{component.renderSlot(MwcCard.SLOT_NAME_PRIMARY)}</div> : component.renderSlot(MwcCard.SLOT_NAME_PRIMARY);
+  const primaryContent = component.primaryCardMedia ? (
+    <div class={primaryCardMediaClasses}>{component.renderSlot(MwcCard.SLOT_NAME_PRIMARY)}</div>
+  ) : (
+    component.renderSlot(MwcCard.SLOT_NAME_PRIMARY)
+  );
 
   return (
     <fragment>

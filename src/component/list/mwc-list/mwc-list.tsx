@@ -3,29 +3,28 @@ import { MDCRipple } from "@material/ripple";
 import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { AttrType } from "springtype/web/component/trait/attr";
 
-@component()
+@component
 export class MwcList extends st.component implements ILifecycle {
-  @attr()
+  @attr
   ripple: boolean = true;
 
-  @attr()
+  @attr
   twoLine: boolean = false;
 
-  @attr()
+  @attr
   singleSelection: boolean = false;
 
-  @attr()
+  @attr
   nonInteractive: boolean = false;
 
-  @attr()
+  @attr
   dense: boolean = false;
 
-  @attr()
+  @attr
   avatarList: boolean = false;
 
-  @attr()
+  @attr
   wrapFocus: boolean = false;
 
   protected mdcList: MDCList;

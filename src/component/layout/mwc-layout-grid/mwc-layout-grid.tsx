@@ -1,22 +1,30 @@
 import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { AttrType } from "springtype/web/component/trait/attr";
 import { tsx } from "springtype/web/vdom";
 import { MwcLayoutGridInner } from "../mwc-layout-grid-inner/mwc-layout-grid-inner";
 
-@component()
-export class MwcLayoutGrid extends st.component implements ILifecycle {
-  @attr()
+export type MwcLayoutGridAlign = "middle" | "left" | "right";
+
+export interface MwcLayoutGridAttrs {
+  autoWrapInner?: boolean;
+  fixedColumnWidth?: boolean;
+  align?: MwcLayoutGridAlign;
+  innerClass?: string | Array<string>;
+}
+
+@component
+export class MwcLayoutGrid extends st.component<MwcLayoutGridAttrs> implements ILifecycle, MwcLayoutGridAttrs {
+  @attr
   autoWrapInner: boolean = true;
 
-  @attr()
+  @attr
   fixedColumnWidth: boolean = false;
 
-  @attr()
-  align: "middle" | "left" | "right";
+  @attr
+  align: MwcLayoutGridAlign;
 
-  @attr()
+  @attr
   innerClass: string | Array<string>;
 
   onAfterElCreate() {
@@ -42,14 +50,6 @@ export class MwcLayoutGrid extends st.component implements ILifecycle {
       return <MwcLayoutGridInner class={this.innerClass}>{this.renderChildren()}</MwcLayoutGridInner>;
     } else {
       return this.renderChildren();
-    }
-  }
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      MwcLayoutGrid: Partial<MwcLayoutGrid>;
     }
   }
 }

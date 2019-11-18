@@ -1,54 +1,58 @@
 import { st } from "springtype/core/st";
+import { ref } from "springtype/core/ref";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface";
-import { newUniqueComponentName, domRef } from "springtype/web/vdom";
+import { newUniqueComponentName } from "springtype/web/vdom";
 import { MwcTopBarVariant } from "./mwc-top-bar-variant";
 import tpl from "./mwc-top-bar.tpl";
 import { MDCTopAppBar } from "@material/top-app-bar";
 
 @component({
-  tpl
+  tpl,
 })
 export class MwcTopBar extends st.component implements ILifecycle {
   static SLOT_NAME_BODY: string = "body";
   static SLOT_NAME_TRAILING_ICONS: string = "trailing-icons";
 
-  @domRef("topBarRef")
+  @ref
   topBarRef: HTMLElement;
 
-  @attr()
+  @attr
   dense: boolean = false;
 
-  @attr()
+  @attr
   title: string = "";
 
-  @attr()
+  @attr
   variant: MwcTopBarVariant = MwcTopBarVariant.STANDARD;
 
-  @attr()
+  @attr
   fixed: boolean = false;
 
-  @attr()
+  @attr
   showMenuButton: boolean = true;
 
-  @attr()
-  menuIcon: string = 'menu';
+  @attr
+  menuIcon: string = "menu";
 
-  @attr()
+  @attr
   scrolled: boolean = false;
 
-  @attr()
+  @attr
   headerId: string;
 
   mdcComponent: MDCTopAppBar;
 
   onBeforeElCreate() {
-      this.headerId = this.headerId || newUniqueComponentName();
+    this.headerId = this.headerId || newUniqueComponentName();
   }
 
   onAfterRender() {
-    console.log(this.topBarRef);
     this.mdcComponent = new MDCTopAppBar(this.topBarRef);
+  }
+
+  onDisconnect() {
+    this.mdcComponent.destroy();
   }
 }
 

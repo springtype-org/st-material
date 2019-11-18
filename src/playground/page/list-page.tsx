@@ -12,7 +12,7 @@ import { MwcCheckbox } from "../../component/mwc-checkbox/mwc-checkbox";
 import { MwcSubtitle1 } from "../../component/typography/mwc-subtitle1/mwc-subtitle1";
 import * as listPageStyle from "./list-page.tss.scss";
 
-@component()
+@component
 export class ListPage extends st.component {
   static ROUTE = "#/list-page";
 
@@ -150,12 +150,12 @@ export class ListPage extends st.component {
 
         <MwcList class={listPageStyle.demoList} avatarList={true} twoLine={true} singleSelection={true}>
           <MwcListItem autoWrapText={false}>
-            <MwcListItemIcon type="folder" graphic={true}/>
+            <MwcListItemIcon type="folder" graphic={true} />
             <MwcListItemText>
               <MwcListItemTextPrimary>Dog Photos</MwcListItemTextPrimary>
               <MwcListItemTextSecondary>9 Jan 2018</MwcListItemTextSecondary>
             </MwcListItemText>
-            <MwcListItemIcon type="info" meta={true}/>
+            <MwcListItemIcon type="info" meta={true} />
           </MwcListItem>
 
           <MwcListDivider />

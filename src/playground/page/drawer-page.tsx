@@ -1,4 +1,5 @@
 import { st } from "springtype/core";
+import { ref } from "springtype/core/ref";
 import { component } from "springtype/web/component";
 import { tsx } from "springtype/web/vdom";
 import { MwcDrawerContent } from "../../component/drawer/mwc-drawer-content/mwc-drawer-content";
@@ -10,39 +11,41 @@ import { MwcListItemText } from "../../component/list/mwc-list-item-text/mwc-lis
 import { MwcListItem } from "../../component/list/mwc-list-item/mwc-list-item";
 import { MwcList } from "../../component/list/mwc-list/mwc-list";
 
-@component()
+@component
 export class DrawerPage extends st.component {
   static ROUTE = "/#/drawer-page";
 
   render() {
     return (
-      <div style={{
+      <div
+        style={{
           maxWidth: 255,
-          height: '100%'
-      }}>
-          <MwcDrawerHeader>
-            <MwcDrawerTitle>Mail</MwcDrawerTitle>
-            <MwcDrawerSubtitle>email@material.io</MwcDrawerSubtitle>
-          </MwcDrawerHeader>
+          height: "100%",
+        }}
+      >
+        <MwcDrawerHeader>
+          <MwcDrawerTitle>Mail</MwcDrawerTitle>
+          <MwcDrawerSubtitle>email@material.io</MwcDrawerSubtitle>
+        </MwcDrawerHeader>
 
-          <MwcDrawerContent>
-            <MwcList>
-              <MwcListItem activated={true} autoWrapText={false}>
-                <MwcListItemIcon type="inbox"></MwcListItemIcon>
-                <MwcListItemText>Inbox</MwcListItemText>
-              </MwcListItem>
+        <MwcDrawerContent>
+          <MwcList>
+            <MwcListItem activated={true} autoWrapText={false}>
+              <MwcListItemIcon type="inbox"></MwcListItemIcon>
+              <MwcListItemText>Inbox</MwcListItemText>
+            </MwcListItem>
 
-              <MwcListItem autoWrapText={false}>
-                <MwcListItemIcon type="send"></MwcListItemIcon>
-                <MwcListItemText>Outgoing</MwcListItemText>
-              </MwcListItem>
+            <MwcListItem autoWrapText={false}>
+              <MwcListItemIcon type="send"></MwcListItemIcon>
+              <MwcListItemText>Outgoing</MwcListItemText>
+            </MwcListItem>
 
-              <MwcListItem autoWrapText={false}>
-                <MwcListItemIcon type="drafts"></MwcListItemIcon>
-                <MwcListItemText>Drafts</MwcListItemText>
-              </MwcListItem>
-            </MwcList>
-          </MwcDrawerContent>
+            <MwcListItem autoWrapText={false}>
+              <MwcListItemIcon type="drafts"></MwcListItemIcon>
+              <MwcListItemText>Drafts</MwcListItemText>
+            </MwcListItem>
+          </MwcList>
+        </MwcDrawerContent>
       </div>
     );
   }

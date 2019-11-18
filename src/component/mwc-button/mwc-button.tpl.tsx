@@ -1,25 +1,24 @@
 import { tsx } from "springtype/web/vdom";
-import { MwcButton } from "./mwc-button";
-import { MwcButtonVariant } from "./mwc-button-variant-type";
+import { MwcButtonImpl } from "./mwc-button";
 
-export default (component: MwcButton) => {
+export default (component: MwcButtonImpl) => {
   const classesFixed = ["mdc-button"];
   const classesRipple = [];
 
   if (component.ripple) {
     classesRipple.push("mdc-button__ripple");
   }
+
   switch (component.variant) {
-    case MwcButtonVariant.RAISED:
+    case 'raised':
       classesFixed.push("mdc-button--raised");
       break;
-    case MwcButtonVariant.UNELEVATED:
+    case 'unelevated':
       classesFixed.push("mdc-button--unelevated");
       break;
-    case MwcButtonVariant.OUTLINED:
+    case 'outlined':
       classesFixed.push("mdc-button--outlined");
       break;
-    //Nothing for text
   }
 
   if (component.dense) {
@@ -31,11 +30,11 @@ export default (component: MwcButton) => {
   }
 
   const button = (
-    <button id={component.buttonId} class={classesFixed}>
+    <button ref={{btnEl: component}} class={classesFixed}>
       <span class={classesRipple} />
-      {component.renderSlot(MwcButton.SLOT_NAME_LEADING_ICON)}
+      {component.renderSlot(MwcButtonImpl.SLOT_NAME_LEADING_ICON)}
       <span class="mdc-button__label">{component.label}</span>
-      {component.renderSlot(MwcButton.SLOT_NAME_TRAILING_ICON)}
+      {component.renderSlot(MwcButtonImpl.SLOT_NAME_TRAILING_ICON)}
       {component.renderChildren()}
     </button>
   );

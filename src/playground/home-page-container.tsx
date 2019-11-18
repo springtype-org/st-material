@@ -1,9 +1,8 @@
 import { st } from "springtype/core";
-import { attr, component } from "springtype/web/component";
-import { AttrType } from "springtype/web/component/trait/attr";
+import { component } from "springtype/web/component";
 import * as homePageContainer from "./home-page-container.tss.scss";
 
-@component()
+@component
 export class HomePageContainer extends st.component {
   onAfterElCreate() {
     this.elClass = [...this.elClass, "home-page-container", homePageContainer.homePageContainer];

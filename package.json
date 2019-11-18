@@ -1,6 +1,6 @@
 {
   "name": "st-material",
-  "version": "2.0.0-beta.10",
+  "version": "2.0.0-beta.11",
   "publishConfig": {
     "access": "public"
   },
@@ -35,7 +35,7 @@
     "raw-loader": "^3.1.0",
     "resolve-url-loader": "^3.1.0",
     "sass-loader": "^8.0.0",
-    "springtype": "^2.0.0-beta.3",
+    "springtype": "^2.0.0-beta.7",
     "st-cp": "^2.0.0-alpha.4",
     "st-rm-rf": "^2.0.0-alpha.8",
     "superagent": "^5.1.0",

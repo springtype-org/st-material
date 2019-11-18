@@ -8,8 +8,7 @@ import { MwcBody1 } from "../../component/typography/mwc-body1/mwc-body1";
 import { MwcSubtitle1 } from "../../component/typography/mwc-subtitle1/mwc-subtitle1";
 import * as gridLayoutPageStyle from "./grid-layout-page.tss.scss";
 
-
-@component()
+@component
 export class GridLayoutPage extends st.component {
   static ROUTE = "#/grid-layout-page";
 
@@ -42,11 +41,24 @@ export class GridLayoutPage extends st.component {
         </MwcLayoutGrid>
         <MwcSubtitle1>Cell Alignment</MwcSubtitle1>
         <MwcBody1>Cell alignment requires a cell height smaller than the inner height of the grid.</MwcBody1>
-        <MwcLayoutGrid autoWrapInner={false} align="right" class={[gridLayoutPageStyle.demoGrid, gridLayoutPageStyle.demoGridCellAlignment]}>
+        <MwcLayoutGrid
+          autoWrapInner={false}
+          align="right"
+          class={[gridLayoutPageStyle.demoGrid, gridLayoutPageStyle.demoGridCellAlignment]}
+        >
           <MwcLayoutGridInner class={[gridLayoutPageStyle.demoInner]}>
-            <MwcLayoutGridCell align="top" class={[gridLayoutPageStyle.demoCell, gridLayoutPageStyle.demoCellAlignment]}></MwcLayoutGridCell>
-            <MwcLayoutGridCell align="middle" class={[gridLayoutPageStyle.demoCell, gridLayoutPageStyle.demoCellAlignment]}></MwcLayoutGridCell>
-            <MwcLayoutGridCell align="bottom" class={[gridLayoutPageStyle.demoCell, gridLayoutPageStyle.demoCellAlignment]}></MwcLayoutGridCell>
+            <MwcLayoutGridCell
+              align="top"
+              class={[gridLayoutPageStyle.demoCell, gridLayoutPageStyle.demoCellAlignment]}
+            ></MwcLayoutGridCell>
+            <MwcLayoutGridCell
+              align="middle"
+              class={[gridLayoutPageStyle.demoCell, gridLayoutPageStyle.demoCellAlignment]}
+            ></MwcLayoutGridCell>
+            <MwcLayoutGridCell
+              align="bottom"
+              class={[gridLayoutPageStyle.demoCell, gridLayoutPageStyle.demoCellAlignment]}
+            ></MwcLayoutGridCell>
           </MwcLayoutGridInner>
         </MwcLayoutGrid>
       </div>

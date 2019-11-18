@@ -1,10 +1,9 @@
 import { st } from "springtype/core";
-import { attr, component } from "springtype/web/component";
+import { component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { AttrType } from "springtype/web/component/trait/attr";
 import { tsx } from "springtype/web/vdom";
 
-@component()
+@component
 export class MwcListGroup extends st.component implements ILifecycle {
   static SLOT_NAME_HEADER: string = "header";
 
@@ -19,7 +18,10 @@ export class MwcListGroup extends st.component implements ILifecycle {
 
   render() {
     if (this.virtualNode.slotChildren[MwcListGroup.SLOT_NAME_HEADER]) {
-      return [<div class="mdc-list-group__subheader">{this.renderSlot(MwcListGroup.SLOT_NAME_HEADER)}</div>, this.renderChildren()];
+      return [
+        <div class="mdc-list-group__subheader">{this.renderSlot(MwcListGroup.SLOT_NAME_HEADER)}</div>,
+        this.renderChildren(),
+      ];
     } else {
       return this.renderChildren();
     }
