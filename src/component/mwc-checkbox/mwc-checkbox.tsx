@@ -6,10 +6,18 @@ import { ref } from "springtype/core/ref";
 import { attr, component } from "springtype/web/component";
 import { newUniqueComponentName, tsx } from "springtype/web/vdom";
 
+export interface IMwcCheckboxAttrs {
+  name?: string;
+  label?: string;
+  ripple?: boolean;
+  disabled?: boolean;
+  indeterminate?: boolean;
+  checked?: boolean;
+  value?: string;
+}
+
 @component
-export class MwcCheckbox extends st.component {
-  @ref
-  input: HTMLElement;
+export class MwcCheckbox extends st.component<IMwcCheckboxAttrs> {
 
   @ref
   formFieldRef: HTMLElement;
@@ -37,14 +45,15 @@ export class MwcCheckbox extends st.component {
 
   @attr
   value: string = "";
-
+  
   inputId: string;
-  checkboxId: string;
-  formFieldId: string;
-
   mdcCheckbox: MDCCheckbox;
   mdcFormField: MDCFormField;
   mdcRipple: MDCRipple;
+
+  onBeforeElCreate() {
+    this.inputId = newUniqueComponentName();
+  }
 
   render() {
     const classes = ["mdc-checkbox"];
@@ -79,8 +88,8 @@ export class MwcCheckbox extends st.component {
     }
 
     return (
-      <div id={this.formFieldId} ref={{ formFieldRef: this }} class="mdc-form-field">
-        <div id={this.checkboxId} ref={{ checkboxContainerRef: this }} class={classes}>
+      <div ref={{ formFieldRef: this }} class="mdc-form-field">
+        <div ref={{ checkboxContainerRef: this }} class={classes}>
           {input}
           <div class="mdc-checkbox__background">
             <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
@@ -95,12 +104,6 @@ export class MwcCheckbox extends st.component {
     );
   }
 
-  onAfterElCreate() {
-    this.inputId = newUniqueComponentName();
-    this.checkboxId = newUniqueComponentName();
-    this.formFieldId = newUniqueComponentName();
-  }
-
   onAfterRender(): void {
     this.mdcCheckbox = new MDCCheckbox(this.checkboxContainerRef);
     this.mdcFormField = new MDCFormField(this.formFieldRef);
@@ -110,12 +113,12 @@ export class MwcCheckbox extends st.component {
       this.mdcRipple = new MDCRipple(this.checkboxContainerRef);
     }
   }
-}
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      MwcCheckbox: Partial<MwcCheckbox>;
+  onDisconnect() {
+    if (this.mdcRipple) {
+      this.mdcRipple.destroy();
     }
+    this.mdcCheckbox.destroy();
+    this.mdcFormField.destroy();
   }
 }

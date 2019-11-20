@@ -1,5 +1,5 @@
 import { tsx } from "springtype/web/vdom";
-import { MwcList } from "../list/mwc-list/mwc-list";
+import { MwcList } from "../mwc-list/mwc-list/mwc-list";
 import { MwcSelect } from "./mwc-select";
 
 export default (component: MwcSelect) => {
@@ -10,7 +10,7 @@ export default (component: MwcSelect) => {
   }
 
   return (
-    <div id={component.selectId} ref={{ selectContainer: component }} class={classes}>
+    <div ref={{ selectContainer: component }} class={classes}>
       <div class="mdc-select__anchor">
         <i class="mdc-select__dropdown-icon" />
         <div class="mdc-select__selected-text" />

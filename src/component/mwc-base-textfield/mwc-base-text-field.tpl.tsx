@@ -26,13 +26,12 @@ export default (component: MwcBaseTextField) => {
     classesFixed.push("mwc-text-field--filled-shaped");
   }
 
-  if (component.fullwidth) {
+  if (component.fullWidth) {
     classesFixed.push("mdc-text-field--fullwidth");
   }
 
-  const inputElement = component.textarea ? (
+  const inputElement = component.isTextarea ? (
     <textarea
-      id={component.inputId}
       ref={{ inputRef: component }}
       class="mdc-text-field__input"
       name={component.name}
@@ -42,7 +41,6 @@ export default (component: MwcBaseTextField) => {
     />
   ) : (
     <input
-      id={component.inputId}
       ref={{ inputRef: component }}
       type={component.type}
       class="mdc-text-field__input"
@@ -51,7 +49,7 @@ export default (component: MwcBaseTextField) => {
     />
   );
 
-  if (component.textarea) {
+  if (component.isTextarea) {
     classesFixed.push("mwc-text-field--textarea");
   }
 
@@ -67,11 +65,12 @@ export default (component: MwcBaseTextField) => {
     classesFixed.push("mdc-text-field--with-trailing-icon");
   }
 
-  if (component.textarea) {
+  if (component.isTextarea) {
     classesFixed.push("mdc-text-field--textarea");
   }
+  
   return (
-    <div id={component.textFieldId} class={classesFixed}>
+    <div ref={{ textfieldRef: component }} class={classesFixed}>
       {component.renderSlot(MwcBaseTextField.SLOT_NAME_LEADING_ICON)}
 
       {component.variant === MwcBaseTextFieldVariant.FILLED

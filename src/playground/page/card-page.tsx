@@ -2,9 +2,9 @@ import { st } from "springtype/core";
 import { component } from "springtype/web/component";
 import { tsx } from "springtype/web/vdom";
 import { MwcCard } from "../../component/mwc-card/mwc-card";
-import { MwcBody2 } from "../../component/typography/mwc-body2/mwc-body2";
-import { MwcH5 } from "../../component/typography/mwc-h5/mwc-h5";
-import { MwcSubtitle1 } from "../../component/typography/mwc-subtitle1/mwc-subtitle1";
+import { MwcBody2 } from "../../component/mwc-typography/mwc-body2/mwc-body2";
+import { MwcH5 } from "../../component/mwc-typography/mwc-h5/mwc-h5";
+import { MwcSubtitle1 } from "../../component/mwc-typography/mwc-subtitle1/mwc-subtitle1";
 import * as cardPage from "./card-page.tss.scss";
 
 @component

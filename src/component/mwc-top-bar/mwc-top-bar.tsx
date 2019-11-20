@@ -7,10 +7,21 @@ import { MwcTopBarVariant } from "./mwc-top-bar-variant";
 import tpl from "./mwc-top-bar.tpl";
 import { MDCTopAppBar } from "@material/top-app-bar";
 
+export interface IMwcTopBarAttrs {
+  dense?: boolean;
+  title?: string;
+  variant?: MwcTopBarVariant;
+  fixed?: boolean;
+  showMenuButton?: boolean;
+  menuIcon?: string;
+  scrolled?: boolean;
+  headerId?: string;
+}
+
 @component({
   tpl,
 })
-export class MwcTopBar extends st.component implements ILifecycle {
+export class MwcTopBar extends st.component<IMwcTopBarAttrs> implements ILifecycle {
   static SLOT_NAME_BODY: string = "body";
   static SLOT_NAME_TRAILING_ICONS: string = "trailing-icons";
 
@@ -53,13 +64,5 @@ export class MwcTopBar extends st.component implements ILifecycle {
 
   onDisconnect() {
     this.mdcComponent.destroy();
-  }
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      MwcTopBar: Partial<MwcTopBar>;
-    }
   }
 }

@@ -2,11 +2,16 @@ import { MDCSnackbar } from "@material/snackbar";
 import { st } from "springtype/core";
 import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { AttrType } from "springtype/web/component/trait/attr";
 import { tsx } from "springtype/web/vdom";
 
+export interface IMwcSnackbarAttrs {
+  stacked?: boolean;
+  leading?: boolean;
+  label?: string;
+}
+
 @component
-export class MwcSnackbar extends st.component implements ILifecycle {
+export class MwcSnackbar extends st.component<IMwcSnackbarAttrs> implements ILifecycle {
   @attr
   label: string;
 
@@ -56,13 +61,5 @@ export class MwcSnackbar extends st.component implements ILifecycle {
 
   onDisconnect() {
     this.mdcSnackbar.destroy();
-  }
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      MwcSnackbar: Partial<MwcSnackbar>;
-    }
   }
 }

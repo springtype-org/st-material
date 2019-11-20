@@ -4,13 +4,10 @@ import { attr, component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface";
 import tpl from "./mwc-button.tpl";
 import { ref } from "springtype/core/ref";
-import { IVirtualNode } from "springtype/web/vdom/interface";
-import { IComponentLifecycle } from "springtype/web/component/interface/ilifecycle";
-import { IOnStateChange } from "springtype/web/component/interface/ion-state-change";
 
 export type MwcButtonVariant = "text" | "raised" | "unelevated" | "outlined";
 
-interface MwcButtonAttrs {
+interface IMwcButtonAttrs {
   label?: string;
   ripple?: boolean;
   variant?: MwcButtonVariant;
@@ -22,12 +19,12 @@ interface MwcButtonAttrs {
 @component({
   tpl,
 })
-export class MwcButton extends st.component<MwcButtonAttrs> implements ILifecycle, MwcButtonAttrs {
+export class MwcButton extends st.component<IMwcButtonAttrs> implements ILifecycle, IMwcButtonAttrs {
   static SLOT_NAME_TRAILING_ICON: string = "trailing-icon";
   static SLOT_NAME_LEADING_ICON: string = "leading-icon";
 
   @ref
-  btnEl: HTMLElement;
+  buttonRef: HTMLElement;
 
   @attr
   label: string = "";
@@ -47,13 +44,11 @@ export class MwcButton extends st.component<MwcButtonAttrs> implements ILifecycl
   @attr
   shaped = false;
 
-  buttonId: string;
-
   mdcRipple: MDCRipple;
 
   onAfterRender(): void {
     if (this.ripple) {
-      this.mdcRipple = new MDCRipple(this.btnEl);
+      this.mdcRipple = new MDCRipple(this.buttonRef);
     }
   }
 

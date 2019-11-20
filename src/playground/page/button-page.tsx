@@ -2,7 +2,7 @@ import { st } from "springtype/core";
 import { component } from "springtype/web/component";
 import { tsx } from "springtype/web/vdom";
 import { MwcButton } from "../../component/mwc-button/mwc-button";
-import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
+import { MwcH6 } from "../../component/mwc-typography/mwc-h6/mwc-h6";
 
 @component
 export class ButtonPage extends st.component {

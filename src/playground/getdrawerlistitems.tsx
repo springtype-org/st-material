@@ -1,8 +1,8 @@
 import { st } from "springtype/core";
 import { tsx } from "springtype/web/vdom";
-import { MwcListItemIcon } from "../component/list/mwc-list-item-icon/mwc-list-item-icon";
-import { MwcListItemText } from "../component/list/mwc-list-item-text/mwc-list-item-text";
-import { MwcListItem } from "../component/list/mwc-list-item/mwc-list-item";
+import { MwcListItemIcon } from "../component/mwc-list/mwc-list-item-icon/mwc-list-item-icon";
+import { MwcListItemText } from "../component/mwc-list/mwc-list-item-text/mwc-list-item-text";
+import { MwcListItem } from "../component/mwc-list/mwc-list-item/mwc-list-item";
 import { HomePage } from "./home-page";
 import { ButtonPage } from "./page/button-page";
 import { CardPage } from "./page/card-page";

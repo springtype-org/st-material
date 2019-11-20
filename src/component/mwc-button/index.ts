@@ -1,1 +1,1 @@
-export { MwcButtonImpl as MwcButton } from "./mwc-button"
+export { MwcButton } from "./mwc-button"

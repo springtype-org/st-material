@@ -8,15 +8,24 @@ import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { newUniqueComponentName } from "springtype/web/vdom";
 import tpl from "./mwc-radio-field.tpl";
 
+export interface IMwcRadioFieldAttrs {
+  name?: string;
+  label?: string;
+  ripple?: boolean;
+  disabled?: boolean;
+  checked?: boolean;
+  value?: string;
+}
+
 @component({
   tpl,
 })
-export class MwcRadioField extends st.component implements ILifecycle {
+export class MwcRadioField extends st.component<IMwcRadioFieldAttrs> implements ILifecycle {
   @ref
-  radio: HTMLElement;
+  radioRef: HTMLElement;
 
   @ref
-  formField: HTMLElement;
+  formFieldRef: HTMLElement;
 
   @attr
   name: string = "";
@@ -36,35 +45,31 @@ export class MwcRadioField extends st.component implements ILifecycle {
   @attr
   value: string = "";
 
-  radioId = newUniqueComponentName();
-  inputId = newUniqueComponentName();
-  formFieldId = newUniqueComponentName();
+  inputId: string;
 
   mdcRadioButton: MDCRadio;
   mdcFormField: MDCFormField;
   mdcRipple: MDCRipple;
 
-  onAfterElCreate() {
-    this.radioId = newUniqueComponentName();
+  onBeforeElCreate() {
     this.inputId = newUniqueComponentName();
-    this.formFieldId = newUniqueComponentName();
   }
 
   onAfterRender(): void {
-    this.mdcRadioButton = new MDCRadio(this.radio);
-    this.mdcFormField = new MDCFormField(this.formField);
+    this.mdcRadioButton = new MDCRadio(this.radioRef);
+    this.mdcFormField = new MDCFormField(this.formFieldRef);
     this.mdcFormField.input = this.mdcRadioButton;
 
     if (this.ripple) {
-      this.mdcRipple = new MDCRipple(this.radio);
+      this.mdcRipple = new MDCRipple(this.radioRef);
     }
   }
-}
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      MwcRadioButton: Partial<MwcRadioField>;
+  onDisconnect() {
+    this.mdcRadioButton.destroy();
+    this.mdcFormField.destroy();
+    if (this.mdcRipple) {
+      this.mdcRipple.destroy();
     }
   }
 }

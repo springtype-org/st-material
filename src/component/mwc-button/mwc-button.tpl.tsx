@@ -1,7 +1,7 @@
 import { tsx } from "springtype/web/vdom";
-import { MwcButtonImpl } from "./mwc-button";
+import { MwcButton } from "./mwc-button";
 
-export default (component: MwcButtonImpl) => {
+export default (component: MwcButton) => {
   const classesFixed = ["mdc-button"];
   const classesRipple = [];
 
@@ -30,11 +30,11 @@ export default (component: MwcButtonImpl) => {
   }
 
   const button = (
-    <button ref={{btnEl: component}} class={classesFixed}>
+    <button ref={{buttonRef: component}} class={classesFixed}>
       <span class={classesRipple} />
-      {component.renderSlot(MwcButtonImpl.SLOT_NAME_LEADING_ICON)}
+      {component.renderSlot(MwcButton.SLOT_NAME_LEADING_ICON)}
       <span class="mdc-button__label">{component.label}</span>
-      {component.renderSlot(MwcButtonImpl.SLOT_NAME_TRAILING_ICON)}
+      {component.renderSlot(MwcButton.SLOT_NAME_TRAILING_ICON)}
       {component.renderChildren()}
     </button>
   );

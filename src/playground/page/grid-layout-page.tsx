@@ -1,11 +1,11 @@
 import { st } from "springtype/core";
 import { component } from "springtype/web/component";
 import { tsx } from "springtype/web/vdom";
-import { MwcLayoutGridCell } from "../../component/layout/mwc-layout-grid-cell/mwc-layout-grid-cell";
-import { MwcLayoutGridInner } from "../../component/layout/mwc-layout-grid-inner/mwc-layout-grid-inner";
-import { MwcLayoutGrid } from "../../component/layout/mwc-layout-grid/mwc-layout-grid";
-import { MwcBody1 } from "../../component/typography/mwc-body1/mwc-body1";
-import { MwcSubtitle1 } from "../../component/typography/mwc-subtitle1/mwc-subtitle1";
+import { MwcLayoutGridCell } from "../../component/mwc-layout/mwc-layout-grid-cell/mwc-layout-grid-cell";
+import { MwcLayoutGridInner } from "../../component/mwc-layout/mwc-layout-grid-inner/mwc-layout-grid-inner";
+import { MwcLayoutGrid } from "../../component/mwc-layout/mwc-layout-grid/mwc-layout-grid";
+import { MwcBody1 } from "../../component/mwc-typography/mwc-body1/mwc-body1";
+import { MwcSubtitle1 } from "../../component/mwc-typography/mwc-subtitle1/mwc-subtitle1";
 import * as gridLayoutPageStyle from "./grid-layout-page.tss.scss";
 
 @component

@@ -5,14 +5,26 @@ import { ILifecycle } from "springtype/web/component/interface";
 import { MwcTextFieldVariant } from "./mwc-text-field-variant";
 import tpl from "./mwc-text-field.tpl";
 import { MwcBaseTextField } from "../mwc-base-textfield";
-import { INPUT_PROPERTIES } from "../mwc-base-textfield/mwc-base-text-field";
+import { INPUT_PROPERTIES, MwcBaseTextFieldInputTypes } from "../mwc-base-textfield/mwc-base-text-field";
+
+export interface IMwcTextFieldAttrs {
+  name?: string;
+  label?: string | false;
+  variant?: MwcTextFieldVariant;
+  ripple?: boolean;
+  disabled?: boolean;
+  value?: string;
+  shaped?: boolean;
+  type?: MwcBaseTextFieldInputTypes;
+}
 
 @component({
   tpl,
 })
-export class MwcTextField extends st.component implements ILifecycle {
+export class MwcTextField extends st.component<IMwcTextFieldAttrs> implements ILifecycle {
   static SLOT_NAME_TRAILING_ICON: string = "trailing-icon";
   static SLOT_NAME_LEADING_ICON: string = "leading-icon";
+  
   @ref
   mwcBaseTextFieldRef!: MwcBaseTextField;
 
@@ -35,10 +47,10 @@ export class MwcTextField extends st.component implements ILifecycle {
   value: string = "";
 
   @attr
-  shaped = false;
+  shaped: boolean = false;
 
   @attr
-  type: "password" | "text" = "text";
+  type: MwcBaseTextFieldInputTypes;
 
   trailingIconSlot: any | false = false;
   leadingIconSlot: any | false = false;
@@ -53,13 +65,5 @@ export class MwcTextField extends st.component implements ILifecycle {
       return this.mwcBaseTextFieldRef.getAttribute(name);
     }
     return super.getAttribute(name);
-  }
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      MwcTextField: Partial<MwcTextField>;
-    }
   }
 }

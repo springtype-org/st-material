@@ -7,12 +7,24 @@ import { MwcBaseTextFieldVariant } from "../mwc-base-textfield/mwc-base-text-fie
 import { MwcBaseTextField } from "../mwc-base-textfield";
 import { INPUT_PROPERTIES } from "../mwc-base-textfield/mwc-base-text-field";
 
+export interface IMwcTextAreaAttrs {
+  name?: string;
+  label?: string | false;
+  variant?: MwcBaseTextFieldVariant;
+  ripple?: boolean;
+  disabled?: boolean;
+  value?: string;
+  shaped?: boolean;
+  fullwidth?: boolean;
+}
+
 @component({
   tpl,
 })
-export class MwcTextArea extends st.component implements ILifecycle {
+export class MwcTextArea extends st.component<IMwcTextAreaAttrs> implements ILifecycle {
+
   @ref
-  mwcBaseTextFieldRef!: MwcBaseTextField;
+  mwcBaseTextFieldRef: MwcBaseTextField;
 
   @attr
   name: string = "";
@@ -33,23 +45,15 @@ export class MwcTextArea extends st.component implements ILifecycle {
   value: string = "";
 
   @attr
-  shaped = false;
+  shaped: boolean = false;
 
   @attr
-  fullwidth = false;
+  fullWidth: boolean = false;
 
   getAttribute(name: string): any {
     if (this.mwcBaseTextFieldRef && INPUT_PROPERTIES.indexOf(name) > 0) {
       return this.mwcBaseTextFieldRef.getAttribute(name);
     }
     return super.getAttribute(name);
-  }
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      MwcTextArea: Partial<MwcTextArea>;
-    }
   }
 }

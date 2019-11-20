@@ -2,14 +2,14 @@ import { st } from "springtype/core";
 import { ref } from "springtype/core/ref";
 import { component } from "springtype/web/component";
 import { tsx } from "springtype/web/vdom";
-import { MwcDrawerContent } from "../../component/drawer/mwc-drawer-content/mwc-drawer-content";
-import { MwcDrawerHeader } from "../../component/drawer/mwc-drawer-header/mwc-drawer-header";
-import { MwcDrawerSubtitle } from "../../component/drawer/mwc-drawer-subtitle/mwc-drawer-subtitle";
-import { MwcDrawerTitle } from "../../component/drawer/mwc-drawer-title/mwc-drawer-title";
-import { MwcListItemIcon } from "../../component/list/mwc-list-item-icon/mwc-list-item-icon";
-import { MwcListItemText } from "../../component/list/mwc-list-item-text/mwc-list-item-text";
-import { MwcListItem } from "../../component/list/mwc-list-item/mwc-list-item";
-import { MwcList } from "../../component/list/mwc-list/mwc-list";
+import { MwcDrawerContent } from "../../component/mwc-drawer/mwc-drawer-content/mwc-drawer-content";
+import { MwcDrawerHeader } from "../../component/mwc-drawer/mwc-drawer-header/mwc-drawer-header";
+import { MwcDrawerSubtitle } from "../../component/mwc-drawer/mwc-drawer-subtitle/mwc-drawer-subtitle";
+import { MwcDrawerTitle } from "../../component/mwc-drawer/mwc-drawer-title/mwc-drawer-title";
+import { MwcListItemIcon } from "../../component/mwc-list/mwc-list-item-icon/mwc-list-item-icon";
+import { MwcListItemText } from "../../component/mwc-list/mwc-list-item-text/mwc-list-item-text";
+import { MwcListItem } from "../../component/mwc-list/mwc-list-item/mwc-list-item";
+import { MwcList } from "../../component/mwc-list/mwc-list/mwc-list";
 
 @component
 export class DrawerPage extends st.component {

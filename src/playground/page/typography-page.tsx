@@ -1,19 +1,19 @@
 import { st } from "springtype/core";
 import { component } from "springtype/web/component";
 import { tsx } from "springtype/web/vdom";
-import { MwcBody1 } from "../../component/typography/mwc-body1/mwc-body1";
-import { MwcBody2 } from "../../component/typography/mwc-body2/mwc-body2";
-import { MwcButtonText } from "../../component/typography/mwc-button-text/mwc-button-text";
-import { MwcCaptionText } from "../../component/typography/mwc-caption-text/mwc-caption-text";
-import { MwcH1 } from "../../component/typography/mwc-h1/mwc-h1";
-import { MwcH2 } from "../../component/typography/mwc-h2/mwc-h2";
-import { MwcH3 } from "../../component/typography/mwc-h3/mwc-h3";
-import { MwcH4 } from "../../component/typography/mwc-h4/mwc-h4";
-import { MwcH5 } from "../../component/typography/mwc-h5/mwc-h5";
-import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
-import { MwcOverlineText } from "../../component/typography/mwc-overline-text/mwc-overline-text";
-import { MwcSubtitle1 } from "../../component/typography/mwc-subtitle1/mwc-subtitle1";
-import { MwcSubtitle2 } from "../../component/typography/mwc-subtitle2/mwc-subtitle2";
+import { MwcBody1 } from "../../component/mwc-typography/mwc-body1/mwc-body1";
+import { MwcBody2 } from "../../component/mwc-typography/mwc-body2/mwc-body2";
+import { MwcButtonText } from "../../component/mwc-typography/mwc-button-text/mwc-button-text";
+import { MwcCaptionText } from "../../component/mwc-typography/mwc-caption-text/mwc-caption-text";
+import { MwcH1 } from "../../component/mwc-typography/mwc-h1/mwc-h1";
+import { MwcH2 } from "../../component/mwc-typography/mwc-h2/mwc-h2";
+import { MwcH3 } from "../../component/mwc-typography/mwc-h3/mwc-h3";
+import { MwcH4 } from "../../component/mwc-typography/mwc-h4/mwc-h4";
+import { MwcH5 } from "../../component/mwc-typography/mwc-h5/mwc-h5";
+import { MwcH6 } from "../../component/mwc-typography/mwc-h6/mwc-h6";
+import { MwcOverlineText } from "../../component/mwc-typography/mwc-overline-text/mwc-overline-text";
+import { MwcSubtitle1 } from "../../component/mwc-typography/mwc-subtitle1/mwc-subtitle1";
+import { MwcSubtitle2 } from "../../component/mwc-typography/mwc-subtitle2/mwc-subtitle2";
 
 @component
 export class TypographyPage extends st.component {

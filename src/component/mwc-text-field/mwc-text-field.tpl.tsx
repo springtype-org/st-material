@@ -43,7 +43,7 @@ export default (component: MwcTextField) => {
       disabled={component.disabled}
       value={component.value}
       shaped={component.shaped}
-      fullwidth={fullwidth}
+      fullWidth={fullwidth}
     >
       {leadingIconSlotChildren}
       {trailingIconSlotChildren}

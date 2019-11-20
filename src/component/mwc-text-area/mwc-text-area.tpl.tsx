@@ -14,7 +14,7 @@ export default (component: MwcTextArea) => {
       value={component.value}
       shaped={component.shaped}
       textarea={true}
-      fullwidth={component.fullwidth}
+      fullWidth={component.fullWidth}
     ></MwcBaseTextField>
   );
 };

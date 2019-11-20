@@ -31,8 +31,8 @@ export default (component: MwcRadioField) => {
   }
 
   return (
-    <div id={component.formFieldId} ref={{ formField: component }} class="mdc-form-field">
-      <div id={component.radioId} ref={{ radio: component }} class={classes}>
+    <div ref={{ formFieldRef: component }} class="mdc-form-field">
+      <div ref={{ radioRef: component }} class={classes}>
         {input}
         <div class="mdc-radio__background">
           <div class="mdc-radio__outer-circle" />

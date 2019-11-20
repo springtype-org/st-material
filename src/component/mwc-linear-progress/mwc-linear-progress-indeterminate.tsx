@@ -2,11 +2,15 @@ import { attr, component } from "springtype/web/component";
 import { st } from "springtype/core";
 import { ref } from "springtype/core/ref";
 import { tsx } from "springtype/web/vdom";
-//material stuff
 import { MwcLinearProgress } from "./mwc-linear-progress";
 
+
+export interface IMwcLinearProgressIndeterminateAttrs {
+  reverse?: boolean;
+}
+
 @component
-export class MwcLinearProgressIndeterminate extends st.component {
+export class MwcLinearProgressIndeterminate extends st.component<IMwcLinearProgressIndeterminateAttrs> {
   @ref
   progressRef: MwcLinearProgress;
 

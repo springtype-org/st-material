@@ -1,15 +1,15 @@
 import { st } from "springtype/core";
 import { component } from "springtype/web/component";
 import { tsx } from "springtype/web/vdom";
-import { MwcListDivider } from "../../component/list/mwc-list-divider/mwc-list-divider";
-import { MwcListItemIcon } from "../../component/list/mwc-list-item-icon/mwc-list-item-icon";
-import { MwcListItemTextPrimary } from "../../component/list/mwc-list-item-text-primary/mwc-list-item-text-primary";
-import { MwcListItemTextSecondary } from "../../component/list/mwc-list-item-text-secondary/mwc-list-item-text-secondary";
-import { MwcListItemText } from "../../component/list/mwc-list-item-text/mwc-list-item-text";
-import { MwcListItem } from "../../component/list/mwc-list-item/mwc-list-item";
-import { MwcList } from "../../component/list/mwc-list/mwc-list";
+import { MwcListDivider } from "../../component/mwc-list/mwc-list-divider/mwc-list-divider";
+import { MwcListItemIcon } from "../../component/mwc-list/mwc-list-item-icon/mwc-list-item-icon";
+import { MwcListItemTextPrimary } from "../../component/mwc-list/mwc-list-item-text-primary/mwc-list-item-text-primary";
+import { MwcListItemTextSecondary } from "../../component/mwc-list/mwc-list-item-text-secondary/mwc-list-item-text-secondary";
+import { MwcListItemText } from "../../component/mwc-list/mwc-list-item-text/mwc-list-item-text";
+import { MwcListItem } from "../../component/mwc-list/mwc-list-item/mwc-list-item";
+import { MwcList } from "../../component/mwc-list/mwc-list/mwc-list";
 import { MwcCheckbox } from "../../component/mwc-checkbox/mwc-checkbox";
-import { MwcSubtitle1 } from "../../component/typography/mwc-subtitle1/mwc-subtitle1";
+import { MwcSubtitle1 } from "../../component/mwc-typography/mwc-subtitle1/mwc-subtitle1";
 import * as listPageStyle from "./list-page.tss.scss";
 
 @component

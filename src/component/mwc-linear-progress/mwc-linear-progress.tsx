@@ -2,17 +2,23 @@ import { attr, component } from "springtype/web/component";
 import { st } from "springtype/core";
 import { ref } from "springtype/core/ref";
 import { tsx } from "springtype/web/vdom";
-//material stuff
 import { MDCLinearProgress } from "@material/linear-progress";
 import { MDCLinearProgressFoundation } from "@material/linear-progress/foundation";
 
+export interface IMwcLinearProgressAttrs {
+  reverse?: boolean;
+}
+
 @component
-export class MwcLinearProgress extends st.component {
+export class MwcLinearProgress extends st.component<IMwcLinearProgressAttrs> {
   @ref
   progressRef: HTMLElement;
 
   @attr
   reverse: boolean = false;
+
+  mdcLinearProgress: MDCLinearProgress;
+  mdcLinearProgressFoundation: MDCLinearProgressFoundation;
 
   render() {
     return (
@@ -37,11 +43,9 @@ export class MwcLinearProgress extends st.component {
     this.mdcLinearProgressFoundation.setBuffer(buffer);
   }
 
-  mdcLinearProgress: MDCLinearProgress;
-  mdcLinearProgressFoundation: MDCLinearProgressFoundation;
-
   onAfterRender(): void {
     this.mdcLinearProgress = new MDCLinearProgress(this.progressRef);
+    this.mdcLinearProgress.open();
     this.mdcLinearProgressFoundation = this.mdcLinearProgress.getDefaultFoundation();
     this.mdcLinearProgressFoundation.open();
     this.mdcLinearProgressFoundation.setDeterminate(true);
@@ -49,15 +53,7 @@ export class MwcLinearProgress extends st.component {
   }
 
   onDisconnect(): void {
-    this.mdcLinearProgress.close();
-    this.mdcLinearProgressFoundation.close();
-  }
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      MwcLinearProgress: Partial<MwcLinearProgress>;
-    }
+    this.mdcLinearProgress.destroy();
+    this.mdcLinearProgressFoundation.destroy();
   }
 }

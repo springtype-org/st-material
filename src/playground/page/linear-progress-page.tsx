@@ -2,11 +2,11 @@ import { st } from "springtype/core";
 import { ref } from "springtype/core/ref";
 import { component } from "springtype/web/component";
 import { tsx } from "springtype/web/vdom";
-import { MwcH5 } from "../../component/typography/mwc-h5/mwc-h5";
-import { MwcH6 } from "../../component/typography/mwc-h6/mwc-h6";
+import { MwcH5 } from "../../component/mwc-typography/mwc-h5/mwc-h5";
+import { MwcH6 } from "../../component/mwc-typography/mwc-h6/mwc-h6";
 import { MwcLinearProgress } from "../../component/mwc-linear-progress/mwc-linear-progress";
 import { ILifecycle } from "springtype/web/component/interface";
-import { MwcH4 } from "../../component/typography/mwc-h4/mwc-h4";
+import { MwcH4 } from "../../component/mwc-typography/mwc-h4/mwc-h4";
 import { MwcLinearProgressIndeterminate } from "../../component/mwc-linear-progress/mwc-linear-progress-indeterminate";
 
 @component
@@ -15,7 +15,7 @@ export class LinearProgressPage extends st.component implements ILifecycle {
 
   @ref
   progress: MwcLinearProgress;
-  
+
   @ref
   linearProgressReverseRef: MwcLinearProgress;
 
