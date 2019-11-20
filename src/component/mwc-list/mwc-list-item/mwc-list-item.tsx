@@ -60,6 +60,7 @@ export class MwcListItem extends st.component<IMwcListItemAttrs> implements ILif
 
     if (this.dataValue) {
       this.elAttributes = {
+        // @ts-ignore
         "data-value": this.dataValue
       }
     }
