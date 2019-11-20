@@ -1,7 +1,7 @@
 import { st } from "springtype/core";
 import { component } from "springtype/web/component";
 import { tsx } from "springtype/web/vdom";
-import { MwcTabBar } from "../../component/mwc-tabs/mwc-tab-bar/mwc-tab-bar";
+import { MwcTabBar, ITabActivateEvent } from "../../component/mwc-tabs/mwc-tab-bar/mwc-tab-bar";
 import { MwcTab } from "../../component/mwc-tabs/mwc-tab/mwc-tab";
 import { MwcSubtitle1 } from "../../component/mwc-typography/mwc-subtitle1/mwc-subtitle1";
 
@@ -9,8 +9,8 @@ import { MwcSubtitle1 } from "../../component/mwc-typography/mwc-subtitle1/mwc-s
 export class TabBarPage extends st.component {
   static ROUTE = "#/tabbar-page";
 
-  onTabActivated = (evt: any) => {
-    console.log('tab activated', evt);
+  onTabActivated = (evt: ITabActivateEvent) => {
+    console.log('tab activated', evt.detail.index);
   };
 
   render() {
@@ -18,7 +18,7 @@ export class TabBarPage extends st.component {
       <div>
         <MwcSubtitle1>Tabs</MwcSubtitle1>
 
-        <MwcTabBar onMwcTabActivated={this.onTabActivated}>
+        <MwcTabBar onTabActivate={this.onTabActivated} activeTab={0}>
           <MwcTab icon="star" label="Aron"></MwcTab>
           <MwcTab icon="star" label="Michi"></MwcTab>
           <MwcTab icon="star" label="René"></MwcTab>

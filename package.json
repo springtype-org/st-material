@@ -50,7 +50,6 @@
     "@material/drawer": "^4.0.0",
     "@material/list": "^4.0.0",
     "@material/snackbar": "^4.0.0",
-    "@material/tab": "^4.0.0",
     "@material/tab-bar": "^4.0.0",
     "material-components-web": "^4.0.0"
   }
