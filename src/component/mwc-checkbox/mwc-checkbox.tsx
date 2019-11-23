@@ -1,6 +1,3 @@
-import { MDCCheckbox } from "@material/checkbox";
-import { MDCFormField } from "@material/form-field";
-import { MDCRipple } from "@material/ripple";
 import { st } from "springtype/core";
 import { ref } from "springtype/core/ref";
 import { attr, component } from "springtype/web/component";
@@ -9,7 +6,6 @@ import { newUniqueComponentName, tsx } from "springtype/web/vdom";
 export interface IMwcCheckboxAttrs {
   name?: string;
   label?: string;
-  ripple?: boolean;
   disabled?: boolean;
   indeterminate?: boolean;
   checked?: boolean;
@@ -32,9 +28,6 @@ export class MwcCheckbox extends st.component<IMwcCheckboxAttrs> {
   label: string = "";
 
   @attr
-  ripple: boolean = true;
-
-  @attr
   disabled: boolean = false;
 
   @attr
@@ -47,9 +40,6 @@ export class MwcCheckbox extends st.component<IMwcCheckboxAttrs> {
   value: string = "";
   
   inputId: string;
-  mdcCheckbox: MDCCheckbox;
-  mdcFormField: MDCFormField;
-  mdcRipple: MDCRipple;
 
   onBeforeElCreate() {
     this.inputId = newUniqueComponentName();
@@ -57,12 +47,7 @@ export class MwcCheckbox extends st.component<IMwcCheckboxAttrs> {
 
   render() {
     const classes = ["mdc-checkbox"];
-    const rippleClass = [];
     const input = <input type="checkbox" class="mdc-checkbox__native-control" id={this.inputId} />;
-
-    if (this.ripple) {
-      rippleClass.push("mdc-checkbox__ripple");
-    }
 
     if (this.disabled) {
       classes.push("mdc-checkbox--disabled");
@@ -97,28 +82,11 @@ export class MwcCheckbox extends st.component<IMwcCheckboxAttrs> {
             </svg>
             <div class="mdc-checkbox__mixedmark" />
           </div>
-          <div class={rippleClass} />
+          <div class={['mdc-checkbox__ripple']} />
         </div>
         <label for={this.inputId}>{this.label}</label>
       </div>
     );
   }
 
-  onAfterRender(): void {
-    this.mdcCheckbox = new MDCCheckbox(this.checkboxContainerRef);
-    this.mdcFormField = new MDCFormField(this.formFieldRef);
-    this.mdcFormField.input = this.mdcCheckbox;
-
-    if (this.ripple) {
-      this.mdcRipple = new MDCRipple(this.checkboxContainerRef);
-    }
-  }
-
-  onDisconnect() {
-    if (this.mdcRipple) {
-      this.mdcRipple.destroy();
-    }
-    this.mdcCheckbox.destroy();
-    this.mdcFormField.destroy();
-  }
 }

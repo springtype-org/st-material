@@ -1,65 +1,56 @@
-import { MDCDialog } from "@material/dialog";
-import { st } from "springtype/core";
-import { attr, component } from "springtype/web/component";
-import { ILifecycle } from "springtype/web/component/interface";
-import { tsx } from "springtype/web/vdom";
+import {st} from "springtype/core";
+import {attr, component} from "springtype/web/component";
+import {ILifecycle} from "springtype/web/component/interface";
+import {tsx} from "springtype/web/vdom";
 
 export interface IMwcDialogAttrs {
-  title?: string;
+    title?: string;
 }
 
 @component
 export class MwcDialog extends st.component<IMwcDialogAttrs> implements ILifecycle, IMwcDialogAttrs {
-  static SLOT_NAME_CONTENT = "content";
-  static SLOT_NAME_BUTTONS = "buttons";
+    static SLOT_NAME_CONTENT = "content";
+    static SLOT_NAME_BUTTONS = "buttons";
 
-  @attr
-  title: string;
+    @attr
+    title: string;
 
-  mdcComponent: MDCDialog;
 
-  onAfterElCreate() {
-    this.elClass = ["mdc-dialog", ...(this.elClass as Array<string>)];
-  }
-
-  render() {
-    const surfaceElements = [];
-
-    if (this.title) {
-      surfaceElements.push(<h2 class="mdc-dialog__title">{this.title}</h2>);
+    onAfterElCreate() {
+        this.elClass = ["mdc-dialog", ...(this.elClass as Array<string>)];
     }
 
-    surfaceElements.push(
-      <div class="mdc-dialog__content" id="my-dialog-content">
-        {this.renderSlot(MwcDialog.SLOT_NAME_CONTENT)}
-      </div>,
-    );
+    render() {
 
-    surfaceElements.push(<footer class="mdc-dialog__actions">{this.renderSlot(MwcDialog.SLOT_NAME_BUTTONS)}</footer>);
+        return [
+            <div class="mdc-dialog__container">
+                <div class="mdc-dialog__surface">
+                    {this.title ? <h2 class="mdc-dialog__title">{this.title}</h2>
+                        : <fragment/>}
+                    <div class="mdc-dialog__content" id="my-dialog-content">
+                        {this.renderSlot(MwcDialog.SLOT_NAME_CONTENT)}
+                    </div>
+                    <footer class="mdc-dialog__actions">
+                        {this.renderSlot(MwcDialog.SLOT_NAME_BUTTONS)}
+                    </footer>
+                </div>
+            </div>,
+            <div class="mdc-dialog__scrim" onClick={() => {
+                this.close()
+            }}/>,
+        ];
+    }
 
-    return [
-      <div class="mdc-dialog__container">
-        <div class="mdc-dialog__surface">{surfaceElements}</div>
-      </div>,
-      <div class="mdc-dialog__scrim"></div>,
-    ];
-  }
+    open() {
+        try {
+            this.el.classList.add('mdc-dialog--open');
+        } catch (e) {
+        }
+    }
 
-  onAfterRender() {
-    this.mdcComponent = new MDCDialog(this.el);
-  }
+    close() {
+        this.el.classList.remove('mdc-dialog--open');
+    }
 
-  open() {
-    try {
-      this.mdcComponent.open();
-    } catch (e) {}
-  }
 
-  close() {
-    this.mdcComponent.close();
-  }
-
-  onDisconnect() {
-    this.mdcComponent.destroy();
-  }
 }

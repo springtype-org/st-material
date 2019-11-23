@@ -1,91 +1,148 @@
-import { st } from "springtype/core";
-import { ref } from "springtype/core/ref";
-import { attr, component, event } from "springtype/web/component";
-import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import tpl from "./mwc-select.tpl";
-import { MDCSelect } from "@material/select/component";
-import { MDCRipple } from "@material/ripple";
-import { IEvent, IEventListener } from "springtype/web/component/interface";
+import {st} from "springtype/core";
+import {ref} from "springtype/core/ref";
+import {attr, component, event} from "springtype/web/component";
+import {ILifecycle} from "springtype/web/component/interface/ilifecycle";
+import {IEvent, IEventListener} from "springtype/web/component/interface";
+import {MwcList, MwcListItem} from "../mwc-list";
+import {tsx} from "springtype/web/vdom";
+import {IElement, IVirtualNode} from "springtype/web/vdom/interface";
+import {IVirtualNodeAttributes} from "springtype/web/vdom/interface/ivirtual-node";
 
 export interface ISelectEventDetails {
-  detail: {
-    value: string;
-    index: number;
-  };
+    detail: {
+        value: string;
+        index: number;
+    };
 }
 
 export interface IMwcSelectAttrs {
-  name?: string;
-  label?: string;
-  ripple?: boolean;
-  disabled?: boolean;
-  value?: string;
-  onMwcSelect?: IEventListener<ISelectEventDetails>;
+    name?: string;
+    label?: string;
+    ripple?: boolean;
+    disabled?: boolean;
+    value?: string;
+    onMwcSelect?: IEventListener<ISelectEventDetails>;
 }
 
-export interface MwcSelectEvent extends IEvent<ISelectEventDetails> { }
+export interface MwcSelectEvent extends IEvent<ISelectEventDetails> {
+}
 
-@component({
-  tpl,
-})
+@component
 export class MwcSelect extends st.component<IMwcSelectAttrs> implements ILifecycle {
 
-  static SLOT_NAME_LIST_ITEMS: string = "mwc-select-items-slot";
+    static SLOT_NAME_LIST_ITEMS: string = "mwc-select-items-slot";
 
-  @ref
-  selectContainer: HTMLElement;
+    @ref
+    selectRef: HTMLElement;
 
-  @event
-  onMwcSelect: IEventListener<ISelectEventDetails>;
+    @ref
+    innerSelectRef: HTMLSelectElement;
 
-  @attr
-  name: string = "";
+    @ref
+    selectLabelRef: HTMLElement;
 
-  @attr
-  label: string = "";
+    @ref
+    selectLineRippleRef: HTMLElement;
 
-  @attr
-  ripple: boolean = true;
+    @ref
+    selectMenuRef: HTMLElement;
 
-  @attr
-  disabled: boolean = false;
+    @ref
+    selectTextRef: HTMLElement;
 
-  @attr
-  value: string = "";
+    @ref
+    optionListRef: MwcList;
 
-  mdcSelect: MDCSelect;
-  mdcRipple: MDCRipple;
+    @event
+    onMwcSelect: IEventListener<ISelectEventDetails>;
 
-  onAfterRender() {
+    @attr
+    name: string = "";
 
-    this.onDisconnect();
+    @attr
+    label: string = "";
 
-    this.mdcSelect = new MDCSelect(this.selectContainer);
+    @attr
+    ripple: boolean = true;
 
-    this.selectContainer.addEventListener("MDCSelect:change", ((evt: any) => {
+    @attr
+    disabled: boolean = false;
 
-      st.event<ISelectEventDetails>(this.el, "MwcSelect", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: evt.detail,
-      });
+    @attr
+    value: string = "";
 
-    }) as any);
+    selectedValue: any = null;
+    selectedOpen: boolean = false;
 
-    if (this.ripple) {
-      this.mdcRipple = new MDCRipple(this.selectContainer);
+    render(): IVirtualNode<IVirtualNodeAttributes> | Array<IVirtualNode> {
+        const classes = ["mdc-select"];
+
+        if (this.disabled) {
+            classes.push("mdc-select--disabled");
+        }
+
+        return (
+            <div ref={{selectRef: this}} class={classes} onClick={() => {
+                this.selectedOpen ? this.close() : this.open()
+            }} onFocus={() => {
+                this.selectRef.classList.add('mdc-select--focused')
+            }} onBlur={() => {
+                this.selectRef.classList.remove('mdc-select--focused')
+            }} tabIndex={-1} style="outline: none">
+                <div class="mdc-select__anchor">
+                    <select name={this.name} style="display:none;" ref={{innerSelectRef: this}}/>
+                    <i class="mdc-select__dropdown-icon"/>
+                    <div class="mdc-select__selected-text" aria-disabled={this.disabled} aria-expanded="true"
+                         ref={{selectTextRef: this}}/>
+                    <span class="mdc-floating-label" ref={{selectLabelRef: this}}>{this.label}</span>
+                    <div class="mdc-line-ripple" ref={{selectLineRippleRef: this}}/>
+                </div>
+
+                <div class="mdc-select__menu mdc-menu mdc-menu-surface" ref={{selectMenuRef: this}} onClick={(evt) => {
+                    this.onItemSelect(evt)
+                }}>
+                    <MwcList>{this.renderSlot(MwcSelect.SLOT_NAME_LIST_ITEMS)}</MwcList>
+                </div>
+            </div>
+        );
     }
-  }
 
-  onDisconnect() {
 
-    if (this.mdcSelect) {
-      this.mdcSelect.destroy();
+    open() {
+        this.selectedOpen = true;
+        this.selectRef.focus();
+        this.selectRef.classList.add('mdc-select--activated');
+        this.selectMenuRef.classList.add('mdc-menu-surface--open');
+        this.selectLineRippleRef.classList.add('mdc-line-ripple--active');
+        this.selectLabelRef.classList.add('mdc-floating-label--float-above');
     }
 
-    if (this.mdcRipple) {
-      this.mdcRipple.destroy();
+    close() {
+        this.selectedOpen = false;
+        this.selectRef.classList.remove('mdc-select--activated');
+        this.selectMenuRef.classList.remove('mdc-menu-surface--open');
+        if (this.selectedValue === null) {
+            this.selectLabelRef.classList.remove('mdc-floating-label--float-above');
+        }
+
     }
-  }
+
+    onItemSelect(evt: MouseEvent) {
+        const element: IElement = evt.target as IElement;
+        const selectedListItem: MwcListItem = element.$stComponent;
+
+        //@ts-ignore
+        for (let i = 0; i < selectedListItem.parent.INTERNAL.childComponents.length; i++) {
+            //@ts-ignore
+            const listItem: MwcListItem = selectedListItem.parent.INTERNAL.childComponents[i];
+            if (selectedListItem !== listItem) {
+                listItem.select(false)
+            }
+        }
+        selectedListItem.select(true);
+        const value = component['data-value'];
+        this.selectedValue = value;
+        this.innerSelectRef = value;
+        this.selectTextRef.innerText = element.innerText;
+    }
 }

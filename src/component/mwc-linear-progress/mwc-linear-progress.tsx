@@ -1,59 +1,57 @@
-import { attr, component } from "springtype/web/component";
-import { st } from "springtype/core";
-import { ref } from "springtype/core/ref";
-import { tsx } from "springtype/web/vdom";
-import { MDCLinearProgress } from "@material/linear-progress";
-import { MDCLinearProgressFoundation } from "@material/linear-progress/foundation";
+import {attr, component} from "springtype/web/component";
+import {st} from "springtype/core";
+import {ref} from "springtype/core/ref";
+import {tsx} from "springtype/web/vdom";
 
 export interface IMwcLinearProgressAttrs {
-  reverse?: boolean;
+    reverse?: boolean;
 }
 
 @component
 export class MwcLinearProgress extends st.component<IMwcLinearProgressAttrs> {
-  @ref
-  progressRef: HTMLElement;
 
-  @attr
-  reverse: boolean = false;
+    @ref
+    elRef: HTMLElement;
 
-  mdcLinearProgress: MDCLinearProgress;
-  mdcLinearProgressFoundation: MDCLinearProgressFoundation;
+    @ref
+    progressRef: HTMLElement;
 
-  render() {
-    return (
-      <div role="progressbar" ref={{ progressRef: this }} class="mdc-linear-progress">
-        <div class="mdc-linear-progress__buffering-dots" />
-        <div class="mdc-linear-progress__buffer" />
-        <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
-          <span class="mdc-linear-progress__bar-inner" />
-        </div>
-        <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
-          <span class="mdc-linear-progress__bar-inner" />
-        </div>
-      </div>
-    );
-  }
+    @ref
+    progressBufferRef: HTMLElement;
 
-  progress(progress: number) {
-    this.mdcLinearProgressFoundation.setProgress(progress);
-  }
+    @attr
+    reverse: boolean = false;
 
-  buffer(buffer: number) {
-    this.mdcLinearProgressFoundation.setBuffer(buffer);
-  }
+    render() {
+        return (
+            <div role="progressbar" class="mdc-linear-progress" ref={{elRef: this}}>
+                <div class="mdc-linear-progress__buffering-dots"/>
+                <div class="mdc-linear-progress__buffer" ref={{progressBufferRef: this}}/>
+                <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar" ref={{progressRef: this}}>
+                    <span class="mdc-linear-progress__bar-inner"/>
+                </div>
+                <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+                    <span class="mdc-linear-progress__bar-inner"/>
+                </div>
+            </div>
+        );
+    }
 
-  onAfterRender(): void {
-    this.mdcLinearProgress = new MDCLinearProgress(this.progressRef);
-    this.mdcLinearProgress.open();
-    this.mdcLinearProgressFoundation = this.mdcLinearProgress.getDefaultFoundation();
-    this.mdcLinearProgressFoundation.open();
-    this.mdcLinearProgressFoundation.setDeterminate(true);
-    this.mdcLinearProgressFoundation.setReverse(this.reverse);
-  }
+    progress(progress: number) {
+        this.progressRef.setAttribute("style", `transform: scaleX(${progress})`)
+    }
 
-  onDisconnect(): void {
-    this.mdcLinearProgress.destroy();
-    this.mdcLinearProgressFoundation.destroy();
-  }
+    buffer(buffer: number) {
+        this.progressBufferRef.setAttribute("style", `transform: scaleX(${buffer})`)
+    }
+
+    onAfterRender(): void {
+        if (this.reverse) {
+            this.elRef.classList.add('mdc-linear-progress--reversed');
+        } else {
+            this.elRef.classList.remove('mdc-linear-progress--reversed');
+        }
+    }
+
+
 }

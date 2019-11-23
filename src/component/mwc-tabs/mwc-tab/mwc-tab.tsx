@@ -30,7 +30,6 @@ export class MwcTab extends st.component<IMwcTabAttrs> implements ILifecycle {
 
 
     activate(active: boolean, evt?: MouseEvent | TouchEvent) {
-        //console.log('activated' ,active);
         if (active) {
             this.tabRef.classList.add("mdc-tab--active");
             this.indicatorRef.classList.add("mdc-tab-indicator--active");
