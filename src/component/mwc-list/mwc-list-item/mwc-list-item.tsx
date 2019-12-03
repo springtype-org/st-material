@@ -39,25 +39,31 @@ export class MwcListItem extends st.component<IMwcListItemAttrs> implements ILif
     @attr
     activated: boolean = false;
 
-    @attr
-    dataValue: string;
-
-    initialRender: boolean = false;
-
     onAfterElCreate() {
-
         this.elClass = ["mdc-list-item", ...this.elClass];
+        this.select(this.selected);
+        this.active(this.activated);
+        this.disable(this.disabled);
+    }
 
-        if (this.dataValue) {
-            this.elAttributes = {
-                // @ts-ignore
-                "data-value": this.dataValue
-            }
+    active(active: boolean) {
+        if (active) {
+            this.el.classList.add("mdc-list-item--activated");
+        } else {
+            this.el.classList.remove("mdc-list-item--activated");
         }
     }
 
-    select(selected: boolean) {
-        if (this.selected) {
+    disable(disable: boolean) {
+        if (disable) {
+            this.el.classList.add("mdc-list-item--disabled");
+        } else {
+            this.el.classList.remove("mdc-list-item--disabled");
+        }
+    }
+
+    select(select: boolean) {
+        if (select) {
             this.el.classList.add("mdc-list-item--selected");
         } else {
             this.el.classList.remove("mdc-list-item--selected");
@@ -65,38 +71,24 @@ export class MwcListItem extends st.component<IMwcListItemAttrs> implements ILif
     }
 
     shouldAttributeChange(name: string, newValue: any, oldValue: any): boolean {
-        console.log('shouldAttributeChange', name, newValue, oldValue);
-        if (this.initialRender) {
+        if (this.INTERNAL.notInitialRender) {
             if (name === 'selected') {
-              this.select(newValue)
+                this.select(newValue);
             }
             if (name === 'activated') {
-                if (this.activated) {
-                    this.el.classList.add("mdc-list-item--activated");
-                } else {
-                    this.el.classList.remove("mdc-list-item--activated");
-                }
+                this.active(newValue);
             }
             if (name === 'disabled') {
-                if (this.disabled) {
-                    this.el.classList.add("mdc-list-item--disabled");
-                } else {
-                    this.el.classList.remove("mdc-list-item--disabled");
-                }
+                this.disable(newValue);
             }
+            return false;
         }
-        return false;
+        return true;
     }
 
-    shouldRender(): boolean {
-        return !this.initialRender;
-    }
-
-    onAfterInitialRender(): void {
-        this.initialRender = true;
-    }
 
     render() {
+        console.log('render list item')
         if (this.autoWrapText) {
             return <MwcListItemText class={this.textClass}>{this.renderChildren()}</MwcListItemText>;
         }
@@ -104,9 +96,5 @@ export class MwcListItem extends st.component<IMwcListItemAttrs> implements ILif
             return <MwcListItemGraphic class={this.graphicClass}>{this.renderChildren()}</MwcListItemGraphic>;
         }
         return this.renderChildren();
-    }
-
-    onAfterRender(hasDOMChanged: boolean): void {
-        console.log('onAfterRender')
     }
 }

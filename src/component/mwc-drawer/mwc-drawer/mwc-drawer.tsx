@@ -1,70 +1,80 @@
-import { MDCDrawer } from "@material/drawer";
-import { st } from "springtype/core";
-import { ref } from "springtype/core/ref";
-import { attr, component } from "springtype/web/component";
-import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { tsx } from "springtype/web/vdom";
+import {st} from "springtype/core";
+import {ref} from "springtype/core/ref";
+import {attr, component} from "springtype/web/component";
+import {ILifecycle} from "springtype/web/component/interface/ilifecycle";
+import {tsx} from "springtype/web/vdom";
 
 export type MwcDrawerVariants = "modal" | "dismissible";
 
 export interface IMwcDrawerAttrs {
-  variant?: MwcDrawerVariants;
-  fixed?: boolean;
+    variant?: MwcDrawerVariants;
+    fixed?: boolean;
 }
 
 @component
 export class MwcDrawer extends st.component<IMwcDrawerAttrs> implements ILifecycle, IMwcDrawerAttrs {
-    
-  @attr
-  variant: MwcDrawerVariants = "dismissible";
 
-  @attr
-  fixed: boolean = false;
+    @ref
+    drawerRef: HTMLElement;
 
-  @ref
-  drawerRef: HTMLElement;
+    @ref
+    drawerScrimRef: HTMLElement;
 
-  mdcDrawer!: MDCDrawer;
+    @attr
+    variant: MwcDrawerVariants = "dismissible";
 
-  toggle() {
-    this.mdcDrawer.open = !this.mdcDrawer.open;
-  }
+    @attr
+    fixed: boolean = false;
 
-  open() {
-    this.mdcDrawer.open = true;
-  }
 
-  close() {
-    this.mdcDrawer.open = false;
-  }
+    drawerOpen: boolean = false;
 
-  render() {
-    const classes = ["mdc-drawer"];
-
-    if (this.variant === "dismissible") {
-      classes.push("mdc-drawer--dismissible");
-    } else {
-      classes.push("mdc-drawer--modal");
+    onAfterElCreate(): void {
+        this.elClass = ['drawer-frame-root', ...this.elClass]
     }
 
-    if (this.fixed) {
-      classes.push("mwc-drawer--fixed");
+    toggle() {
+        if (this.drawerOpen) {
+            this.close();
+        } else {
+            this.open();
+        }
     }
-    return (
-      <fragment>
-        <aside ref={{ drawerRef: this }} class={classes}>
-          {this.renderChildren()}
-        </aside>
-        {this.variant === "modal" ? <div class="mdc-drawer-scrim" /> : <fragment />}
-      </fragment>
-    );
-  }
 
-  onAfterRender(): void {
-    this.mdcDrawer = MDCDrawer.attachTo(this.drawerRef);
-  }
+    open() {
+        this.drawerOpen = true;
+        this.drawerRef.classList.add('mdc-drawer--open')
+    }
 
-  onDisconnect() {
-    this.mdcDrawer.destroy();
-  }
+    close() {
+        this.drawerOpen = false;
+        this.drawerRef.classList.remove('mdc-drawer--open')
+    }
+
+    render() {
+        const classes = ["mdc-drawer"];
+        const scrimStyle = {};
+        if (this.variant === "dismissible") {
+            classes.push("mdc-drawer--dismissible");
+            scrimStyle['display'] = 'none'
+        } else {
+            classes.push("mdc-drawer--modal");
+        }
+        if (this.fixed) {
+            classes.push("mwc-drawer--fixed");
+        }
+
+        return (
+            <fragment>
+                <aside ref={{drawerRef: this}} class={classes}>
+                    {this.renderChildren()}
+                </aside>
+                <div class="mdc-drawer-scrim" ref={{drawerScrimRef: this}} style={scrimStyle} onClick={() => {
+                  this.close()
+                }}/>
+            </fragment>
+        );
+    }
+
+
 }

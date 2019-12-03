@@ -38,7 +38,7 @@ export class HomePage extends st.component {
             <MwcDrawerSubtitle>{process.env.ST_MATERIAL_VERSION}</MwcDrawerSubtitle>
           </MwcDrawerHeader>
           <MwcDrawerContent>
-            <MwcList>{getDrawerListItems(this)}</MwcList>
+            <MwcList tag={'nav'}>{getDrawerListItems(this)}</MwcList>
           </MwcDrawerContent>
         </MwcDrawer>
 

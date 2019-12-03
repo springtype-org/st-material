@@ -15,7 +15,6 @@ export interface IMwcBaseTextFieldAttrs {
   name?: string;
   label?: string | false;
   variant?: MwcBaseTextFieldVariant;
-  ripple?: boolean;
   disabled?: boolean;
   value?: string;
   shaped?: boolean;
@@ -44,9 +43,6 @@ export class MwcBaseTextField extends st.component<IMwcBaseTextFieldAttrs> imple
 
   @attr
   variant: MwcBaseTextFieldVariant = MwcBaseTextFieldVariant.FILLED;
-
-  @attr
-  ripple: boolean = true;
 
   @attr
   disabled: boolean = false;
