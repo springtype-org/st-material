@@ -11,7 +11,7 @@ import {MwcLinearProgressIndeterminate} from "../../component/mwc-linear-progres
 
 @component
 export class LinearProgressPage extends st.component implements ILifecycle {
-    static ROUTE = "#/linear-progress-page";
+    static ROUTE = "linear-progress-page";
 
     @ref
     progress: MwcLinearProgress;

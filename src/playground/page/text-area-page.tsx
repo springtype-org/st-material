@@ -7,7 +7,7 @@ import { MwcH6 } from "../../component/mwc-typography/mwc-h6/mwc-h6";
 
 @component
 export class TextAreaPage extends st.component {
-  static ROUTE = "#/text-area-page";
+  static ROUTE = "text-area-page";
 
   render() {
     return (

@@ -18,7 +18,7 @@ export class MwcListDivider extends st.component<IMwcListDividerAttrs> implement
   inset: boolean = false;
 
   onAfterElCreate() {
-    const classes = [...this.elClass];
+    const classes = [...this.class];
 
     if (this.padded) {
       classes.push("mdc-list-divider--padded");
@@ -27,10 +27,10 @@ export class MwcListDivider extends st.component<IMwcListDividerAttrs> implement
     if (this.inset) {
       classes.push("mdc-list-divider--inset");
     }
-    this.elClass = [...classes, "mdc-list-divider"];
+    this.class = [...classes, "mdc-list-divider"];
 
-    this.elStyle = {
-      ...this.elStyle,
+    this.style = {
+      ...this.style,
       display: "block",
     };
   }

@@ -26,7 +26,7 @@ export class MwcSnackbar extends st.component<IMwcSnackbarAttrs> implements ILif
     timeoutProcess: NodeJS.Timeout;
 
     onAfterElCreate() {
-        const classes = [...this.elClass, "mdc-snackbar"];
+        const classes = [...this.class, "mdc-snackbar"];
 
         if (this.leading) {
             classes.push("mdc-snackbar--leading");
@@ -35,7 +35,7 @@ export class MwcSnackbar extends st.component<IMwcSnackbarAttrs> implements ILif
         if (this.stacked) {
             classes.push("mdc-snackbar--stacked");
         }
-        this.elClass = classes;
+        this.class = classes;
     }
 
     render() {

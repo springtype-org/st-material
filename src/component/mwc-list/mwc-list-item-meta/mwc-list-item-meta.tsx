@@ -5,7 +5,7 @@ import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 @component
 export class MwcListItemMeta extends st.component implements ILifecycle {
   onAfterElCreate() {
-    this.elClass = [...this.elClass, "mdc-list-item__meta"];
+    this.class = [...this.class, "mdc-list-item__meta"];
   }
 
   render() {

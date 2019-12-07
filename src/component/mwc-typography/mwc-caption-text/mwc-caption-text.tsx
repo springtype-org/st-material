@@ -6,6 +6,6 @@ import { tsx } from "springtype/web/vdom";
 @component
 export class MwcCaptionText extends st.component implements ILifecycle {
   render() {
-    return <p class={["mdc-typography--caption", ...this.elClass]}>{this.renderChildren()}</p>;
+    return <p class={["mdc-typography--caption", ...this.class]}>{this.renderChildren()}</p>;
   }
 }

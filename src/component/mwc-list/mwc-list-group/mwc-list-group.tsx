@@ -8,10 +8,10 @@ export class MwcListGroup extends st.component implements ILifecycle {
   static SLOT_NAME_HEADER: string = "header";
 
   onAfterElCreate() {
-    this.elClass = [...this.elClass, "mdc-list-group"];
+    this.class = [...this.class, "mdc-list-group"];
 
-    this.elStyle = {
-      ...this.elStyle,
+    this.style = {
+      ...this.style,
       display: "block",
     };
   }

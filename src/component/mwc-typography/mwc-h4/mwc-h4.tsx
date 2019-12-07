@@ -6,6 +6,6 @@ import { tsx } from "springtype/web/vdom";
 @component
 export class MwcH4 extends st.component implements ILifecycle {
   render() {
-    return <h4 class={["mdc-typography--headline4", ...this.elClass]}>{this.renderChildren()}</h4>;
+    return <h4 class={["mdc-typography--headline4", ...this.class]}>{this.renderChildren()}</h4>;
   }
 }

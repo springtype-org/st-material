@@ -6,6 +6,6 @@ import { tsx } from "springtype/web/vdom";
 @component
 export class MwcOverlineText extends st.component implements ILifecycle {
   render() {
-    return <p class={["mdc-typography--overline", ...this.elClass]}>{this.renderChildren()}</p>;
+    return <p class={["mdc-typography--overline", ...this.class]}>{this.renderChildren()}</p>;
   }
 }

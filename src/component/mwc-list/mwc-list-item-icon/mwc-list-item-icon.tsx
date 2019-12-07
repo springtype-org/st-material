@@ -22,7 +22,7 @@ export class MwcListItemIcon extends st.component<IMwcListItemIconAttrs> impleme
 
   onAfterElCreate() {
 
-    const classes = [...this.elClass, "material-icons"];
+    const classes = [...this.class, "material-icons"];
 
     if (this.meta) {
       classes.push("mdc-list-item__meta");
@@ -31,7 +31,7 @@ export class MwcListItemIcon extends st.component<IMwcListItemIconAttrs> impleme
     if (this.graphic) {
       classes.push("mdc-list-item__graphic");
     }
-    this.elClass = classes;
+    this.class = classes;
   }
 
   render() {

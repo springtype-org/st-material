@@ -41,7 +41,7 @@ export class MwcList extends st.component<IMwcListAttrs> implements ILifecycle {
   protected mdcListItemRipples: Array<any>;
 
   onAfterElCreate() {
-    const classes = [...this.elClass];
+    const classes = [...this.class];
 
     if (this.twoLine) {
       classes.push("mdc-list--two-line");
@@ -58,10 +58,10 @@ export class MwcList extends st.component<IMwcListAttrs> implements ILifecycle {
     if (this.avatarList) {
       classes.push("mdc-list--avatar-list");
     }
-    this.elClass = [...classes, "mdc-list"];
+    this.class = [...classes, "mdc-list"];
 
-    this.elStyle = {
-      ...this.elStyle,
+    this.style = {
+      ...this.style,
       display: "block",
     };
   }

@@ -6,6 +6,6 @@ import { tsx } from "springtype/web/vdom";
 @component
 export class MwcButtonText extends st.component implements ILifecycle {
   render() {
-    return <p class={["mdc-typography--button", ...this.elClass]}>{this.renderChildren()}</p>;
+    return <p class={["mdc-typography--button", ...this.class]}>{this.renderChildren()}</p>;
   }
 }

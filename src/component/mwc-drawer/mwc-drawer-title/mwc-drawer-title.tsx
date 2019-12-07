@@ -5,12 +5,12 @@ import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 @component
 export class MwcDrawerTitle extends st.component implements ILifecycle {
   onAfterElCreate() {
-    this.elStyle = {
-      ...this.elStyle,
+    this.style = {
+      ...this.style,
       display: "block",
     };
 
-    this.elClass = [...this.elClass, "mdc-drawer__title"];
+    this.class = [...this.class, "mdc-drawer__title"];
   }
 
   render() {

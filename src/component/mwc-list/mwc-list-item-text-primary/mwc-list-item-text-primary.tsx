@@ -5,7 +5,7 @@ import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 @component
 export class MwcListItemTextPrimary extends st.component implements ILifecycle {
   onAfterElCreate() {
-    this.elClass = [...this.elClass, "mdc-list-item__primary-text"];
+    this.class = [...this.class, "mdc-list-item__primary-text"];
   }
 
   render() {

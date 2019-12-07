@@ -1,143 +1,67 @@
-import { PATH_DEFAULT, PATH_WILDCARD, RouteList, Route } from "springtype/web/router";
-import { tsx } from "springtype/web/vdom";
-import { ButtonPage } from "./page/button-page";
-import { CheckboxPage } from "./page/checkbox-page";
-import { DialogPage } from "./page/dialog-page";
-import { DrawerPage } from "./page/drawer-page";
-import { GridLayoutPage } from "./page/grid-layout-page";
-import { ListPage } from "./page/list-page";
-import { SnackbarPage } from "./page/snackbar-page";
-import { TabBarPage } from "./page/tabbar-page";
-import { TextAreaPage } from "./page/text-area-page";
-import { TextFieldPage } from "./page/text-field-page";
-import { TypographyPage } from "./page/typography-page";
-import { HomePageContainer } from "./home-page-container";
-import { RadioButtonPage } from "./page/radio-button-page";
-import { SelectPage } from "./page/select-page";
-import { CardPage } from "./page/card-page";
-import { LinearProgressPage } from "./page/linear-progress-page";
+import {PATH_START, PATH_WILDCARD, Route, RouteList} from "springtype/web/router";
+import {tsx} from "springtype/web/vdom";
+import {ButtonPage} from "./page/button-page";
+import {CheckboxPage} from "./page/checkbox-page";
+import {DialogPage} from "./page/dialog-page";
+import {DrawerPage} from "./page/drawer-page";
+import {GridLayoutPage} from "./page/grid-layout-page";
+import {ListPage} from "./page/list-page";
+import {SnackbarPage} from "./page/snackbar-page";
+import {TabBarPage} from "./page/tabbar-page";
+import {TextAreaPage} from "./page/text-area-page";
+import {TextFieldPage} from "./page/text-field-page";
+import {TypographyPage} from "./page/typography-page";
+import {RadioButtonPage} from "./page/radio-button-page";
+import {SelectPage} from "./page/select-page";
+import {CardPage} from "./page/card-page";
+import {LinearProgressPage} from "./page/linear-progress-page";
 
 export const ROUTES = (
-  <RouteList>
-    <Route
-      path={[PATH_DEFAULT, PATH_WILDCARD, CheckboxPage.ROUTE]}
-      component={
-        <HomePageContainer>
-          <CheckboxPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={ButtonPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <ButtonPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={TextFieldPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <TextFieldPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={TextAreaPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <TextAreaPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={TypographyPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <TypographyPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={GridLayoutPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <GridLayoutPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={DrawerPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <DrawerPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={ListPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <ListPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={TabBarPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <TabBarPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={SnackbarPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <SnackbarPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={DialogPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <DialogPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={RadioButtonPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <RadioButtonPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={SelectPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <SelectPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={CardPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <CardPage />
-        </HomePageContainer>
-      }
-    />
-    <Route
-      path={LinearProgressPage.ROUTE}
-      component={
-        <HomePageContainer>
-          <LinearProgressPage />
-        </HomePageContainer>
-      }
-    />
-  </RouteList>
+    <RouteList>
+        <Route path={[CheckboxPage.ROUTE, PATH_START, PATH_WILDCARD]}>
+            <CheckboxPage/>
+        </Route>
+        <Route path={ButtonPage.ROUTE}>
+            <ButtonPage/>
+        </Route>
+        <Route path={TextFieldPage.ROUTE}>
+            <TextFieldPage/>
+        </Route>
+        <Route path={TextAreaPage.ROUTE}>
+            <TextAreaPage/>
+        </Route>
+        <Route path={TypographyPage.ROUTE}>
+            <TypographyPage/>
+        </Route>
+        <Route path={GridLayoutPage.ROUTE}>
+            <GridLayoutPage/>
+        </Route>
+        <Route path={DrawerPage.ROUTE}>
+            <DrawerPage/>
+        </Route>
+        <Route path={ListPage.ROUTE}>
+            <ListPage/>
+        </Route>
+        <Route path={TabBarPage.ROUTE}>
+            <TabBarPage/>
+        </Route>
+        <Route path={SnackbarPage.ROUTE}>
+            <SnackbarPage/>
+        </Route>
+        <Route path={DialogPage.ROUTE}>
+            <DialogPage/>
+        </Route>
+        <Route path={RadioButtonPage.ROUTE}>
+            <RadioButtonPage/>
+        </Route>
+        <Route path={SelectPage.ROUTE}>
+            <SelectPage/>
+        </Route>
+        <Route path={CardPage.ROUTE}>
+            <CardPage/>
+        </Route>
+        <Route path={LinearProgressPage.ROUTE}>
+            <LinearProgressPage/>
+        </Route>
+    </RouteList>
 );

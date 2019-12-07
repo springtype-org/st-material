@@ -32,7 +32,7 @@ export class MwcLayoutGridCell extends st.component<IMwcLayoutGridCellAttrs> imp
   columnsPerDeviceType: IColumnPerDeviceType;
 
   onAfterElCreate() {
-    const classes = [...this.elClass];
+    const classes = [...this.class];
 
     if (typeof this.columns !== "undefined") {
       classes.push(`mdc-layout-grid__cell--span-${this.columns}`);
@@ -51,10 +51,10 @@ export class MwcLayoutGridCell extends st.component<IMwcLayoutGridCellAttrs> imp
     if (this.align) {
       classes.push(`mdc-layout-grid__cell--align-${this.align}`);
     }
-    this.elClass = [...classes, "mdc-layout-grid__cell"];
+    this.class = [...classes, "mdc-layout-grid__cell"];
 
-    this.elStyle = {
-      ...this.elStyle,
+    this.style = {
+      ...this.style,
       display: "block",
     };
   }

@@ -28,7 +28,7 @@ export class MwcLayoutGrid extends st.component<IMwcLayoutGridAttrs> implements 
   innerClass: string | Array<string>;
 
   onAfterElCreate() {
-    const classes = [...this.elClass];
+    const classes = [...this.class];
 
     if (this.fixedColumnWidth) {
       classes.push("mdc-layout-grid--fixed-column-width");
@@ -37,10 +37,10 @@ export class MwcLayoutGrid extends st.component<IMwcLayoutGridAttrs> implements 
     if (this.align && this.align !== "middle") {
       classes.push(`mdc-layout-grid--align-${this.align}`);
     }
-    this.elClass = [...classes, "mdc-layout-grid"];
+    this.class = [...classes, "mdc-layout-grid"];
 
-    this.elStyle = {
-      ...this.elStyle,
+    this.style = {
+      ...this.style,
       display: "block",
     };
   }

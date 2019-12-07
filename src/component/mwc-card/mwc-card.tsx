@@ -34,7 +34,12 @@ export class MwcCard extends st.component<IMwcCardAttrs> implements ILifecycle {
   primaryMediaClass: string;
 
   onAfterElCreate() {
-    this.elClass = [...this.elClass, "mdc-card"];
+    console.log('onAfterElCreate',this.class, this.virtualNode)
+    this.class = [...this.class, "mdc-card"];
+  }
+  onBeforeElCreate() {
+    console.log('onBeforeElCreate',this.class, this.virtualNode)
+  //  this.class = [...this.class, "mdc-card"];
   }
 
   render(): IVirtualNode<IVirtualNodeAttributes> | Array<IVirtualNode> {

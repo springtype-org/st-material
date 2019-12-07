@@ -17,7 +17,7 @@ export class MwcDialog extends st.component<IMwcDialogAttrs> implements ILifecyc
 
 
     onAfterElCreate() {
-        this.elClass = ["mdc-dialog", ...(this.elClass as Array<string>)];
+        this.class = ["mdc-dialog", ...(this.class as Array<string>)];
     }
 
     render() {

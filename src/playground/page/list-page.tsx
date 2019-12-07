@@ -14,7 +14,7 @@ import * as listPageStyle from "./list-page.tss.scss";
 
 @component
 export class ListPage extends st.component {
-  static ROUTE = "#/list-page";
+  static ROUTE = "list-page";
 
   render() {
     return (

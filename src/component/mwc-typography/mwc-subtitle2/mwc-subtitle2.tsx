@@ -6,6 +6,6 @@ import { tsx } from "springtype/web/vdom";
 @component
 export class MwcSubtitle2 extends st.component implements ILifecycle {
   render() {
-    return <h6 class={["mdc-typography--subtitle2", ...this.elClass]}>{this.renderChildren()}</h6>;
+    return <h6 class={["mdc-typography--subtitle2", ...this.class]}>{this.renderChildren()}</h6>;
   }
 }

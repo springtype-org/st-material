@@ -7,7 +7,7 @@ import {tsx} from "springtype/web/vdom";
 export class MwcDrawerContent extends st.component implements ILifecycle {
 
     onAfterElCreate(): void {
-        this.elClass = ['mdc-drawer__content', ...this.elClass];
+        this.class = ['mdc-drawer__content', ...this.class];
     }
 
     render() {

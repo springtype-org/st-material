@@ -7,7 +7,7 @@ import { MwcH6 } from "../../component/mwc-typography/mwc-h6/mwc-h6";
 
 @component
 export class SelectPage extends st.component {
-  static ROUTE = "#/select-page";
+  static ROUTE = "select-page";
 
   onSelect = (evt: MwcSelectEvent) => {
      console.log("got selection value", evt);

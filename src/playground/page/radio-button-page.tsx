@@ -6,7 +6,7 @@ import { MwcH6 } from "../../component/mwc-typography/mwc-h6/mwc-h6";
 
 @component
 export class RadioButtonPage extends st.component {
-  static ROUTE = "#/radio-button-page";
+  static ROUTE = "radio-button-page";
 
   render() {
     const radioGroupName = "gender-group";

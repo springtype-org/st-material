@@ -26,54 +26,100 @@ export class MwcDrawer extends st.component<IMwcDrawerAttrs> implements ILifecyc
     @attr
     fixed: boolean = false;
 
-
     drawerOpen: boolean = false;
 
     onAfterElCreate(): void {
-        this.elClass = ['drawer-frame-root', ...this.elClass]
+        this.class = ['drawer-frame-root', ...this.class]
     }
 
-    toggle() {
-        if (this.drawerOpen) {
-            this.close();
+    shouldAttributeChange(name: string, newValue: any, oldValue: any): boolean {
+        if (this.INTERNAL.notInitialRender) {
+            switch (name) {
+                case 'variant':
+                    this.doVariant(newValue);
+                    break;
+                case 'fixed':
+                    this.doFixed(newValue);
+                    break;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    onAfterInitialRender(): void {
+        this.doVariant(this.variant);
+        this.doFixed(this.fixed);
+    }
+
+    doVariant(variant: MwcDrawerVariants) {
+        if (variant === "dismissible") {
+            this.drawerRef.classList.add("mdc-drawer--dismissible");
+            this.drawerScrimRef.setAttribute("style", "display: none;");
+
+            this.drawerRef.classList.remove("mdc-drawer--modal");
         } else {
-            this.open();
+            this.drawerRef.classList.add("mdc-drawer--modal");
+
+            this.drawerScrimRef.removeAttribute("style");
+            this.drawerRef.classList.remove("mdc-drawer--dismissible");
         }
     }
 
-    open() {
-        this.drawerOpen = true;
-        this.drawerRef.classList.add('mdc-drawer--open')
+    doFixed(fixed: boolean) {
+        if (fixed) {
+            this.drawerRef.classList.add("mwc-drawer--fixed");
+        } else {
+            this.drawerRef.classList.remove("mwc-drawer--fixed");
+        }
     }
 
-    close() {
+    shouldRender(): boolean {
+        return !this.INTERNAL.notInitialRender;
+    }
+
+    doToggle() {
+        if (this.drawerOpen) {
+            this.doClose();
+        } else {
+            this.doOpen();
+        }
+    }
+
+    doOpen() {
+        this.drawerOpen = true;
+        this.drawerRef.classList.add('mdc-drawer--open');
+        this.drawerRef.classList.add('mdc-drawer--animate');
+        setImmediate(() => {
+            this.drawerRef.classList.add('mdc-drawer--opening');
+        });
+        setTimeout(() => {
+            this.drawerRef.classList.remove('mdc-drawer--opening');
+            this.drawerRef.classList.remove('mdc-drawer--animate');
+        }, 280);
+    }
+
+    doClose() {
         this.drawerOpen = false;
-        this.drawerRef.classList.remove('mdc-drawer--open')
+        this.drawerRef.classList.add('mdc-drawer--closing');
+        this.drawerRef.classList.add('mdc-drawer--animate');
+
+        setTimeout(() => {
+            this.drawerRef.classList.remove('mdc-drawer--open');
+            this.drawerRef.classList.remove('mdc-drawer--closing');
+            this.drawerRef.classList.remove('mdc-drawer--animate');
+        }, 280);
     }
 
     render() {
-        const classes = ["mdc-drawer"];
-        const scrimStyle = {};
-        if (this.variant === "dismissible") {
-            classes.push("mdc-drawer--dismissible");
-            scrimStyle['display'] = 'none'
-        } else {
-            classes.push("mdc-drawer--modal");
-        }
-        if (this.fixed) {
-            classes.push("mwc-drawer--fixed");
-        }
-
-        return (
-            <fragment>
-                <aside ref={{drawerRef: this}} class={classes}>
-                    {this.renderChildren()}
-                </aside>
-                <div class="mdc-drawer-scrim" ref={{drawerScrimRef: this}} style={scrimStyle} onClick={() => {
-                  this.close()
-                }}/>
-            </fragment>
-        );
+        return <fragment>
+            <aside ref={{drawerRef: this}} class="mdc-drawer">
+                {this.renderChildren()}
+            </aside>
+            <div class="mdc-drawer-scrim" ref={{drawerScrimRef: this}} onClick={() => {
+                this.doClose()
+            }}/>
+        </fragment>
     }
 
 

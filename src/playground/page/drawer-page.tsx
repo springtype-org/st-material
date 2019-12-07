@@ -13,7 +13,7 @@ import { MwcList } from "../../component/mwc-list/mwc-list/mwc-list";
 
 @component
 export class DrawerPage extends st.component {
-  static ROUTE = "/#/drawer-page";
+  static ROUTE = "/drawer-page";
 
   render() {
     return (

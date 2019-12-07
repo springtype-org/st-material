@@ -16,7 +16,7 @@ export interface IMwcListItemAttrs {
     dataValue?: string;
 }
 
-@component
+@component({tag: 'div'})
 export class MwcListItem extends st.component<IMwcListItemAttrs> implements ILifecycle {
     @attr
     autoWrapText: boolean = true;
@@ -40,7 +40,7 @@ export class MwcListItem extends st.component<IMwcListItemAttrs> implements ILif
     activated: boolean = false;
 
     onAfterElCreate() {
-        this.elClass = ["mdc-list-item", ...this.elClass];
+        this.class = ["mdc-list-item", ...this.class];
         this.select(this.selected);
         this.active(this.activated);
         this.disable(this.disabled);
@@ -88,7 +88,6 @@ export class MwcListItem extends st.component<IMwcListItemAttrs> implements ILif
 
 
     render() {
-        console.log('render list item')
         if (this.autoWrapText) {
             return <MwcListItemText class={this.textClass}>{this.renderChildren()}</MwcListItemText>;
         }

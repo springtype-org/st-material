@@ -5,7 +5,7 @@ import * as homePageContainer from "./home-page-container.tss.scss";
 @component
 export class HomePageContainer extends st.component {
   onAfterElCreate() {
-    this.elClass = [...this.elClass, "home-page-container", homePageContainer.homePageContainer];
+    this.class = [...this.class, "home-page-container", homePageContainer.homePageContainer];
   }
 
   render() {

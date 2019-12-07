@@ -60,7 +60,7 @@ export class MwcTab extends st.component<IMwcTabAttrs> implements ILifecycle {
 
     render() {
         return (
-            <div class={["mdc-tab", ...this.elClass]} ref={{tabRef: this}}>
+            <div class={["mdc-tab", ...this.class]} ref={{tabRef: this}}>
                <span class="mdc-tab__content">
                    {this.icon
                        ? <span class="mdc-tab__icon material-icons" aria-hidden="true">{this.icon}</span>

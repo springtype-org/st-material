@@ -8063,10 +8063,10 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
-springtype@2.0.0-beta.12:
-  version "2.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-beta.12.tgz#9761d1a98df0bb517dba0bf86526895fe56ff764"
-  integrity sha512-O/IyF8bJyR7J/6mxnvd1B5T0RQAwLC2bMpbmdaLdNmfX4MNHThuVFCPqHa9oHAwwC6BIKLVzCkJaULcCOEskyw==
+springtype@2.0.0-beta.14:
+  version "2.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-beta.14.tgz#d1ada7f6392fd1d93eb556856c294a70b62290fa"
+  integrity sha512-FDuEzbuhV8AsqwE+hfidCgYxgfOO0Fct9+hiJwHgm4UkjmrUnpRtAL+Bl5VxC81DMMK2Em90B4+Kelfyes6lzQ==
   dependencies:
     global "^4.4.0"
     st-cp "^2.0.0-alpha.4"

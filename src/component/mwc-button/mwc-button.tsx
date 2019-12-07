@@ -2,8 +2,6 @@ import {st} from "springtype/core";
 import {ILifecycle} from "springtype/web/component/interface";
 import {ref} from "springtype/core/ref";
 import {tsx} from "springtype/web/vdom";
-import {IVirtualNode} from "springtype/web/vdom/interface";
-import {IVirtualNodeAttributes} from "springtype/web/vdom/interface/ivirtual-node";
 import {attr, component} from "springtype/web/component";
 
 export type MwcButtonVariant = "text" | "raised" | "unelevated" | "outlined";
@@ -39,8 +37,26 @@ export class MwcButton extends st.component<IMwcButtonAttrs> implements ILifecyc
     @attr
     shaped = false;
 
-    render(): IVirtualNode<IVirtualNodeAttributes> | Array<IVirtualNode> {
-        const classesFixed = ["mdc-button"];
+
+    doFocus() {
+        this.buttonRef.classList.add('mdc-ripple-upgraded--background-focused');
+    }
+
+    doBlur() {
+        this.buttonRef.classList.remove('mdc-ripple-upgraded--background-focused');
+    }
+
+    doDisabled(disabled: boolean) {
+        if (disabled) {
+            this.buttonRef.setAttribute('disabled', undefined);
+
+        } else {
+            this.buttonRef.removeAttribute('disabled');
+        }
+    }
+
+    render() {
+        const classesFixed = [""];
 
         switch (this.variant) {
             case 'raised':
@@ -63,7 +79,11 @@ export class MwcButton extends st.component<IMwcButtonAttrs> implements ILifecyc
         }
 
         const button = (
-            <button ref={{buttonRef: this}} class={classesFixed}>
+            <button onFocus={() => {
+                this.doFocus()
+            }} onBlur={() => {
+                this.doBlur()
+            }} ref={{buttonRef: this}} class="mdc-button">
                 <span class={['mdc-button__ripple']}/>
                 {this.renderSlot(MwcButton.SLOT_NAME_LEADING_ICON)}
                 <span class="mdc-button__label">{this.label}</span>

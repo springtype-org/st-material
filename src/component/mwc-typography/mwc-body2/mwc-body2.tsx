@@ -6,6 +6,6 @@ import { tsx } from "springtype/web/vdom";
 @component
 export class MwcBody2 extends st.component implements ILifecycle {
   render() {
-    return <p class={["mdc-typography--body2", ...this.elClass]}>{this.renderChildren()}</p>;
+    return <p class={["mdc-typography--body2", ...this.class]}>{this.renderChildren()}</p>;
   }
 }

@@ -6,7 +6,7 @@ import { MwcH6 } from "../../component/mwc-typography/mwc-h6/mwc-h6";
 
 @component
 export class ButtonPage extends st.component {
-  static ROUTE = "#/button-page";
+  static ROUTE = "button-page";
 
   render() {
     return (

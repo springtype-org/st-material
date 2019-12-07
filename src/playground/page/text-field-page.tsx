@@ -8,7 +8,7 @@ import { MwcH6 } from "../../component/mwc-typography/mwc-h6/mwc-h6";
 
 @component
 export class TextFieldPage extends st.component {
-  static ROUTE = "#/text-field-page";
+  static ROUTE = "text-field-page";
 
   @ref
   textField!: MwcTextField;

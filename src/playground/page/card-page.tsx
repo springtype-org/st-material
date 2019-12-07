@@ -9,7 +9,7 @@ import * as cardPage from "./card-page.tss.scss";
 
 @component
 export class CardPage extends st.component {
-  static ROUTE = "#/card-page";
+  static ROUTE = "card-page";
 
   render() {
     const contentClasses = ["demo-card--content", cardPage.demoCardContent];

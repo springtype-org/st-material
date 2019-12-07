@@ -8,7 +8,7 @@ import {RenderReason, RenderReasonMetaData} from "springtype/web/component/inter
 
 @component
 export class TabBarPage extends st.component {
-    static ROUTE = "#/tabbar-page";
+    static ROUTE = "tabbar-page";
 
     onTabActivated = (evt: ITabActivateEvent) => {
        console.log('tab activated', evt.detail.index);
