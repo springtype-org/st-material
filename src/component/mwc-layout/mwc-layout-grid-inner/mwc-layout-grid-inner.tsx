@@ -4,9 +4,7 @@ import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 
 @component
 export class MwcLayoutGridInner extends st.component implements ILifecycle {
-  onAfterElCreate() {
-    this.class = [...this.class, "mdc-layout-grid__inner"];
-  }
+    class = [ "mdc-layout-grid__inner"];
 
   render() {
     return this.renderChildren();

@@ -3,9 +3,11 @@ import { component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { tsx } from "springtype/web/vdom";
 
-@component
+@component({tag: 'p'})
 export class MwcBody1 extends st.component implements ILifecycle {
+  class = ["mdc-typography--body1"];
+
   render() {
-    return <p class={["mdc-typography--body1", ...this.class]}>{this.renderChildren()}</p>;
+    return this.renderChildren();
   }
 }

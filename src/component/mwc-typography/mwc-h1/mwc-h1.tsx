@@ -3,9 +3,13 @@ import { component } from "springtype/web/component";
 import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
 import { tsx } from "springtype/web/vdom";
 
-@component
+@component({tag: 'h1'})
 export class MwcH1 extends st.component implements ILifecycle {
+
+  class = ["mdc-typography--headline1"];
+
   render() {
-    return <h1 class={["mdc-typography--headline1", ...this.class]}>{this.renderChildren()}</h1>;
+    return this.renderChildren();
   }
+
 }

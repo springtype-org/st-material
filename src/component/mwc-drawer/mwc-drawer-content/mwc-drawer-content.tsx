@@ -6,9 +6,7 @@ import {tsx} from "springtype/web/vdom";
 @component({tag: 'div'})
 export class MwcDrawerContent extends st.component implements ILifecycle {
 
-    onAfterElCreate(): void {
-        this.class = ['mdc-drawer__content', ...this.class];
-    }
+    class = ['mdc-drawer__content'];
 
     render() {
         return this.renderChildren();

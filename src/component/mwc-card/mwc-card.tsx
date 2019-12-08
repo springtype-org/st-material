@@ -14,7 +14,7 @@ export interface IMwcCardAttrs {
 }
 
 @component
-export class MwcCard extends st.component<IMwcCardAttrs> implements ILifecycle {
+export class MwcCard extends st.component<IMwcCardAttrs> implements ILifecycle, IMwcCardAttrs {
   static SLOT_NAME_PRIMARY: string = "primary-slot";
   static SLOT_NAME_ACTION: string = "action-slot";
 
@@ -33,16 +33,9 @@ export class MwcCard extends st.component<IMwcCardAttrs> implements ILifecycle {
   @attr
   primaryMediaClass: string;
 
-  onAfterElCreate() {
-    console.log('onAfterElCreate',this.class, this.virtualNode)
-    this.class = [...this.class, "mdc-card"];
-  }
-  onBeforeElCreate() {
-    console.log('onBeforeElCreate',this.class, this.virtualNode)
-  //  this.class = [...this.class, "mdc-card"];
-  }
+  class = ["mdc-card"];
 
-  render(): IVirtualNode<IVirtualNodeAttributes> | Array<IVirtualNode> {
+  render() {
     const actionsClasses = ["mdc-card__actions"];
     const primaryActionsClasses = ["mdc-card__primary-action"];
     const primaryCardMediaClasses = ["mdc-card__media"];

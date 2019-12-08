@@ -1,11 +1,13 @@
-import { st } from "springtype/core";
-import { component } from "springtype/web/component";
-import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import { tsx } from "springtype/web/vdom";
+import {st} from "springtype/core";
+import {component} from "springtype/web/component";
+import {ILifecycle} from "springtype/web/component/interface/ilifecycle";
+import {tsx} from "springtype/web/vdom";
 
-@component
+@component({tag: 'h2'})
 export class MwcH2 extends st.component implements ILifecycle {
-  render() {
-    return <h2 class={["mdc-typography--headline2", ...this.class]}>{this.renderChildren()}</h2>;
-  }
+    class = ["mdc-typography--headline2"];
+
+    render() {
+        return this.renderChildren();
+    }
 }

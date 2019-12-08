@@ -8,7 +8,7 @@ export interface IMwcDrawerAppContentAttrs {
   fixed?: boolean;
 }
 
-@component
+@component({tag:'div'})
 export class MwcDrawerAppContent extends st.component<IMwcDrawerAppContentAttrs>
   implements ILifecycle, IMwcDrawerAppContentAttrs {
 

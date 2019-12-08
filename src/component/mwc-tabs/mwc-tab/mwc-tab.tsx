@@ -17,9 +17,6 @@ export class MwcTab extends st.component<IMwcTabAttrs> implements ILifecycle {
     rippleRef: HTMLElement;
 
     @ref
-    tabRef: HTMLElement;
-
-    @ref
     indicatorRef: HTMLElement;
 
     @attr
@@ -28,16 +25,17 @@ export class MwcTab extends st.component<IMwcTabAttrs> implements ILifecycle {
     @attr
     label: string = "";
 
+    class = ['mdc-tab'];
 
     activate(active: boolean, evt?: MouseEvent | TouchEvent) {
         if (active) {
-            this.tabRef.classList.add("mdc-tab--active");
+            this.el.classList.add("mdc-tab--active");
             this.indicatorRef.classList.add("mdc-tab-indicator--active");
             this.rippleRef.classList.add("mdc-ripple-upgraded--foreground-activation");
             this.el.setAttribute('aria-selected', 'true');
             this.el.setAttribute('tabindex', "0");
         } else {
-            this.tabRef.classList.remove("mdc-tab--active");
+            this.el.classList.remove("mdc-tab--active");
             this.rippleRef.classList.remove("mdc-ripple-upgraded--foreground-activation");
             this.indicatorRef.classList.remove("mdc-tab-indicator--active");
             this.el.setAttribute('aria-selected', 'false');
@@ -60,7 +58,8 @@ export class MwcTab extends st.component<IMwcTabAttrs> implements ILifecycle {
 
     render() {
         return (
-            <div class={["mdc-tab", ...this.class]} ref={{tabRef: this}}>
+            <fragment>
+
                <span class="mdc-tab__content">
                    {this.icon
                        ? <span class="mdc-tab__icon material-icons" aria-hidden="true">{this.icon}</span>
@@ -72,7 +71,7 @@ export class MwcTab extends st.component<IMwcTabAttrs> implements ILifecycle {
                      <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"/>
                 </span>
                 <span ref={{rippleRef: this}} class={["mdc-tab__ripple", "mdc-ripple-upgraded"]}/>
-            </div>
+            </fragment>
         );
     }
 

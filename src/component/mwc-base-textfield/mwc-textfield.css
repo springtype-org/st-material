@@ -1,0 +1,27 @@
+.mdc-text-field--springtype-fullwidth {
+    width: 100%;
+}
+
+.mdc-text-field--springtype-fullwidth:not(.mdc-text-field--textarea) {
+    display: block;
+}
+
+.mdc-text-field--springtype-fullwidth:not(.mdc-text-field--textarea)::before, .mdc-text-field--springtype-fullwidth:not(.mdc-text-field--textarea)::after {
+    content: none;
+}
+
+.mdc-text-field--springtype-fullwidth.mdc-text-field--textarea .mdc-text-field__input {
+    resize: vertical;
+}
+
+.mdc-text-field.mwc-text-field--textarea {
+    height: unset;
+}
+
+.mdc-text-field.mwc-text-field--textarea > .mdc-floating-label {
+    top: 1.5rem;
+}
+
+.mdc-text-field.mwc-text-field--textarea > .mdc-notched-outline > .mdc-notched-outline__notch > .mdc-floating-label {
+    top: 1.7rem;
+}

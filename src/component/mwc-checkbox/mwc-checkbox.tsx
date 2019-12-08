@@ -3,6 +3,17 @@ import {ref} from "springtype/core/ref";
 import {attr, component} from "springtype/web/component";
 import {newUniqueComponentName, tsx} from "springtype/web/vdom";
 import "./ripple-checkbox.css";
+import {ILifecycle} from "springtype/web/component/interface";
+
+const CSS_CLASSES = {
+    DISABLED: 'mdc-checkbox--disabled',
+    SELECTED: 'mdc-checkbox--selected',
+    RIPPLE_FOREGROUND_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
+    RIPPLE_FOREGROUND_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation',
+    ANIMATION_UNCHECK: 'mdc-checkbox--anim-checked-unchecked',
+    ANIMATION_CHECK: 'mdc-checkbox--anim-unchecked-checked',
+    ANIMATION_INDETERMINATE: 'mdc-checkbox--anim-indeterminate-checked'
+};
 
 export interface IMwcCheckboxAttrs {
     name?: string;
@@ -14,7 +25,7 @@ export interface IMwcCheckboxAttrs {
 }
 
 @component
-export class MwcCheckbox extends st.component<IMwcCheckboxAttrs> {
+export class MwcCheckbox extends st.component<IMwcCheckboxAttrs> implements ILifecycle, IMwcCheckboxAttrs{
 
     @ref
     formFieldRef: HTMLElement;
@@ -45,6 +56,8 @@ export class MwcCheckbox extends st.component<IMwcCheckboxAttrs> {
 
     inputId: string;
 
+    animationLength = 250;
+
     onBeforeElCreate() {
         this.inputId = newUniqueComponentName();
     }
@@ -59,11 +72,11 @@ export class MwcCheckbox extends st.component<IMwcCheckboxAttrs> {
 
     doDisabled(disabled: boolean) {
         if (disabled) {
-            this.formFieldRef.classList.add("mdc-checkbox--disabled");
+            this.formFieldRef.classList.add(CSS_CLASSES.DISABLED);
             this.inputRef.setAttribute('disabled', "true");
 
         } else {
-            this.formFieldRef.classList.remove("mdc-checkbox--disabled");
+            this.formFieldRef.classList.remove(CSS_CLASSES.DISABLED);
             this.inputRef.removeAttribute('disabled');
         }
     }
@@ -71,35 +84,35 @@ export class MwcCheckbox extends st.component<IMwcCheckboxAttrs> {
     doCheck(value?: string) {
         this.inputRef.checked = true;
         this.doValue(value || this.value || 'on');
-        this.checkboxContainerRef.classList.add('mdc-checkbox--selected');
+        this.checkboxContainerRef.classList.add(CSS_CLASSES.SELECTED);
 
-        this.checkboxContainerRef.classList.add('mdc-ripple-upgraded--foreground-activation');
-        this.checkboxContainerRef.classList.add('mdc-checkbox--anim-unchecked-checked');
+        this.checkboxContainerRef.classList.add(CSS_CLASSES.RIPPLE_FOREGROUND_ACTIVATION);
+        this.checkboxContainerRef.classList.add(CSS_CLASSES.ANIMATION_CHECK);
         setTimeout(() => {
-            this.checkboxContainerRef.classList.add('mdc-ripple-upgraded--foreground-deactivation');
+            this.checkboxContainerRef.classList.add(CSS_CLASSES.RIPPLE_FOREGROUND_DEACTIVATION);
             setImmediate(() => {
-                this.checkboxContainerRef.classList.remove('mdc-ripple-upgraded--foreground-deactivation');
-                this.checkboxContainerRef.classList.remove('mdc-ripple-upgraded--foreground-activation');
-                this.checkboxContainerRef.classList.remove('mdc-checkbox--anim-unchecked-checked');
+                this.checkboxContainerRef.classList.remove(CSS_CLASSES.RIPPLE_FOREGROUND_DEACTIVATION);
+                this.checkboxContainerRef.classList.remove(CSS_CLASSES.RIPPLE_FOREGROUND_ACTIVATION);
+                this.checkboxContainerRef.classList.remove(CSS_CLASSES.ANIMATION_CHECK);
             });
-        }, 250);
+        }, this.animationLength);
 
     }
 
     doUnCheck() {
         this.inputRef.checked = false;
-        this.checkboxContainerRef.classList.remove('mdc-checkbox--selected');
+        this.checkboxContainerRef.classList.remove(CSS_CLASSES.SELECTED);
 
-            this.checkboxContainerRef.classList.add('mdc-ripple-upgraded--foreground-activation');
-            this.checkboxContainerRef.classList.add('mdc-checkbox--anim-checked-unchecked');
-            setTimeout(() => {
-                this.checkboxContainerRef.classList.add('mdc-ripple-upgraded--foreground-deactivation');
-                setImmediate(() => {
-                    this.checkboxContainerRef.classList.remove('mdc-ripple-upgraded--foreground-deactivation');
-                    this.checkboxContainerRef.classList.remove('mdc-ripple-upgraded--foreground-activation');
-                    this.checkboxContainerRef.classList.remove('mdc-checkbox--anim-checked-unchecked');
-                });
-            }, 200);
+        this.checkboxContainerRef.classList.add(CSS_CLASSES.RIPPLE_FOREGROUND_ACTIVATION);
+        this.checkboxContainerRef.classList.add(CSS_CLASSES.ANIMATION_UNCHECK);
+        setTimeout(() => {
+            this.checkboxContainerRef.classList.add(CSS_CLASSES.RIPPLE_FOREGROUND_DEACTIVATION);
+            setImmediate(() => {
+                this.checkboxContainerRef.classList.remove(CSS_CLASSES.RIPPLE_FOREGROUND_DEACTIVATION);
+                this.checkboxContainerRef.classList.remove(CSS_CLASSES.RIPPLE_FOREGROUND_ACTIVATION);
+                this.checkboxContainerRef.classList.remove(CSS_CLASSES.ANIMATION_UNCHECK);
+            });
+        }, this.animationLength);
 
     }
 
@@ -110,17 +123,17 @@ export class MwcCheckbox extends st.component<IMwcCheckboxAttrs> {
             this.inputRef.setAttribute("aria-checked", "mixed");
         } else {
             this.inputRef.removeAttribute("aria-checked");
-            this.checkboxContainerRef.classList.add('mdc-ripple-upgraded--foreground-activation');
-            this.checkboxContainerRef.classList.add('mdc-checkbox--anim-indeterminate-checked');
+            this.checkboxContainerRef.classList.add(CSS_CLASSES.RIPPLE_FOREGROUND_ACTIVATION);
+            this.checkboxContainerRef.classList.add(CSS_CLASSES.ANIMATION_INDETERMINATE);
 
             setTimeout(() => {
-                this.checkboxContainerRef.classList.add('mdc-ripple-upgraded--foreground-deactivation');
+                this.checkboxContainerRef.classList.add(CSS_CLASSES.RIPPLE_FOREGROUND_DEACTIVATION);
                 setImmediate(() => {
-                    this.checkboxContainerRef.classList.remove('mdc-ripple-upgraded--foreground-deactivation');
-                    this.checkboxContainerRef.classList.remove('mdc-ripple-upgraded--foreground-activation');
-                    this.checkboxContainerRef.classList.remove('mdc-checkbox--anim-indeterminate-checked');
+                    this.checkboxContainerRef.classList.remove(CSS_CLASSES.RIPPLE_FOREGROUND_DEACTIVATION);
+                    this.checkboxContainerRef.classList.remove(CSS_CLASSES.RIPPLE_FOREGROUND_ACTIVATION);
+                    this.checkboxContainerRef.classList.remove(CSS_CLASSES.ANIMATION_INDETERMINATE);
                 });
-            }, 200);
+            }, this.animationLength);
 
         }
     }

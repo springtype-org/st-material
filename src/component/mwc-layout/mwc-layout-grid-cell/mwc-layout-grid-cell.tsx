@@ -1,65 +1,64 @@
-import { st } from "springtype/core";
-import { attr, component } from "springtype/web/component";
-import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
+import {st} from "springtype/core";
+import {attr, component} from "springtype/web/component";
+import {ILifecycle} from "springtype/web/component/interface/ilifecycle";
 
 export interface IColumnPerDeviceType {
-  desktop: number;
-  tablet: number;
-  phone: number;
+    desktop: number;
+    tablet: number;
+    phone: number;
 }
 
 export type MwcLayoutGridCellAlign = "top" | "middle" | "bottom";
 
 export interface IMwcLayoutGridCellAttrs {
-  columns?: number;
-  align?: MwcLayoutGridCellAlign;
-  order?: number;
-  columnsPerDeviceType?: IColumnPerDeviceType;
+    columns?: number;
+    align?: MwcLayoutGridCellAlign;
+    order?: number;
+    columnsPerDeviceType?: IColumnPerDeviceType;
 }
 
 @component
 export class MwcLayoutGridCell extends st.component<IMwcLayoutGridCellAttrs> implements ILifecycle {
-  @attr
-  columns: number;
+    @attr
+    columns: number;
 
-  @attr
-  align: MwcLayoutGridCellAlign;
+    @attr
+    align: MwcLayoutGridCellAlign;
 
-  @attr
-  order: number;
+    @attr
+    order: number;
 
-  @attr
-  columnsPerDeviceType: IColumnPerDeviceType;
+    @attr
+    columnsPerDeviceType: IColumnPerDeviceType;
 
-  onAfterElCreate() {
-    const classes = [...this.class];
+    class = ["mdc-layout-grid__cell"];
 
-    if (typeof this.columns !== "undefined") {
-      classes.push(`mdc-layout-grid__cell--span-${this.columns}`);
-    }
-
-    if (typeof this.columnsPerDeviceType === "object") {
-      for (let deviceType in this.columnsPerDeviceType) {
-        classes.push(`mdc-layout-grid__cell--span-${this.columnsPerDeviceType[deviceType]}-${deviceType}`);
-      }
-    }
-
-    if (typeof this.order !== "undefined") {
-      classes.push(`mdc-layout-grid__cell--order-${this.order}`);
-    }
-
-    if (this.align) {
-      classes.push(`mdc-layout-grid__cell--align-${this.align}`);
-    }
-    this.class = [...classes, "mdc-layout-grid__cell"];
-
-    this.style = {
-      ...this.style,
-      display: "block",
+    style = {
+        display: "block",
     };
-  }
 
-  render() {
-    return this.renderChildren();
-  }
+    onAfterElCreate() {
+
+        if (typeof this.columns !== "undefined") {
+            this.el.classList.add(`mdc-layout-grid__cell--span-${this.columns}`);
+        }
+
+        if (typeof this.columnsPerDeviceType === "object") {
+            for (let deviceType in this.columnsPerDeviceType) {
+                this.el.classList.add(`mdc-layout-grid__cell--span-${this.columnsPerDeviceType[deviceType]}-${deviceType}`);
+            }
+        }
+
+        if (typeof this.order !== "undefined") {
+            this.el.classList.add(`mdc-layout-grid__cell--order-${this.order}`);
+        }
+
+        if (this.align) {
+            this.el.classList.add(`mdc-layout-grid__cell--align-${this.align}`);
+        }
+    }
+
+    render() {
+        return this.renderChildren();
+    }
 }

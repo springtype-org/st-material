@@ -2,21 +2,22 @@ import {st} from "springtype/core";
 import {ref} from "springtype/core/ref";
 import {component} from "springtype/web/component";
 import {tsx} from "springtype/web/vdom";
-import {MwcDrawer} from "../component/mwc-drawer/mwc-drawer/mwc-drawer";
-import {MwcTopBar} from "../component/mwc-top-bar/mwc-top-bar";
-import {MwcTypography} from "../component/mwc-typography/mwc-typography/mwc-typography";
-import {getDrawerListItems} from "./getdrawerlistitems";
-import {MwcList} from "../component/mwc-list/mwc-list/mwc-list";
-import {MwcTopBarVariant} from "../component/mwc-top-bar/mwc-top-bar-variant";
-import {MwcDrawerAppContent} from "../component/mwc-drawer/mwc-drawer-app-content/mwc-drawer-app-content";
-import {MwcDrawerContent} from "../component/mwc-drawer/mwc-drawer-content/mwc-drawer-content";
-import {MwcDrawerSubtitle} from "../component/mwc-drawer/mwc-drawer-subtitle/mwc-drawer-subtitle";
-import {MwcDrawerHeader} from "../component/mwc-drawer/mwc-drawer-header/mwc-drawer-header";
-import {MwcDrawerTitle} from "../component/mwc-drawer/mwc-drawer-title/mwc-drawer-title";
 import {ILifecycle} from "springtype/web/component/interface";
 import {HomePageContainer} from "./home-page-container";
 import {ROUTES} from "./routes";
-import {MwcListItem} from "../component/mwc-list";
+import {MwcList, MwcListItem} from "../component/mwc-list";
+import {MwcTypography} from "../component/mwc-typography";
+import {
+    MwcDrawer,
+    MwcDrawerAppContent,
+    MwcDrawerContent,
+    MwcDrawerHeader,
+    MwcDrawerSubtitle,
+    MwcDrawerTitle
+} from "../component/mwc-drawer";
+import {getDrawerListItems} from "./getdrawerlistitems";
+import {MwcTopBar} from "../component/mwc-top-bar";
+import {MwcTopBarVariant} from "../component/mwc-top-bar/mwc-top-bar-variant";
 
 @component
 export class HomePage extends st.component implements ILifecycle {
@@ -39,18 +40,18 @@ export class HomePage extends st.component implements ILifecycle {
     render() {
         return (
             <MwcTypography ref={{outerREf: this}}>
-                <MwcDrawer ref={{drawer: this}} variant={"modal"} fixed={this.drawerAndTopBarFixed}>
+                <MwcDrawer ref={{drawer: this}} variant="modal" fixed={this.drawerAndTopBarFixed}>
                     <MwcDrawerHeader>
                         <MwcDrawerTitle>Material Design for SpringType</MwcDrawerTitle>
                         <MwcDrawerSubtitle>{process.env.ST_MATERIAL_VERSION}</MwcDrawerSubtitle>
                     </MwcDrawerHeader>
                     <MwcDrawerContent>
-                        <MwcList tag={'nav'}>{getDrawerListItems((evt,route) => {
-                            this.onDrawerItemClick(evt,route)
+                        <MwcList tag={'nav'}>{getDrawerListItems((evt, route) => {
+                            this.onDrawerItemClick(evt, route)
                         })}</MwcList>
                     </MwcDrawerContent>
-                </MwcDrawer>
 
+                </MwcDrawer>
                 <MwcDrawerAppContent fixed={false}>
                     <MwcTopBar
                         ref={{topBar: this}}
@@ -75,20 +76,13 @@ export class HomePage extends st.component implements ILifecycle {
         this.selectedListItem = (evt.target as any).$stComponent as MwcListItem;
         this.selectedListItem.select(true);
         this.drawer.doClose();
-        console.log('route',route)
         st.route = {path: route};
     }
 
-    onAfterRefChange(refName: string, refValue: any): void {
-        console.log('ref change', refName, refValue);
-    }
-
-
     onAfterRender() {
-        console.log('render after', this.outerREf, this.topBar, this.appContent)
+        console.log('render after', this.outerREf, this.topBar, this.appContent);
         this.topBar.mdcComponent.setScrollTarget(this.appContent.contentRef);
         this.topBar.mdcComponent.listen("MDCTopAppBar:nav", () => {
-            console.log("nav happened!");
             this.drawer.doToggle();
         });
     }

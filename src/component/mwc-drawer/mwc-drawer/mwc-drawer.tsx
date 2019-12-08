@@ -28,9 +28,7 @@ export class MwcDrawer extends st.component<IMwcDrawerAttrs> implements ILifecyc
 
     drawerOpen: boolean = false;
 
-    onAfterElCreate(): void {
-        this.class = ['drawer-frame-root', ...this.class]
-    }
+    class = ['drawer-frame-root'];
 
     shouldAttributeChange(name: string, newValue: any, oldValue: any): boolean {
         if (this.INTERNAL.notInitialRender) {

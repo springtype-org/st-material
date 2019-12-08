@@ -39,8 +39,9 @@ export class MwcListItem extends st.component<IMwcListItemAttrs> implements ILif
     @attr
     activated: boolean = false;
 
+    class = ["mdc-list-item"];
+
     onAfterElCreate() {
-        this.class = ["mdc-list-item", ...this.class];
         this.select(this.selected);
         this.active(this.activated);
         this.disable(this.disabled);
