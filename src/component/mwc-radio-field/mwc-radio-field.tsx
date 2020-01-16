@@ -1,90 +1,106 @@
-import { st } from "springtype/core";
-import { ref } from "springtype/core/ref";
-import { attr, component } from "springtype/web/component";
-import { ILifecycle } from "springtype/web/component/interface/ilifecycle";
-import {newUniqueComponentName, tsx} from "springtype/web/vdom";
-import {IVirtualNode} from "springtype/web/vdom/interface";
-import {IVirtualNodeAttributes} from "springtype/web/vdom/interface/ivirtual-node";
+import {ref} from "springtype/core/ref";
+import {attr, component} from "springtype/web/component";
+import {ILifecycle} from "springtype/web/component/interface/ilifecycle";
+import {tsx} from "springtype/web/vdom";
+import {MwcFormField} from "../mwc-form-field";
+import {IMwcFormFieldAttrs} from "../mwc-form-field/mwc-form-field";
 
-export interface IMwcRadioFieldAttrs {
-  name?: string;
-  label?: string;
-  disabled?: boolean;
-  checked?: boolean;
-  value?: string;
+export interface IMwcRadioFieldAttrs extends IMwcFormFieldAttrs {
+    name?: string;
+    checked?: boolean;
+    value?: string;
 }
 
+const CSS_CLASSES = {
+    DISABLED: 'mdc-radio--disabled',
+};
+
 @component
-export class MwcRadioField extends st.component<IMwcRadioFieldAttrs> implements ILifecycle {
-  @ref
-  radioRef: HTMLElement;
+export class MwcRadioField extends MwcFormField<IMwcRadioFieldAttrs> implements ILifecycle {
 
-  @ref
-  formFieldRef: HTMLElement;
+    @ref
+    radioRef: HTMLElement;
 
-  @attr
-  name: string = "";
+    @ref
+    inputRef: HTMLElement;
 
-  @attr
-  label: string = "";
+    @attr
+    name: string = "";
 
-  @attr
-  disabled: boolean = false;
+    @attr
+    checked: boolean = false;
 
-  @attr
-  checked: boolean = false;
+    @attr
+    value: string = "on";
 
-  @attr
-  value: string = "";
-
-  inputId: string;
-
-
-  onBeforeElCreate() {
-    this.inputId = newUniqueComponentName();
-  }
-  
-  render(): IVirtualNode<IVirtualNodeAttributes> | Array<IVirtualNode> {
-    const classes = ["mdc-radio"];
-    const rippleClass = [];
-
-    const input = (
-        <input class="mdc-radio__native-control" ref={{ checkbox: this }} type="radio" id={this.inputId} />
-    );
-
-
-    if (this.disabled) {
-      classes.push("mdc-radio--disabled");
-      input.attributes.disabled = true;
+    doChecked(checked: boolean) {
+        if (checked) {
+            this.inputRef.setAttribute('checked', 'true');
+        } else {
+            this.inputRef.removeAttribute('checked');
+        }
     }
 
-    if (this.checked) {
-      input.attributes.checked = true;
-      input.attributes.value = this.value || "on";
+    doName(name: string) {
+        this.inputRef.setAttribute('name', name);
     }
 
-    if (this.name) {
-      input.attributes.name = this.name;
+    doValue(value: string) {
+        this.inputRef.setAttribute('value', value);
     }
 
-    if (this.value) {
-      input.attributes.value = this.value;
+    doDisabled(disabled: boolean) {
+        super.doDisabled(disabled);
+        if (disabled) {
+            this.radioRef.classList.add(CSS_CLASSES.DISABLED);
+            this.inputRef.setAttribute('disabled', 'true');
+        } else {
+            this.radioRef.classList.remove(CSS_CLASSES.DISABLED);
+            this.inputRef.removeAttribute('disabled');
+        }
     }
 
-    return (
-        <div ref={{ formFieldRef: this }} class="mdc-form-field">
-          <div ref={{ radioRef: this }} class={classes}>
+    shouldAttributeChange(name: string, newValue: any, oldValue: any): boolean {
+        super.shouldAttributeChange(name, newValue, oldValue);
+        if (this.INTERNAL.notInitialRender) {
+            switch (name) {
+                case 'name':
+                    this.doName(newValue);
+                    break;
+                case 'checked':
+                    this.doChecked(newValue);
+                    break;
+                case 'value':
+                    this.doValue(newValue);
+                    break;
+            }
+        }
+        return true;
+    }
+
+    renderInnerElement() {
+        const input = <input class="mdc-radio__native-control"
+                             ref={{inputRef: this}} type="radio" id={this.for}
+                             name={this.name} value={this.value}/>;
+
+        const classes = ["mdc-radio"];
+        if (this.disabled) {
+            classes.push(CSS_CLASSES.DISABLED);
+            input.attributes.disabled = true;
+        }
+
+        if (this.checked) {
+            input.attributes.checked = true;
+        }
+
+        return <div ref={{radioRef: this}} class={classes}>
             {input}
             <div class="mdc-radio__background">
-              <div class="mdc-radio__outer-circle" />
-              <div class="mdc-radio__inner-circle" />
+                <div class="mdc-radio__outer-circle"/>
+                <div class="mdc-radio__inner-circle"/>
             </div>
-            <div class={['mdc-radio__ripple']} />
-          </div>
-          <label for={this.inputId}>{this.label}</label>
-        </div>
-    );
-  }
-
+            <div class={['mdc-radio__ripple']}/>
+        </div>;
+    }
 
 }

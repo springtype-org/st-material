@@ -1,0 +1,33 @@
+mwccheckbox,
+mwctextfield,
+mwctextarea,
+mwcradiofield,
+button {
+    width: 100%;
+}
+
+a{
+    color: black;
+}
+
+/*text field shapes demo*/
+.demo-filled--shaped {
+    border-radius: 16px 16px 0 0;
+}
+
+.demo-outlined--shaped .mdc-notched-outline .mdc-notched-outline__leading {
+    border-radius: 28px 0 0 28px;
+    width: 28px;
+}
+
+.demo-outlined--shaped .mdc-notched-outline .mdc-notched-outline__trailing {
+    border-radius: 0 28px 28px 0;
+}
+
+.demo-outlined--shaped.mdc-text-field--with-trailing-icon .mdc-text-field__input {
+    padding-left: 0 !important;
+    margin-left: 28px;
+
+    padding-right: 0;
+}
+

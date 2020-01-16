@@ -3,7 +3,6 @@ import {ref} from "springtype/core/ref";
 import {component} from "springtype/web/component";
 import {tsx} from "springtype/web/vdom";
 import {ILifecycle} from "springtype/web/component/interface";
-import {HomePageContainer} from "./home-page-container";
 import {ROUTES} from "./routes";
 import {MwcList, MwcListItem} from "../component/mwc-list";
 import {MwcTypography} from "../component/mwc-typography";
@@ -18,6 +17,7 @@ import {
 import {getDrawerListItems} from "./getdrawerlistitems";
 import {MwcTopBar} from "../component/mwc-top-bar";
 import {MwcTopBarVariant} from "../component/mwc-top-bar/mwc-top-bar-variant";
+import {MwcLayoutGrid} from "../component/mwc-layout";
 
 @component
 export class HomePage extends st.component implements ILifecycle {
@@ -60,9 +60,9 @@ export class HomePage extends st.component implements ILifecycle {
                         fixed={this.drawerAndTopBarFixed}
                     />
                     <MwcDrawerAppContent fixed={this.drawerAndTopBarFixed} ref={{appContent: this}}>
-                        <HomePageContainer>
+                        <MwcLayoutGrid style={{maxWidth: '1024px'}} >
                             {ROUTES}
-                        </HomePageContainer>
+                        </MwcLayoutGrid>
                     </MwcDrawerAppContent>
                 </MwcDrawerAppContent>
             </MwcTypography>

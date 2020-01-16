@@ -1,99 +1,95 @@
-import {st} from "springtype/core";
 import {ref} from "springtype/core/ref";
 import {attr, component} from "springtype/web/component";
 import {ILifecycle} from "springtype/web/component/interface";
 import {MwcBaseTextField} from "../mwc-base-textfield";
-import {INPUT_PROPERTIES, MwcBaseTextFieldVariant} from "../mwc-base-textfield/mwc-base-text-field";
+import {IMwcBaseTextFieldAttrs} from "../mwc-base-textfield/mwc-base-text-field";
 import {tsx} from "springtype/web/vdom";
+import './mwc-text-area.css'
 
-export interface IMwcTextAreaAttrs {
-    name?: string;
-    label?: string | false;
-    variant?: MwcBaseTextFieldVariant;
-    ripple?: boolean;
-    disabled?: boolean;
-    value?: string;
-    shaped?: boolean;
-    fullwidth?: boolean;
-    textareaRows?: number;
-    textareaCols?: number;
+export interface IMwcTextAreaAttrs extends IMwcBaseTextFieldAttrs {
+    rows?: number;
+    cols?: number;
 }
 
 @component
-export class MwcTextArea extends st.component<IMwcTextAreaAttrs> implements ILifecycle, IMwcTextAreaAttrs {
+export class MwcTextArea extends MwcBaseTextField<IMwcTextAreaAttrs> implements ILifecycle, IMwcTextAreaAttrs {
 
     @ref
-    mwcBaseTextFieldRef: MwcBaseTextField;
-
-    @ref
-    inputRef: MwcBaseTextField;
+    inputRef!: HTMLInputElement;
 
     @attr
-    name: string = "";
+    rows: number = 1;
 
     @attr
-    label: string = "";
+    cols: number = 100;
 
-    @attr
-    variant: MwcBaseTextFieldVariant = 'filled';
+    class = ['mdc-text-field', 'mwc-text-field--textarea'];
 
-    @attr
-    ripple: boolean = true;
-
-    @attr
-    disabled: boolean = false;
-
-    @attr
-    value: string = "";
-
-    @attr
-    shaped: boolean = false;
-
-    @attr
-    textareaRows: number = 2;
-
-    @attr
-    textareaCols: number = 40;
-
-    getAttribute(name: string): any {
-        if (this.mwcBaseTextFieldRef && INPUT_PROPERTIES.indexOf(name) > 0) {
-            return this.mwcBaseTextFieldRef.getAttribute(name);
-        }
-        return super.getAttribute(name);
-    }
 
     doDisable(disabled: boolean) {
-        this.mwcBaseTextFieldRef.doDisable(disabled);
+        super.doDisable(disabled);
         if (disabled) {
             this.inputRef.setAttribute('disabled', 'true')
         } else {
-            this.el.classList.remove("mdc-text-field--disabled");
+            this.inputRef.removeAttribute('disabled')
         }
     }
 
-    onAfterInitialRender(): void {
-        this.doDisable(this.disabled);
-
-        this.mwcBaseTextFieldRef.onInputKeyUp({target: {value: this.value}})
+    doName(name: string) {
+        this.inputRef.setAttribute('name', name);
     }
 
-    render() {
-        return <MwcBaseTextField class={["mwc-text-field--textarea"]}
-                                 ref={{mwcBaseTextFieldRef: this}}
-                                 label={this.label}
-                                 variant={this.variant}
-                                 shaped={this.shaped}>
-            <textarea
-                ref={{inputRef: this}}
-                class="mdc-text-field__input"
-                name={this.name}
-                value={this.value}
-                onKeyUp={(evt) => {this.mwcBaseTextFieldRef.onInputKeyUp(evt)}}
-                onFocus={(evt) =>this.mwcBaseTextFieldRef.onInputFocus(evt)}
-                onBlur={(evt) =>this.mwcBaseTextFieldRef.onInputBlur(evt)}
-                rows={this.textareaRows}
-                cols={this.textareaCols}
-            />
-        </MwcBaseTextField>
+    shouldAttributeChange(name: string, newValue: any, oldValue: any): boolean {
+        super.shouldAttributeChange(name, newValue, oldValue);
+        if (this.INTERNAL.notInitialRender) {
+            switch (name) {
+                case 'rows':
+                    this.doRows(newValue);
+                    break;
+                case 'cols':
+                    this.doCols(newValue);
+                    break;
+            }
+        }
+        return true;
+    }
+
+    doRows(rows: number) {
+        this.inputRef.setAttribute('rows', rows.toString());
+    }
+
+    doCols(cols: number) {
+        this.inputRef.setAttribute('cols', cols.toString());
+    }
+
+    shouldRender(): boolean {
+        return super.shouldRender();
+    }
+
+    onAfterInitialRender(): void {
+        super.onAfterInitialRender();
+        this.inputRef.id = this.inputId;
+        this.doDisable(this.disabled);
+        this.doName(this.name);
+            this.doValue(this.inputRef.value);
+    }
+
+    getInputElement() {
+        return <textarea ref={{inputRef: this}}
+                         class="mdc-text-field__input"
+                         name={this.name}
+                         onKeyUp={(evt) => {
+                             this.onInputKeyUp(evt)
+                         }}
+                         onFocus={(evt) => {
+                             this.onInputFocus(evt)
+                         }}
+                         onBlur={(evt) => {
+                             this.onInputBlur(evt)
+                         }}
+                         rows={this.rows}
+                         cols={this.cols}>
+        {this.renderChildren()}
+        </textarea>;
     }
 }

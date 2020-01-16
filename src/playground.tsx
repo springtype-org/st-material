@@ -10,6 +10,6 @@ import { tsx } from "springtype/web/vdom";
 //
 // But because we use it in html as css global style we don't need to.
 import { HomePage } from "./playground/home-page";
-
+import './demo.css'
 
 st.render(<HomePage />);

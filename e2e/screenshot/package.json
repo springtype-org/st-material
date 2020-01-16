@@ -1,0 +1,38 @@
+{
+  "name": "@springtype/e2e-screenshot",
+  "version": "1.0.0",
+  "description": "e2e test",
+  "scripts": {
+    "clean": "npx st-rm-rf dist node_modules",
+    "e2e": "st-run st-rm-rf screenshots result && testcafe chrome:headless **/__e2e__/*",
+    "start:prod": "st-run st-rm-rf dist && st-start -e production",
+    "start": "st-start"
+  },
+  "author": "Aron Homberg <info@aron-homberg.de>",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.7.1",
+    "dts-css-modules-loader": "^1.0.1",
+    "lost": "^8.3.1",
+    "node-notifier": "^6.0.0",
+    "node-sass": "^4.13.0",
+    "pngjs": "^3.4.0",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-nested": "^4.1.2",
+    "postcss-normalize": "^8.0.1",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-safe-parser": "^4.0.1",
+    "raw-loader": "^3.1.0",
+    "resolve-url-loader": "^3.1.0",
+    "sass-loader": "^8.0.0",
+    "springtype": "2.0.0-beta.21",
+    "st-mkdir": "^1.0.0-alpha.6",
+    "st-start": "^2.0.0-beta.16",
+    "testcafe": "^1.6.1",
+    "webpack-bundle-analyzer": "^3.6.0"
+  },
+  "dependencies": {
+    "@material/textfield": "^4.0.0"
+  }
+}

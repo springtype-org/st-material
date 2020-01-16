@@ -4,3 +4,4 @@ dist-init
 .DS_Store
 /src/component/mwc-icon/
 /st-material.iml
+/dist/

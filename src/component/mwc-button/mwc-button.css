@@ -1,0 +1,7 @@
+.mdc-button--springtype-dense {
+    height: 32px;
+    font-size: 0.8125rem;
+}
+.mdc-button.mdc-button--springtype-dense {
+    border-radius: 4px;
+}

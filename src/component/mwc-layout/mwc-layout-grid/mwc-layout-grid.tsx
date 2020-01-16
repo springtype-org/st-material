@@ -16,7 +16,7 @@ export interface IMwcLayoutGridAttrs {
 @component
 export class MwcLayoutGrid extends st.component<IMwcLayoutGridAttrs> implements ILifecycle, IMwcLayoutGridAttrs {
     @attr
-    autoWrapInner: boolean = true;
+    autoWrapInner: boolean = false;
 
     @attr
     fixedColumnWidth: boolean = false;
