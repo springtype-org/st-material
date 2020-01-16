@@ -6,7 +6,7 @@
   },
   "scripts": {
     "generate": "ts-node script/generate/index.ts",
-    "prebuild": "st-rm-rf dist-init",
+    "prebuild": "st-rm-rf dist",
     "build": "tsc",
     "postbuild": "st-cp package.json README.md LICENSE dist-init",
     "start:prod": "st-start -e production",
