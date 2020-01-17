@@ -2,8 +2,8 @@ import {IManipulatedAttribute} from "../interface/imanipulatedattribute";
 import {IAttributes} from "../interface/iattributes";
 import {IManipulationSVGResult} from "../interface/imanipulationsvgresult";
 
-export const ICON_CLASS_PRIMARY_COLOR = "material-icon-primary-color";
-export const ICON_CLASS_SECONDARY_COLOR = "material-icon-secondary-color";
+export const ICON_CLASS_PRIMARY_COLOR = "material-icon primary-color";
+export const ICON_CLASS_SECONDARY_COLOR = "material-icon secondary-color";
 
 const manipulateAttributesForSVg = (attributes: IAttributes, parent: string, level: number): IManipulatedAttribute => {
     if (parent === 'svg' && level === 1) {

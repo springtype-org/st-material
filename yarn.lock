@@ -2688,6 +2688,11 @@ color@^3.0.0:
     color-convert "^1.9.1"
     color-string "^1.5.2"
 
+colors-cli@^1.0.26:
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/colors-cli/-/colors-cli-1.0.26.tgz#5368aec90c80364e6868c57224e74596963ef8ff"
+  integrity sha512-yCz3ZQfOMvPKfa58jpe6PqKhCbr8v8EwLgUnYqcXprmZGruC0Ht2fcvUIFUbkG8sGXFi7uunE493UHXhvOokqQ==
+
 combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.8.tgz#c3d45a8b34fd730631a110a8a2520682b31d5a7f"
@@ -5192,6 +5197,13 @@ loader-utils@1.2.3, loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.
     big.js "^5.2.2"
     emojis-list "^2.0.0"
     json5 "^1.0.1"
+
+loading-cli@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/loading-cli/-/loading-cli-1.1.0.tgz#3457edaa3290439ad0061755174363a8091d56bc"
+  integrity sha512-r6Kj0Y3d3isT4vvJ0tFlND1CcLkpatWmlgQs/PEfnSofJSHZwAbsqexnpQEDj4nlxSXEqFWh/Wu2iQXAAZRPNQ==
+  dependencies:
+    colors-cli "^1.0.26"
 
 locate-path@^2.0.0:
   version "2.0.0"
