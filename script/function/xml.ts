@@ -1,4 +1,4 @@
-const xml2js = require('xml2js');
+import * as  xml2js from 'xml2js';
 export const xmlToJson = xml2js.parseStringPromise;
 export const jsonToXml = (json: any) => {
     return new xml2js.Builder({

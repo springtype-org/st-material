@@ -1,16 +1,11 @@
-import {IManipulatedAttribute} from "../interface/imanipulatedattribute";
-import {IAttributes} from "../interface/iattributes";
+import {IManipulatedAttribute} from "../interface/iManipulatedAttribute";
+import {IAttributes} from "../interface/iAttributes";
 import {IManipulationSVGResult} from "../interface/imanipulationsvgresult";
 
 export const ICON_CLASS_PRIMARY_COLOR = "material-icon primary-color";
 export const ICON_CLASS_SECONDARY_COLOR = "material-icon secondary-color";
 
 const manipulateAttributesForSVg = (attributes: IAttributes, parent: string, level: number): IManipulatedAttribute => {
-    if (parent === 'svg' && level === 1) {
-        delete attributes['width'];
-        delete attributes['height'];
-    }
-
     //delete unused ids and classes
     delete attributes.id;
     delete attributes.class;
@@ -20,6 +15,16 @@ const manipulateAttributesForSVg = (attributes: IAttributes, parent: string, lev
     let useSecondaryColor = false;
     if (Object.keys(attributes).length > 0) {
         switch (parent) {
+            case 'svg':
+                attributes['class'] = 'material-icon';
+                delete attributes['x'];
+                delete attributes['y'];
+                delete attributes['width'];
+                delete attributes['height'];
+
+                delete attributes['xmlSpace'];
+                delete attributes['enable-background'];
+                break;
             case 'path':
             case 'g':
             case 'circle':
@@ -41,6 +46,9 @@ const manipulateAttributesForSVg = (attributes: IAttributes, parent: string, lev
                 break;
         }
     }
+    for (const attrName of Object.keys(attributes)) {
+        attributes[attrName] = attributes[attrName].trim();
+    }
     return {attributes: attributes, usePrimaryColor: usePrimaryColor, useSecondaryColor: useSecondaryColor};
 };
 
@@ -58,7 +66,7 @@ const manipulateAttributes = (attributes: IAttributes, parent: string, level: nu
     return manipulateAttributesForSVg(manipulatedAttribute, parent, level);
 };
 
-export const manipulateXML = (xml: any, parent: string | undefined = undefined, level: number = 0): IManipulationSVGResult => {
+export const manipulatexml = (xml: any, parent: string | undefined = undefined, level: number = 0): IManipulationSVGResult => {
     const resultXml: any = {};
     let usedPrimaryColor = false;
     let usedSecondaryColor = false;
@@ -85,7 +93,7 @@ export const manipulateXML = (xml: any, parent: string | undefined = undefined, 
                 const array = [];
                 for (let i = 0; i < _value.length; i++) {
                     const value = _value[i];
-                    const manipulationResult = manipulateXML(value, xmlKey, level);
+                    const manipulationResult = manipulatexml(value, xmlKey, level);
                     if (manipulationResult) {
                         array[i] = manipulationResult.xmlJson;
                         if (manipulationResult.usePrimaryColor) {
@@ -100,7 +108,7 @@ export const manipulateXML = (xml: any, parent: string | undefined = undefined, 
                     resultXml[xmlKey] = array;
                 }
             } else {
-                const manipulationResult = manipulateXML(_value, xmlKey, level + 1);
+                const manipulationResult = manipulatexml(_value, xmlKey, level + 1);
                 if (manipulationResult) {
                     resultXml[xmlKey] = manipulationResult.xmlJson;
                     if (manipulationResult.usePrimaryColor) {

@@ -49,6 +49,7 @@ export class MwcTextField extends MwcBaseTextField<IMwcTextFieldAttrs> implement
     }
 
     shouldAttributeChange(name: string, newValue: any, oldValue: any): boolean {
+        console.log(name, newValue);
         super.shouldAttributeChange(name, newValue, oldValue);
         if (this.INTERNAL.notInitialRender) {
             switch (name) {

@@ -1,4 +1,4 @@
-import {IAttributes} from "./Iattributes";
+import {IAttributes} from "./iattributes";
 
 export interface IManipulatedAttribute {
     attributes: IAttributes;

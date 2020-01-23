@@ -4,7 +4,6 @@ import {IEvent, IEventListener} from "springtype/web/component/interface";
 import {ILifecycle} from "springtype/web/component/interface/ilifecycle";
 import {tsx} from "springtype/web/vdom";
 import {ref} from "springtype/core/ref";
-import {MwcTab} from "../mwc-tab/mwc-tab";
 import {IElement} from "springtype/web/vdom/interface";
 
 export interface TabActivateDetail {
@@ -37,33 +36,33 @@ export class MwcTabBar extends st.component<IMwcTabAttrs> implements ILifecycle 
 
     onAfterElCreate() {
         this.el.addEventListener('click', (evt: MouseEvent) => {
-            for (let i = 0; i < this.INTERNAL.childComponents.length; i++) {
-                if (this.INTERNAL.childComponents[i] === (evt.target as IElement).$stComponentRef) {
-                    this.activateByIndex(i, evt);
-                }
-            }
+          //  for (let i = 0; i < this.INTERNAL.childComponents.length; i++) {
+          //      if (this.INTERNAL.childComponents[i] === (evt.target as IElement).$stComponentRef) {
+          //          this.activateByIndex(i, evt);
+          //      }
+          //  }
         });
         this.el.addEventListener('touchstart', (evt: TouchEvent) => {
-            for (let i = 0; i < this.INTERNAL.childComponents.length; i++) {
-                if (this.INTERNAL.childComponents[i] === (evt.target as IElement).$stComponentRef) {
-                    this.activateByIndex(i, evt);
-                }
-            }
+          //  for (let i = 0; i < this.INTERNAL.childComponents.length; i++) {
+          //      if (this.INTERNAL.childComponents[i] === (evt.target as IElement).$stComponentRef) {
+          //          this.activateByIndex(i, evt);
+          //      }
+          //  }
         });
     }
 
     activateByIndex = (index: number, evt?: MouseEvent | TouchEvent) => {
-        for (let i = 0; i < this.INTERNAL.childComponents.length; i++) {
-            const tab = this.INTERNAL.childComponents[i] as MwcTab;
-            if (index !== i) {
-                tab.activate(false, evt);
-            } else {
-                tab.activate(true, evt);
-                tab.el.focus();
-                this.fireTabFocus(i);
-                this.fireTabActivate(i);
-            }
-        }
+       // for (let i = 0; i < this.INTERNAL.childComponents.length; i++) {
+       //     const tab = this.INTERNAL.childComponents[i] as MwcTab;
+       //     if (index !== i) {
+       //         tab.activate(false, evt);
+       //     } else {
+       //         tab.activate(true, evt);
+       //         tab.el.focus();
+       //         this.fireTabFocus(i);
+       //         this.fireTabActivate(i);
+       //     }
+       // }
     };
 
     fireTabActivate = (index: number) => {
