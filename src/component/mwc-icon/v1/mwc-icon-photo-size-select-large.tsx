@@ -1,0 +1,71 @@
+import { tsx } from "springtype/web/vdom";
+
+/*
+ * Material Icon: photo_size_select_large filled
+ * version: V1
+ * categories: image
+ * tags: 
+ * download link: https://fonts.gstatic.com/s/i/materialicons/photo_size_select_large/v1/24px.svg
+ */
+export const mwcIconPhotoSizeSelectLargeFilled = () => {
+    return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="material-icon">
+      <path fill="none" d="M24 24H0V0h24v24z"/>
+      <path d="M21 15h2v2h-2v-2zm0-4h2v2h-2v-2zm2 8h-2v2c1 0 2-1 2-2zM13 3h2v2h-2V3zm8 4h2v2h-2V7zm0-4v2h2c0-1-1-2-2-2zM1 7h2v2H1V7zm16-4h2v2h-2V3zm0 16h2v2h-2v-2zM3 3C2 3 1 4 1 5h2V3zm6 0h2v2H9V3zM5 3h2v2H5V3zm-4 8v8c0 1.1.9 2 2 2h12V11H1zm2 8l2.5-3.21 1.79 2.15 2.5-3.22L13 19H3z" class="material-icon primary-color"/>
+    </svg>
+};
+
+/*
+ * Material Icon: photo_size_select_large outlined
+ * version: V1
+ * categories: image
+ * tags: 
+ * download link: https://fonts.gstatic.com/s/i/materialiconsoutlined/photo_size_select_large/v1/24px.svg
+ */
+export const mwcIconPhotoSizeSelectLargeOutlined = () => {
+    return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="material-icon">
+      <path fill="none" d="M0 0h24v24H0V0z"/>
+      <path d="M21 15h2v2h-2v-2zm0-4h2v2h-2v-2zm2 8h-2v2c1 0 2-1 2-2zM13 3h2v2h-2V3zm8 4h2v2h-2V7zm0-4v2h2c0-1-1-2-2-2zM1 7h2v2H1V7zm16-4h2v2h-2V3zm0 16h2v2h-2v-2zM3 3C2 3 1 4 1 5h2V3zm6 0h2v2H9V3zM5 3h2v2H5V3zm-4 8v8c0 1.1.9 2 2 2h12V11H1zm2 8l2.5-3.21 1.79 2.15 2.5-3.22L13 19H3z" class="material-icon primary-color"/>
+    </svg>
+};
+
+/*
+ * Material Icon: photo_size_select_large rounded
+ * version: V1
+ * categories: image
+ * tags: 
+ * download link: https://fonts.gstatic.com/s/i/materialiconsround/photo_size_select_large/v1/24px.svg
+ */
+export const mwcIconPhotoSizeSelectLargeRounded = () => {
+    return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="material-icon">
+      <path fill="none" d="M0 0h24v24H0V0z"/>
+      <path d="M21 15h2v2h-2v-2zm0-4h2v2h-2v-2zm2 8h-2v2c1 0 2-1 2-2zM13 3h2v2h-2V3zm8 4h2v2h-2V7zm0-4v2h2c0-1-1-2-2-2zM1 7h2v2H1V7zm16-4h2v2h-2V3zm0 16h2v2h-2v-2zM3 3C2 3 1 4 1 5h2V3zm6 0h2v2H9V3zM5 3h2v2H5V3zm-4 8v8c0 1.1.9 2 2 2h12v-8c0-1.1-.9-2-2-2H1zm2.63 7.19l1.49-1.91c.2-.25.57-.26.78-.01l1.39 1.67 2.1-2.7c.2-.26.6-.26.79.01l2.22 2.96c.25.33.01.8-.4.8H4.02c-.41-.01-.65-.49-.39-.82z" class="material-icon primary-color"/>
+    </svg>
+};
+
+/*
+ * Material Icon: photo_size_select_large sharped
+ * version: V1
+ * categories: image
+ * tags: 
+ * download link: https://fonts.gstatic.com/s/i/materialiconssharp/photo_size_select_large/v1/24px.svg
+ */
+export const mwcIconPhotoSizeSelectLargeSharped = () => {
+    return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="material-icon">
+      <path fill="none" d="M0 0h24v24H0V0z"/>
+      <path d="M21 15h2v2h-2v-2zm0 4h2v2h-2v-2zm0-8h2v2h-2v-2zm-8-8h2v2h-2V3zm8 4h2v2h-2V7zM1 7h2v2H1V7zm16-4h2v2h-2V3zm0 16h2v2h-2v-2zM3 3H1v2h2V3zm20 0h-2v2h2V3zM9 3h2v2H9V3zM5 3h2v2H5V3zm-4 8v10h14V11H1zm2 8l2.5-3.21 1.79 2.15 2.5-3.22L13 19H3z" class="material-icon primary-color"/>
+    </svg>
+};
+
+/*
+ * Material Icon: photo_size_select_large two-tone
+ * version: V1
+ * categories: image
+ * tags: 
+ * download link: https://fonts.gstatic.com/s/i/materialiconstwotone/photo_size_select_large/v1/24px.svg
+ */
+export const mwcIconPhotoSizeSelectLargeTwoTone = () => {
+    return <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="material-icon">
+      <path fill="none" d="M0 0h24v24H0V0z"/>
+      <path d="M17 19h2v2h-2zM1 19c0 1.1.9 2 2 2h12V11H1v8zm4.5-3.21l1.79 2.15 2.5-3.22L13 19H3l2.5-3.21zM17 3h2v2h-2zm4 8h2v2h-2zm0 4h2v2h-2zM3 3C2 3 1 4 1 5h2V3zm18 4h2v2h-2zm-8-4h2v2h-2zm8 18c1 0 2-1 2-2h-2v2zM1 7h2v2H1zm8-4h2v2H9zM5 3h2v2H5zm16 0v2h2c0-1-1-2-2-2z" class="material-icon primary-color"/>
+    </svg>
+};
